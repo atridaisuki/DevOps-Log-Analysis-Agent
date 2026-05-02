@@ -1,0 +1,83 @@
+{
+  "cpu": {
+    "unit": "percent",
+    "data": [
+      {"time": "14:00", "value": 15},
+      {"time": "14:01", "value": 18},
+      {"time": "14:02", "value": 16},
+      {"time": "14:03", "value": 20},
+      {"time": "14:04", "value": 22},
+      {"time": "14:05", "value": 19},
+      {"time": "14:06", "value": 21},
+      {"time": "14:07", "value": 18}
+    ]
+  },
+  "memory": {
+    "unit": "MB",
+    "data": [
+      {"time": "14:00", "value": 180},
+      {"time": "14:01", "value": 182},
+      {"time": "14:02", "value": 185},
+      {"time": "14:03", "value": 183},
+      {"time": "14:04", "value": 186},
+      {"time": "14:05", "value": 184},
+      {"time": "14:06", "value": 187},
+      {"time": "14:07", "value": 185}
+    ]
+  },
+  "latency_p99": {
+    "unit": "ms",
+    "description": "Bimodal: token-based auth ~15ms, session-based auth ~2000ms (timeout)",
+    "data": [
+      {"time": "14:00", "value": 2001},
+      {"time": "14:01", "value": 2003},
+      {"time": "14:02", "value": 2000},
+      {"time": "14:03", "value": 2002},
+      {"time": "14:04", "value": 2001},
+      {"time": "14:05", "value": 2004},
+      {"time": "14:06", "value": 2000},
+      {"time": "14:07", "value": 2002}
+    ]
+  },
+  "latency_p50": {
+    "unit": "ms",
+    "description": "Median is low because majority of token-auth requests succeed quickly",
+    "data": [
+      {"time": "14:00", "value": 12},
+      {"time": "14:01", "value": 14},
+      {"time": "14:02", "value": 11},
+      {"time": "14:03", "value": 13},
+      {"time": "14:04", "value": 15},
+      {"time": "14:05", "value": 12},
+      {"time": "14:06", "value": 14},
+      {"time": "14:07", "value": 13}
+    ]
+  },
+  "error_rate": {
+    "unit": "percent",
+    "data": [
+      {"time": "14:00", "value": 38.5},
+      {"time": "14:01", "value": 41.2},
+      {"time": "14:02", "value": 39.8},
+      {"time": "14:03", "value": 42.1},
+      {"time": "14:04", "value": 40.0},
+      {"time": "14:05", "value": 38.9},
+      {"time": "14:06", "value": 41.5},
+      {"time": "14:07", "value": 39.3}
+    ]
+  },
+  "redis_connections": {
+    "unit": "count",
+    "description": "Active connections to Redis remain 0 due to connection failure",
+    "data": [
+      {"time": "14:00", "value": 0},
+      {"time": "14:01", "value": 0},
+      {"time": "14:02", "value": 0},
+      {"time": "14:03", "value": 0},
+      {"time": "14:04", "value": 0},
+      {"time": "14:05", "value": 0},
+      {"time": "14:06", "value": 0},
+      {"time": "14:07", "value": 0}
+    ]
+  }
+}

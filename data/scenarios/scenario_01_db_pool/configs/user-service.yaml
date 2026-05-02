@@ -1,0 +1,22 @@
+# user-service configuration
+
+server:
+  port: 8081
+  max_threads: 50
+  request_timeout: 5000ms
+
+database:
+  url: jdbc:postgresql://postgres:5432/userdb
+  driver: org.postgresql.Driver
+  username: app_user
+  password: ${DB_PASSWORD}
+  pool:
+    max_connections: 10
+    min_idle: 2
+    connection_timeout: 3000ms
+    idle_timeout: 600000ms
+    max_lifetime: 1800000ms
+
+logging:
+  level: INFO
+  file: /var/log/user-service/user-service.log

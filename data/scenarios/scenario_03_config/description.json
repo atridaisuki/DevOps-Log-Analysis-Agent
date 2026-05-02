@@ -1,0 +1,8 @@
+{
+  "id": "scenario_03_config",
+  "title": "间歇性 500 错误 — Redis 连接配置错误",
+  "description": "监控告警显示 auth-service 错误率约 40%，部分 API 请求返回 500 错误，但并非所有请求都失败。基于 session 的认证请求全部失败，而基于 token 的认证请求正常。",
+  "root_cause": "auth-service 配置文件中 redis.host 被错误设置为 'redis-prod'（不存在的主机名），正确值应为 'redis'。这导致所有需要 session 验证的请求无法连接 Redis 而失败，但基于 JWT token 的认证不依赖 Redis，因此仍然正常工作，最终表现为约 40% 的请求返回 500 错误。",
+  "affected_services": ["api-gateway", "auth-service"],
+  "difficulty": "medium"
+}

@@ -1,0 +1,30 @@
+2024-03-15 10:00:01 INFO  [user-service] Handling GET /users/123
+2024-03-15 10:00:01 DEBUG [user-service] Acquiring DB connection from pool (active: 3/10, idle: 7)
+2024-03-15 10:00:01 DEBUG [user-service] Query: SELECT * FROM users WHERE id = 123
+2024-03-15 10:00:01 INFO  [user-service] Response: 200 OK (150ms)
+2024-03-15 10:00:01 INFO  [user-service] Handling POST /users/login
+2024-03-15 10:00:01 DEBUG [user-service] Acquiring DB connection from pool (active: 4/10, idle: 6)
+2024-03-15 10:00:02 INFO  [user-service] Response: 200 OK (185ms)
+2024-03-15 10:04:00 INFO  [user-service] Traffic spike detected: 150 req/s (normal: 30 req/s)
+2024-03-15 10:04:30 WARN  [user-service] DB connection pool usage high: active 9/10, idle 1
+2024-03-15 10:04:45 WARN  [user-service] DB connection pool usage high: active 10/10, idle 0
+2024-03-15 10:04:50 ERROR [user-service] Failed to acquire DB connection: pool exhausted (timeout after 3000ms)
+2024-03-15 10:04:50 ERROR [user-service] java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 3000ms.
+2024-03-15 10:04:50 ERROR [user-service]     at com.zaxxer.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:696)
+2024-03-15 10:04:50 ERROR [user-service]     at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:197)
+2024-03-15 10:04:50 ERROR [user-service]     at com.example.userservice.repository.UserRepository.findById(UserRepository.java:45)
+2024-03-15 10:05:00 WARN  [user-service] DB connection pool: active 10/10, waiting 12
+2024-03-15 10:05:03 WARN  [user-service] Slow query response: GET /users/456 took 3012ms (DB wait: 2800ms)
+2024-03-15 10:05:15 ERROR [user-service] Failed to acquire DB connection: pool exhausted (timeout after 3000ms)
+2024-03-15 10:05:20 WARN  [user-service] Slow query response: POST /users/login took 5100ms (DB wait: 4900ms)
+2024-03-15 10:05:30 ERROR [user-service] Failed to acquire DB connection: pool exhausted (timeout after 3000ms)
+2024-03-15 10:05:30 ERROR [user-service] 15 requests waiting for DB connection
+2024-03-15 10:06:00 ERROR [user-service] Failed to acquire DB connection: pool exhausted (timeout after 3000ms)
+2024-03-15 10:06:00 ERROR [user-service] Request timeout: GET /users/789 exceeded 5000ms
+2024-03-15 10:06:30 ERROR [user-service] Failed to acquire DB connection: pool exhausted (timeout after 3000ms)
+2024-03-15 10:06:30 ERROR [user-service] 23 requests waiting for DB connection
+2024-03-15 10:07:00 ERROR [user-service] Failed to acquire DB connection: pool exhausted (timeout after 3000ms)
+2024-03-15 10:07:00 WARN  [user-service] Active threads: 48, max threads: 50
+2024-03-15 10:07:15 ERROR [user-service] Thread pool nearly exhausted: 49/50 active
+2024-03-15 10:07:30 ERROR [user-service] Failed to acquire DB connection: pool exhausted (timeout after 3000ms)
+2024-03-15 10:07:30 ERROR [user-service] 35 requests waiting for DB connection, avg wait time: 4200ms

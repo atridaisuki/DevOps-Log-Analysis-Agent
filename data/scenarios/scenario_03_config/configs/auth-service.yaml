@@ -1,0 +1,30 @@
+# auth-service configuration
+
+server:
+  port: 8083
+  max_threads: 50
+  request_timeout: 3000ms
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: 3600s
+  issuer: auth-service
+
+redis:
+  host: redis-prod
+  port: 6379
+  password: ${REDIS_PASSWORD}
+  database: 0
+  timeout: 2000ms
+  pool:
+    max_connections: 20
+    min_idle: 5
+
+session:
+  store: redis
+  ttl: 1800s
+  cookie_name: SESSION_ID
+
+logging:
+  level: INFO
+  file: /var/log/auth-service/auth-service.log

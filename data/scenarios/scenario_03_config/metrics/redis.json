@@ -1,0 +1,68 @@
+{
+  "cpu": {
+    "unit": "percent",
+    "data": [
+      {"time": "14:00", "value": 3},
+      {"time": "14:01", "value": 4},
+      {"time": "14:02", "value": 3},
+      {"time": "14:03", "value": 5},
+      {"time": "14:04", "value": 4},
+      {"time": "14:05", "value": 3},
+      {"time": "14:06", "value": 4},
+      {"time": "14:07", "value": 3}
+    ]
+  },
+  "memory": {
+    "unit": "MB",
+    "data": [
+      {"time": "14:00", "value": 45},
+      {"time": "14:01", "value": 45},
+      {"time": "14:02", "value": 46},
+      {"time": "14:03", "value": 45},
+      {"time": "14:04", "value": 46},
+      {"time": "14:05", "value": 45},
+      {"time": "14:06", "value": 46},
+      {"time": "14:07", "value": 45}
+    ]
+  },
+  "connected_clients": {
+    "unit": "count",
+    "description": "Normal client connections from other services (not auth-service, which cannot connect)",
+    "data": [
+      {"time": "14:00", "value": 8},
+      {"time": "14:01", "value": 9},
+      {"time": "14:02", "value": 8},
+      {"time": "14:03", "value": 8},
+      {"time": "14:04", "value": 9},
+      {"time": "14:05", "value": 8},
+      {"time": "14:06", "value": 9},
+      {"time": "14:07", "value": 8}
+    ]
+  },
+  "ops_per_second": {
+    "unit": "count",
+    "data": [
+      {"time": "14:00", "value": 1250},
+      {"time": "14:01", "value": 1300},
+      {"time": "14:02", "value": 1280},
+      {"time": "14:03", "value": 1310},
+      {"time": "14:04", "value": 1275},
+      {"time": "14:05", "value": 1290},
+      {"time": "14:06", "value": 1305},
+      {"time": "14:07", "value": 1260}
+    ]
+  },
+  "keyspace_hits_ratio": {
+    "unit": "percent",
+    "data": [
+      {"time": "14:00", "value": 94.2},
+      {"time": "14:01", "value": 93.8},
+      {"time": "14:02", "value": 94.5},
+      {"time": "14:03", "value": 94.1},
+      {"time": "14:04", "value": 93.9},
+      {"time": "14:05", "value": 94.3},
+      {"time": "14:06", "value": 94.0},
+      {"time": "14:07", "value": 94.4}
+    ]
+  }
+}

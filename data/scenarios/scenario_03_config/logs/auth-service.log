@@ -1,0 +1,88 @@
+2024-03-15 14:00:01 INFO  [auth-service] Service started on port 8083
+2024-03-15 14:00:01 INFO  [auth-service] JWT module initialized, issuer=auth-service, expiration=3600s
+2024-03-15 14:00:01 INFO  [auth-service] Attempting to connect to Redis at redis-prod:6379
+2024-03-15 14:00:03 ERROR [auth-service] Failed to connect to Redis: java.net.UnknownHostException: redis-prod: Name or service not known
+2024-03-15 14:00:03 WARN  [auth-service] Redis connection pool initialization failed, session-based auth will be unavailable
+2024-03-15 14:00:03 INFO  [auth-service] JWT token validation is available (does not require Redis)
+2024-03-15 14:00:15 INFO  [auth-service] POST /auth/login from 192.168.1.50 — credential check via postgres
+2024-03-15 14:00:15 INFO  [auth-service] Login successful for user=john_doe, issuing JWT token
+2024-03-15 14:00:15 INFO  [auth-service] Response: POST /auth/login -> 200 (45ms)
+2024-03-15 14:00:22 INFO  [auth-service] GET /auth/verify from 192.168.1.51 — Authorization: Bearer eyJhbGciOi...
+2024-03-15 14:00:22 INFO  [auth-service] JWT token validation successful for user=alice, method=token
+2024-03-15 14:00:22 INFO  [auth-service] Response: GET /auth/verify -> 200 (8ms)
+2024-03-15 14:00:35 INFO  [auth-service] GET /auth/verify from 192.168.1.52 — Cookie: SESSION_ID=sess_a3f8c91b
+2024-03-15 14:00:35 INFO  [auth-service] Session validation requested, looking up session sess_a3f8c91b in Redis
+2024-03-15 14:00:35 ERROR [auth-service] Redis connection failed: java.net.UnknownHostException: redis-prod: Name or service not known
+2024-03-15 14:00:35 ERROR [auth-service] Failed to validate session sess_a3f8c91b: unable to connect to session store
+2024-03-15 14:00:35 ERROR [auth-service] Response: GET /auth/verify -> 500 (2005ms) — Internal Server Error
+2024-03-15 14:00:48 INFO  [auth-service] GET /auth/verify from 192.168.1.53 — Authorization: Bearer eyJhbGciOi...
+2024-03-15 14:00:48 INFO  [auth-service] JWT token validation successful for user=bob, method=token
+2024-03-15 14:00:48 INFO  [auth-service] Response: GET /auth/verify -> 200 (6ms)
+2024-03-15 14:01:02 INFO  [auth-service] GET /auth/verify from 192.168.1.54 — Cookie: SESSION_ID=sess_d7e2f104
+2024-03-15 14:01:02 INFO  [auth-service] Session validation requested, looking up session sess_d7e2f104 in Redis
+2024-03-15 14:01:02 ERROR [auth-service] Redis connection failed: java.net.UnknownHostException: redis-prod: Name or service not known
+2024-03-15 14:01:02 ERROR [auth-service] Failed to validate session sess_d7e2f104: unable to connect to session store
+2024-03-15 14:01:02 ERROR [auth-service] Response: GET /auth/verify -> 500 (2003ms) — Internal Server Error
+2024-03-15 14:01:15 INFO  [auth-service] GET /auth/verify from 192.168.1.55 — Authorization: Bearer eyJhbGciOi...
+2024-03-15 14:01:15 INFO  [auth-service] JWT token validation successful for user=charlie, method=token
+2024-03-15 14:01:15 INFO  [auth-service] Response: GET /auth/verify -> 200 (7ms)
+2024-03-15 14:01:30 INFO  [auth-service] GET /auth/verify from 192.168.1.56 — Authorization: Bearer eyJhbGciOi...
+2024-03-15 14:01:30 INFO  [auth-service] JWT token validation successful for user=diana, method=token
+2024-03-15 14:01:30 INFO  [auth-service] Response: GET /auth/verify -> 200 (9ms)
+2024-03-15 14:01:45 INFO  [auth-service] GET /auth/verify from 192.168.1.57 — Cookie: SESSION_ID=sess_b5c1a820
+2024-03-15 14:01:45 INFO  [auth-service] Session validation requested, looking up session sess_b5c1a820 in Redis
+2024-03-15 14:01:45 ERROR [auth-service] Redis connection failed: java.net.UnknownHostException: redis-prod: Name or service not known
+2024-03-15 14:01:45 ERROR [auth-service] Failed to validate session sess_b5c1a820: unable to connect to session store
+2024-03-15 14:01:45 ERROR [auth-service] Response: GET /auth/verify -> 500 (2001ms) — Internal Server Error
+2024-03-15 14:02:00 INFO  [auth-service] POST /auth/login from 192.168.1.58 — credential check via postgres
+2024-03-15 14:02:00 INFO  [auth-service] Login successful for user=eve, issuing JWT token
+2024-03-15 14:02:00 INFO  [auth-service] Response: POST /auth/login -> 200 (52ms)
+2024-03-15 14:02:10 INFO  [auth-service] GET /auth/verify from 192.168.1.59 — Cookie: SESSION_ID=sess_e9f3d712
+2024-03-15 14:02:10 INFO  [auth-service] Session validation requested, looking up session sess_e9f3d712 in Redis
+2024-03-15 14:02:10 ERROR [auth-service] Redis connection failed: java.net.UnknownHostException: redis-prod: Name or service not known
+2024-03-15 14:02:10 ERROR [auth-service] Failed to validate session sess_e9f3d712: unable to connect to session store
+2024-03-15 14:02:10 ERROR [auth-service] Response: GET /auth/verify -> 500 (2002ms) — Internal Server Error
+2024-03-15 14:02:25 INFO  [auth-service] GET /auth/verify from 192.168.1.60 — Authorization: Bearer eyJhbGciOi...
+2024-03-15 14:02:25 INFO  [auth-service] JWT token validation successful for user=frank, method=token
+2024-03-15 14:02:25 INFO  [auth-service] Response: GET /auth/verify -> 200 (7ms)
+2024-03-15 14:02:40 INFO  [auth-service] GET /auth/verify from 192.168.1.61 — Cookie: SESSION_ID=sess_c4a8b390
+2024-03-15 14:02:40 INFO  [auth-service] Session validation requested, looking up session sess_c4a8b390 in Redis
+2024-03-15 14:02:40 ERROR [auth-service] Redis connection failed: java.net.UnknownHostException: redis-prod: Name or service not known
+2024-03-15 14:02:40 ERROR [auth-service] Failed to validate session sess_c4a8b390: unable to connect to session store
+2024-03-15 14:02:40 ERROR [auth-service] Response: GET /auth/verify -> 500 (2004ms) — Internal Server Error
+2024-03-15 14:02:55 INFO  [auth-service] GET /auth/verify from 192.168.1.62 — Authorization: Bearer eyJhbGciOi...
+2024-03-15 14:02:55 INFO  [auth-service] JWT token validation successful for user=grace, method=token
+2024-03-15 14:02:55 INFO  [auth-service] Response: GET /auth/verify -> 200 (10ms)
+2024-03-15 14:03:05 WARN  [auth-service] Redis reconnection attempt 15 failed: java.net.UnknownHostException: redis-prod: Name or service not known
+2024-03-15 14:03:05 WARN  [auth-service] Next reconnection attempt in 30s
+2024-03-15 14:03:12 INFO  [auth-service] GET /auth/verify from 192.168.1.63 — Authorization: Bearer eyJhbGciOi...
+2024-03-15 14:03:12 INFO  [auth-service] JWT token validation successful for user=henry, method=token
+2024-03-15 14:03:12 INFO  [auth-service] Response: GET /auth/verify -> 200 (8ms)
+2024-03-15 14:03:28 INFO  [auth-service] GET /auth/verify from 192.168.1.64 — Cookie: SESSION_ID=sess_f1d6e483
+2024-03-15 14:03:28 INFO  [auth-service] Session validation requested, looking up session sess_f1d6e483 in Redis
+2024-03-15 14:03:28 ERROR [auth-service] Redis connection failed: java.net.UnknownHostException: redis-prod: Name or service not known
+2024-03-15 14:03:28 ERROR [auth-service] Failed to validate session sess_f1d6e483: unable to connect to session store
+2024-03-15 14:03:28 ERROR [auth-service] Response: GET /auth/verify -> 500 (2001ms) — Internal Server Error
+2024-03-15 14:03:35 WARN  [auth-service] Redis reconnection attempt 16 failed: java.net.UnknownHostException: redis-prod: Name or service not known
+2024-03-15 14:03:42 INFO  [auth-service] GET /auth/verify from 192.168.1.65 — Authorization: Bearer eyJhbGciOi...
+2024-03-15 14:03:42 INFO  [auth-service] JWT token validation successful for user=iris, method=token
+2024-03-15 14:03:42 INFO  [auth-service] Response: GET /auth/verify -> 200 (11ms)
+2024-03-15 14:04:00 INFO  [auth-service] GET /auth/verify from 192.168.1.66 — Cookie: SESSION_ID=sess_a2b7c951
+2024-03-15 14:04:00 INFO  [auth-service] Session validation requested, looking up session sess_a2b7c951 in Redis
+2024-03-15 14:04:00 ERROR [auth-service] Redis connection failed: java.net.UnknownHostException: redis-prod: Name or service not known
+2024-03-15 14:04:00 ERROR [auth-service] Failed to validate session sess_a2b7c951: unable to connect to session store
+2024-03-15 14:04:00 ERROR [auth-service] Response: GET /auth/verify -> 500 (2003ms) — Internal Server Error
+2024-03-15 14:04:15 INFO  [auth-service] POST /auth/login from 192.168.1.67 — credential check via postgres
+2024-03-15 14:04:15 INFO  [auth-service] Login successful for user=jack, issuing JWT token
+2024-03-15 14:04:15 INFO  [auth-service] Response: POST /auth/login -> 200 (48ms)
+2024-03-15 14:04:30 INFO  [auth-service] GET /auth/verify from 192.168.1.68 — Authorization: Bearer eyJhbGciOi...
+2024-03-15 14:04:30 INFO  [auth-service] JWT token validation successful for user=kate, method=token
+2024-03-15 14:04:30 INFO  [auth-service] Response: GET /auth/verify -> 200 (6ms)
+2024-03-15 14:04:45 INFO  [auth-service] GET /auth/verify from 192.168.1.69 — Cookie: SESSION_ID=sess_d8e4f276
+2024-03-15 14:04:45 INFO  [auth-service] Session validation requested, looking up session sess_d8e4f276 in Redis
+2024-03-15 14:04:45 ERROR [auth-service] Redis connection failed: java.net.UnknownHostException: redis-prod: Name or service not known
+2024-03-15 14:04:45 ERROR [auth-service] Failed to validate session sess_d8e4f276: unable to connect to session store
+2024-03-15 14:04:45 ERROR [auth-service] Response: GET /auth/verify -> 500 (2002ms) — Internal Server Error
+2024-03-15 14:05:00 WARN  [auth-service] Health check: JWT auth=OK, session auth=FAILED (Redis unreachable at redis-prod:6379)
+2024-03-15 14:05:00 WARN  [auth-service] Redis reconnection attempt 17 failed: java.net.UnknownHostException: redis-prod: Name or service not known
+2024-03-15 14:05:00 WARN  [auth-service] Cumulative stats: total_requests=24, success=15, failed=9, error_rate=37.5%

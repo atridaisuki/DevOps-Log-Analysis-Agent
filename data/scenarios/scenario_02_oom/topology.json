@@ -1,0 +1,34 @@
+{
+  "services": {
+    "api-gateway": {
+      "port": 8080,
+      "depends_on": ["order-service", "user-service"],
+      "status": "healthy",
+      "description": "Nginx-based API gateway, routes requests to backend services"
+    },
+    "order-service": {
+      "port": 8082,
+      "depends_on": ["postgres", "redis"],
+      "status": "unhealthy",
+      "description": "Handles order creation, querying, and management"
+    },
+    "user-service": {
+      "port": 8081,
+      "depends_on": ["postgres"],
+      "status": "healthy",
+      "description": "Handles user authentication and profile operations"
+    },
+    "postgres": {
+      "port": 5432,
+      "depends_on": [],
+      "status": "healthy",
+      "description": "PostgreSQL database, shared by user-service and order-service"
+    },
+    "redis": {
+      "port": 6379,
+      "depends_on": [],
+      "status": "healthy",
+      "description": "Redis cache for session and order data"
+    }
+  }
+}

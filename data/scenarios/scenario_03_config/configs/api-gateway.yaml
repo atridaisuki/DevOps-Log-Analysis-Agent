@@ -1,0 +1,30 @@
+# api-gateway configuration
+
+server:
+  port: 8080
+  worker_connections: 1024
+
+upstream:
+  auth-service:
+    url: http://auth-service:8083
+    timeout: 3000ms
+    circuit_breaker:
+      failure_threshold: 10
+      recovery_timeout: 30s
+  user-service:
+    url: http://user-service:8081
+    timeout: 5000ms
+    circuit_breaker:
+      failure_threshold: 5
+      recovery_timeout: 30s
+
+routes:
+  - path: /api/auth/**
+    service: auth-service
+  - path: /api/users/**
+    service: user-service
+    auth_required: true
+
+logging:
+  level: INFO
+  file: /var/log/api-gateway/api-gateway.log

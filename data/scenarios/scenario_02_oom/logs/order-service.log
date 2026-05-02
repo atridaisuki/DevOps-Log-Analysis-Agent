@@ -1,0 +1,132 @@
+2024-03-15 14:00:01 INFO  [order-service] Handling GET /orders/10234
+2024-03-15 14:00:01 DEBUG [order-service] Cache miss for order 10234, querying database
+2024-03-15 14:00:01 DEBUG [order-service] Query: SELECT * FROM orders WHERE id = 10234
+2024-03-15 14:00:01 DEBUG [order-service] Caching order 10234 (cache size: 42001)
+2024-03-15 14:00:01 INFO  [order-service] Response: 200 OK (35ms)
+2024-03-15 14:00:03 INFO  [order-service] Handling POST /orders
+2024-03-15 14:00:03 DEBUG [order-service] Creating order for user_id=5678, items=3
+2024-03-15 14:00:03 INFO  [order-service] Response: 201 Created (82ms)
+2024-03-15 14:00:05 INFO  [order-service] Handling GET /orders/10235
+2024-03-15 14:00:05 DEBUG [order-service] Cache hit for order 10235
+2024-03-15 14:00:05 INFO  [order-service] Response: 200 OK (5ms)
+2024-03-15 14:05:00 INFO  [order-service] Handling GET /orders?user_id=1234&page=1
+2024-03-15 14:05:00 DEBUG [order-service] Cache miss for user orders query user_id=1234, querying database
+2024-03-15 14:05:00 DEBUG [order-service] Query: SELECT * FROM orders WHERE user_id = 1234 ORDER BY created_at DESC LIMIT 20
+2024-03-15 14:05:00 DEBUG [order-service] Caching 20 order entries (cache size: 48520)
+2024-03-15 14:05:01 INFO  [order-service] Response: 200 OK (45ms)
+2024-03-15 14:05:15 INFO  [order-service] JVM Memory: heap used=195MB, heap max=256MB, non-heap=45MB
+2024-03-15 14:10:00 INFO  [order-service] Handling GET /orders/10301
+2024-03-15 14:10:00 DEBUG [order-service] Cache miss for order 10301, querying database
+2024-03-15 14:10:00 DEBUG [order-service] Caching order 10301 (cache size: 55210)
+2024-03-15 14:10:00 INFO  [order-service] Response: 200 OK (40ms)
+2024-03-15 14:10:30 INFO  [order-service] JVM Memory: heap used=210MB, heap max=256MB, non-heap=46MB
+2024-03-15 14:10:30 WARN  [order-service] Heap usage at 82.0% (210MB / 256MB) — approaching threshold
+2024-03-15 14:15:00 INFO  [order-service] Handling GET /orders?user_id=5678&page=1
+2024-03-15 14:15:00 DEBUG [order-service] Cache miss for user orders query user_id=5678, querying database
+2024-03-15 14:15:00 DEBUG [order-service] Caching 20 order entries (cache size: 61830)
+2024-03-15 14:15:01 INFO  [order-service] Response: 200 OK (68ms)
+2024-03-15 14:15:15 WARN  [order-service] JVM Memory: heap used=220MB, heap max=256MB, non-heap=46MB
+2024-03-15 14:15:15 WARN  [order-service] Heap usage at 85.9% (220MB / 256MB) — GC frequency increasing
+2024-03-15 14:15:16 INFO  [order-service] GC pause: G1 Young Generation, 45ms, freed 8MB
+2024-03-15 14:20:00 WARN  [order-service] JVM Memory: heap used=232MB, heap max=256MB, non-heap=47MB
+2024-03-15 14:20:00 WARN  [order-service] Heap usage at 90.6% (232MB / 256MB) — high memory pressure
+2024-03-15 14:20:01 INFO  [order-service] GC pause: G1 Young Generation, 120ms, freed 5MB
+2024-03-15 14:20:02 INFO  [order-service] Handling GET /orders/10450
+2024-03-15 14:20:02 DEBUG [order-service] Cache miss for order 10450, querying database
+2024-03-15 14:20:02 DEBUG [order-service] Caching order 10450 (cache size: 69120)
+2024-03-15 14:20:02 INFO  [order-service] Response: 200 OK (185ms)
+2024-03-15 14:20:30 WARN  [order-service] GC overhead increasing: 12% of CPU time spent in GC
+2024-03-15 14:25:00 WARN  [order-service] JVM Memory: heap used=243MB, heap max=256MB, non-heap=47MB
+2024-03-15 14:25:00 WARN  [order-service] Heap usage at 94.9% (243MB / 256MB) — critical
+2024-03-15 14:25:01 WARN  [order-service] GC pause: G1 Mixed Collection, 350ms, freed 3MB
+2024-03-15 14:25:05 WARN  [order-service] GC overhead warning: 28% of CPU time spent in GC
+2024-03-15 14:25:10 INFO  [order-service] Handling GET /orders/10512
+2024-03-15 14:25:10 WARN  [order-service] Response slow: 200 OK (520ms) — GC interference
+2024-03-15 14:25:30 WARN  [order-service] GC pause: G1 Full GC, 800ms, freed 2MB
+2024-03-15 14:25:31 WARN  [order-service] JVM Memory after Full GC: heap used=241MB, heap max=256MB — almost no reclaimable memory
+2024-03-15 14:28:00 ERROR [order-service] JVM Memory: heap used=251MB, heap max=256MB, non-heap=47MB
+2024-03-15 14:28:00 ERROR [order-service] Heap usage at 98.0% (251MB / 256MB) — imminent OOM risk
+2024-03-15 14:28:01 WARN  [order-service] GC pause: G1 Full GC, 1200ms, freed 1MB
+2024-03-15 14:28:05 ERROR [order-service] GC overhead limit approaching: 45% of CPU time spent in GC
+2024-03-15 14:28:10 INFO  [order-service] Handling POST /orders
+2024-03-15 14:28:10 ERROR [order-service] Request processing slow: 2100ms — severe GC pressure
+2024-03-15 14:28:30 ERROR [order-service] GC pause: G1 Full GC, 1500ms, freed 0MB
+2024-03-15 14:28:31 ERROR [order-service] java.lang.OutOfMemoryError: GC overhead limit exceeded
+2024-03-15 14:28:31 ERROR [order-service]     at java.util.concurrent.ConcurrentHashMap.putVal(ConcurrentHashMap.java:1012)
+2024-03-15 14:28:31 ERROR [order-service]     at java.util.concurrent.ConcurrentHashMap.put(ConcurrentHashMap.java:1006)
+2024-03-15 14:28:31 ERROR [order-service]     at com.example.orderservice.cache.OrderCacheManager.put(OrderCacheManager.java:58)
+2024-03-15 14:28:31 ERROR [order-service]     at com.example.orderservice.service.OrderService.getOrderById(OrderService.java:92)
+2024-03-15 14:28:31 ERROR [order-service]     at com.example.orderservice.controller.OrderController.getOrder(OrderController.java:45)
+2024-03-15 14:28:31 ERROR [order-service]     at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:897)
+2024-03-15 14:28:31 ERROR [order-service]     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+2024-03-15 14:30:00 ERROR [order-service] JVM Memory: heap used=255MB, heap max=256MB
+2024-03-15 14:30:00 ERROR [order-service] GC pause: G1 Full GC, 1800ms, freed 0MB
+2024-03-15 14:30:01 ERROR [order-service] java.lang.OutOfMemoryError: Java heap space
+2024-03-15 14:30:01 ERROR [order-service]     at java.util.concurrent.ConcurrentHashMap.putVal(ConcurrentHashMap.java:1012)
+2024-03-15 14:30:01 ERROR [order-service]     at com.example.orderservice.cache.OrderCacheManager.put(OrderCacheManager.java:58)
+2024-03-15 14:30:01 ERROR [order-service]     at com.example.orderservice.service.OrderService.queryOrders(OrderService.java:115)
+2024-03-15 14:30:01 ERROR [order-service]     at com.example.orderservice.controller.OrderController.listOrders(OrderController.java:62)
+2024-03-15 14:30:02 ERROR [order-service] Multiple threads reporting OutOfMemoryError — service unresponsive
+2024-03-15 14:30:05 ERROR [order-service] Health check failed: /actuator/health returned 503
+2024-03-15 14:30:10 ERROR [order-service] java.lang.OutOfMemoryError: Java heap space
+2024-03-15 14:30:10 ERROR [order-service] Failed to allocate 2097152 bytes. Heap dump written to /var/log/order-service/heapdump-20240315-143010.hprof
+2024-03-15 14:30:15 WARN  [order-service] Container health check failed 3/3 — triggering restart
+2024-03-15 14:30:30 INFO  [order-service] Received SIGTERM — shutting down
+2024-03-15 14:30:31 INFO  [order-service] Closing application context
+2024-03-15 14:30:31 WARN  [order-service] Unable to complete graceful shutdown — OutOfMemoryError during cleanup
+2024-03-15 14:30:32 INFO  [order-service] Process killed by OOM killer (exit code 137)
+2024-03-15 14:31:00 INFO  [order-service] ========== SERVICE RESTARTING ==========
+2024-03-15 14:31:00 INFO  [order-service] Starting order-service v2.3.1
+2024-03-15 14:31:01 INFO  [order-service] JVM args: -Xms128m -Xmx256m -XX:+UseG1GC -XX:MaxGCPauseMillis=200
+2024-03-15 14:31:02 INFO  [order-service] Initializing Spring Boot application
+2024-03-15 14:31:05 INFO  [order-service] Connected to postgres:5432/orderdb
+2024-03-15 14:31:06 INFO  [order-service] Connected to redis:6379
+2024-03-15 14:31:08 INFO  [order-service] Initializing OrderCacheManager (type=ConcurrentHashMap, max_size=UNBOUNDED, ttl=NONE)
+2024-03-15 14:31:10 INFO  [order-service] Application started on port 8082 (startup time: 10.2s)
+2024-03-15 14:31:10 INFO  [order-service] Health check: /actuator/health returned 200 OK
+2024-03-15 14:31:15 INFO  [order-service] JVM Memory: heap used=145MB, heap max=256MB, non-heap=42MB
+2024-03-15 14:32:00 INFO  [order-service] Handling GET /orders/10234
+2024-03-15 14:32:00 DEBUG [order-service] Cache miss for order 10234, querying database
+2024-03-15 14:32:00 DEBUG [order-service] Caching order 10234 (cache size: 1)
+2024-03-15 14:32:00 INFO  [order-service] Response: 200 OK (42ms)
+2024-03-15 14:32:05 INFO  [order-service] Processing backlog: 85 queued requests
+2024-03-15 14:32:30 INFO  [order-service] Backlog cleared. Cache size: 850
+2024-03-15 14:35:00 INFO  [order-service] JVM Memory: heap used=168MB, heap max=256MB, non-heap=44MB
+2024-03-15 14:35:00 DEBUG [order-service] Cache size: 8500 entries
+2024-03-15 14:35:01 INFO  [order-service] Handling GET /orders?user_id=9012&page=1
+2024-03-15 14:35:01 INFO  [order-service] Response: 200 OK (38ms)
+2024-03-15 14:40:00 WARN  [order-service] JVM Memory: heap used=205MB, heap max=256MB, non-heap=45MB
+2024-03-15 14:40:00 WARN  [order-service] Heap usage at 80.1% (205MB / 256MB) — approaching threshold
+2024-03-15 14:40:00 DEBUG [order-service] Cache size: 35200 entries — growing rapidly after restart
+2024-03-15 14:40:01 INFO  [order-service] GC pause: G1 Young Generation, 55ms, freed 6MB
+2024-03-15 14:45:00 WARN  [order-service] JVM Memory: heap used=238MB, heap max=256MB, non-heap=46MB
+2024-03-15 14:45:00 WARN  [order-service] Heap usage at 93.0% (238MB / 256MB) — critical, same pattern as before restart
+2024-03-15 14:45:00 DEBUG [order-service] Cache size: 62800 entries
+2024-03-15 14:45:01 WARN  [order-service] GC pause: G1 Mixed Collection, 400ms, freed 2MB
+2024-03-15 14:45:05 WARN  [order-service] GC overhead warning: 32% of CPU time spent in GC
+2024-03-15 14:48:00 ERROR [order-service] JVM Memory: heap used=250MB, heap max=256MB, non-heap=47MB
+2024-03-15 14:48:00 ERROR [order-service] Heap usage at 97.7% (250MB / 256MB) — imminent OOM risk
+2024-03-15 14:48:00 DEBUG [order-service] Cache size: 78900 entries
+2024-03-15 14:48:01 ERROR [order-service] GC pause: G1 Full GC, 1600ms, freed 0MB
+2024-03-15 14:48:05 ERROR [order-service] GC overhead limit approaching: 50% of CPU time spent in GC
+2024-03-15 14:48:10 ERROR [order-service] java.lang.OutOfMemoryError: GC overhead limit exceeded
+2024-03-15 14:48:10 ERROR [order-service]     at java.util.concurrent.ConcurrentHashMap.putVal(ConcurrentHashMap.java:1012)
+2024-03-15 14:48:10 ERROR [order-service]     at java.util.concurrent.ConcurrentHashMap.put(ConcurrentHashMap.java:1006)
+2024-03-15 14:48:10 ERROR [order-service]     at com.example.orderservice.cache.OrderCacheManager.put(OrderCacheManager.java:58)
+2024-03-15 14:48:10 ERROR [order-service]     at com.example.orderservice.service.OrderService.getOrderById(OrderService.java:92)
+2024-03-15 14:50:00 ERROR [order-service] java.lang.OutOfMemoryError: Java heap space
+2024-03-15 14:50:00 ERROR [order-service]     at java.util.concurrent.ConcurrentHashMap.putVal(ConcurrentHashMap.java:1012)
+2024-03-15 14:50:00 ERROR [order-service]     at com.example.orderservice.cache.OrderCacheManager.put(OrderCacheManager.java:58)
+2024-03-15 14:50:00 ERROR [order-service]     at com.example.orderservice.service.OrderService.queryOrders(OrderService.java:115)
+2024-03-15 14:50:01 ERROR [order-service] Multiple threads reporting OutOfMemoryError — service unresponsive
+2024-03-15 14:50:05 ERROR [order-service] Health check failed: /actuator/health returned 503
+2024-03-15 14:50:10 ERROR [order-service] Failed to allocate 4194304 bytes. Heap dump written to /var/log/order-service/heapdump-20240315-145010.hprof
+2024-03-15 14:50:15 WARN  [order-service] Container health check failed 3/3 — triggering restart
+2024-03-15 14:50:30 INFO  [order-service] Received SIGTERM — shutting down
+2024-03-15 14:50:31 WARN  [order-service] Unable to complete graceful shutdown — OutOfMemoryError during cleanup
+2024-03-15 14:50:32 INFO  [order-service] Process killed by OOM killer (exit code 137)
+2024-03-15 14:51:00 INFO  [order-service] ========== SERVICE RESTARTING (2nd restart) ==========
+2024-03-15 14:51:00 INFO  [order-service] Starting order-service v2.3.1
+2024-03-15 14:51:01 INFO  [order-service] JVM args: -Xms128m -Xmx256m -XX:+UseG1GC -XX:MaxGCPauseMillis=200
+2024-03-15 14:51:10 INFO  [order-service] Application started on port 8082 (startup time: 10.5s)
+2024-03-15 14:51:10 WARN  [order-service] WARNING: This is the 3rd start in 21 minutes — possible crash loop

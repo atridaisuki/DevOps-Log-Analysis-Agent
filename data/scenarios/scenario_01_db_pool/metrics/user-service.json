@@ -1,0 +1,68 @@
+{
+  "cpu": {
+    "unit": "percent",
+    "data": [
+      {"time": "10:00", "value": 25},
+      {"time": "10:01", "value": 28},
+      {"time": "10:02", "value": 30},
+      {"time": "10:03", "value": 35},
+      {"time": "10:04", "value": 55},
+      {"time": "10:05", "value": 72},
+      {"time": "10:06", "value": 85},
+      {"time": "10:07", "value": 92}
+    ]
+  },
+  "memory": {
+    "unit": "MB",
+    "data": [
+      {"time": "10:00", "value": 256},
+      {"time": "10:01", "value": 260},
+      {"time": "10:02", "value": 265},
+      {"time": "10:03", "value": 280},
+      {"time": "10:04", "value": 310},
+      {"time": "10:05", "value": 350},
+      {"time": "10:06", "value": 380},
+      {"time": "10:07", "value": 410}
+    ]
+  },
+  "latency_p99": {
+    "unit": "ms",
+    "data": [
+      {"time": "10:00", "value": 180},
+      {"time": "10:01", "value": 190},
+      {"time": "10:02", "value": 200},
+      {"time": "10:03", "value": 250},
+      {"time": "10:04", "value": 1200},
+      {"time": "10:05", "value": 3500},
+      {"time": "10:06", "value": 5000},
+      {"time": "10:07", "value": 5000}
+    ]
+  },
+  "error_rate": {
+    "unit": "percent",
+    "data": [
+      {"time": "10:00", "value": 0.1},
+      {"time": "10:01", "value": 0.1},
+      {"time": "10:02", "value": 0.2},
+      {"time": "10:03", "value": 0.5},
+      {"time": "10:04", "value": 5.0},
+      {"time": "10:05", "value": 18.0},
+      {"time": "10:06", "value": 35.0},
+      {"time": "10:07", "value": 52.0}
+    ]
+  },
+  "db_connections": {
+    "unit": "count",
+    "data": [
+      {"time": "10:00", "value": 3},
+      {"time": "10:01", "value": 4},
+      {"time": "10:02", "value": 5},
+      {"time": "10:03", "value": 7},
+      {"time": "10:04", "value": 10},
+      {"time": "10:05", "value": 10},
+      {"time": "10:06", "value": 10},
+      {"time": "10:07", "value": 10}
+    ],
+    "max_pool_size": 10
+  }
+}

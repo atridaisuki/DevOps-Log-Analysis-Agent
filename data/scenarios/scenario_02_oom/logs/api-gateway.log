@@ -1,0 +1,68 @@
+2024-03-15 14:00:01 INFO  [api-gateway] POST /api/orders -> upstream order-service:8082 200 (42ms)
+2024-03-15 14:00:02 INFO  [api-gateway] GET /api/users/123 -> upstream user-service:8081 200 (28ms)
+2024-03-15 14:00:03 INFO  [api-gateway] GET /api/orders/10234 -> upstream order-service:8082 200 (38ms)
+2024-03-15 14:00:05 INFO  [api-gateway] GET /api/orders/10235 -> upstream order-service:8082 200 (8ms)
+2024-03-15 14:00:10 INFO  [api-gateway] GET /api/users/456 -> upstream user-service:8081 200 (22ms)
+2024-03-15 14:05:00 INFO  [api-gateway] GET /api/orders?user_id=1234 -> upstream order-service:8082 200 (48ms)
+2024-03-15 14:05:02 INFO  [api-gateway] POST /api/orders -> upstream order-service:8082 201 (95ms)
+2024-03-15 14:05:05 INFO  [api-gateway] GET /api/users/789 -> upstream user-service:8081 200 (25ms)
+2024-03-15 14:10:00 INFO  [api-gateway] GET /api/orders/10301 -> upstream order-service:8082 200 (45ms)
+2024-03-15 14:10:05 INFO  [api-gateway] GET /api/users/1234 -> upstream user-service:8081 200 (20ms)
+2024-03-15 14:15:00 INFO  [api-gateway] GET /api/orders?user_id=5678 -> upstream order-service:8082 200 (72ms)
+2024-03-15 14:15:05 INFO  [api-gateway] POST /api/users/login -> upstream user-service:8081 200 (35ms)
+2024-03-15 14:20:00 WARN  [api-gateway] GET /api/orders/10450 -> upstream order-service:8082 200 (190ms) — slow response
+2024-03-15 14:20:05 INFO  [api-gateway] GET /api/users/456 -> upstream user-service:8081 200 (22ms)
+2024-03-15 14:20:30 WARN  [api-gateway] GET /api/orders?user_id=3456 -> upstream order-service:8082 200 (520ms) — slow response
+2024-03-15 14:25:00 WARN  [api-gateway] GET /api/orders/10512 -> upstream order-service:8082 200 (680ms) — slow response
+2024-03-15 14:25:10 WARN  [api-gateway] POST /api/orders -> upstream order-service:8082 200 (1200ms) — slow response
+2024-03-15 14:25:30 WARN  [api-gateway] GET /api/orders?user_id=7890 -> upstream order-service:8082 200 (1850ms) — slow response
+2024-03-15 14:25:35 INFO  [api-gateway] GET /api/users/789 -> upstream user-service:8081 200 (18ms)
+2024-03-15 14:28:00 ERROR [api-gateway] GET /api/orders/10580 -> upstream order-service:8082 504 (5000ms) — gateway timeout
+2024-03-15 14:28:05 WARN  [api-gateway] POST /api/orders -> upstream order-service:8082 200 (3200ms) — slow response
+2024-03-15 14:28:10 ERROR [api-gateway] GET /api/orders?user_id=1111 -> upstream order-service:8082 504 (5000ms) — gateway timeout
+2024-03-15 14:28:15 INFO  [api-gateway] GET /api/users/1111 -> upstream user-service:8081 200 (20ms)
+2024-03-15 14:28:30 ERROR [api-gateway] GET /api/orders/10590 -> upstream order-service:8082 500 (2100ms) — internal server error
+2024-03-15 14:28:31 ERROR [api-gateway] Upstream error body: {"error":"java.lang.OutOfMemoryError","message":"GC overhead limit exceeded"}
+2024-03-15 14:30:00 ERROR [api-gateway] GET /api/orders/10601 -> upstream order-service:8082 502 — connection refused
+2024-03-15 14:30:00 ERROR [api-gateway] upstream connect error: connection refused to order-service:8082
+2024-03-15 14:30:01 ERROR [api-gateway] POST /api/orders -> upstream order-service:8082 502 — connection refused
+2024-03-15 14:30:02 ERROR [api-gateway] GET /api/orders?user_id=2222 -> upstream order-service:8082 502 — connection refused
+2024-03-15 14:30:05 WARN  [api-gateway] order-service health check FAILED — marking upstream as down
+2024-03-15 14:30:05 ERROR [api-gateway] GET /api/orders/10605 -> 502 Bad Gateway (order-service unavailable)
+2024-03-15 14:30:10 ERROR [api-gateway] POST /api/orders -> 502 Bad Gateway (order-service unavailable)
+2024-03-15 14:30:15 ERROR [api-gateway] GET /api/orders?user_id=3333 -> 502 Bad Gateway (order-service unavailable)
+2024-03-15 14:30:15 INFO  [api-gateway] GET /api/users/3333 -> upstream user-service:8081 200 (19ms)
+2024-03-15 14:30:20 ERROR [api-gateway] GET /api/orders/10610 -> 502 Bad Gateway (order-service unavailable)
+2024-03-15 14:30:30 ERROR [api-gateway] 42 requests to order-service returned 502 in last 30 seconds
+2024-03-15 14:31:00 WARN  [api-gateway] order-service health check: connection refused — still restarting
+2024-03-15 14:31:10 INFO  [api-gateway] order-service health check: 200 OK — upstream recovered
+2024-03-15 14:31:10 INFO  [api-gateway] Marking order-service as healthy
+2024-03-15 14:31:15 INFO  [api-gateway] GET /api/orders/10234 -> upstream order-service:8082 200 (48ms)
+2024-03-15 14:31:20 INFO  [api-gateway] POST /api/orders -> upstream order-service:8082 201 (110ms)
+2024-03-15 14:32:00 INFO  [api-gateway] GET /api/orders?user_id=1234 -> upstream order-service:8082 200 (42ms)
+2024-03-15 14:32:05 INFO  [api-gateway] Processing backlog of queued requests to order-service
+2024-03-15 14:35:00 INFO  [api-gateway] GET /api/orders/10650 -> upstream order-service:8082 200 (40ms)
+2024-03-15 14:35:05 INFO  [api-gateway] GET /api/users/456 -> upstream user-service:8081 200 (21ms)
+2024-03-15 14:40:00 WARN  [api-gateway] GET /api/orders?user_id=4444 -> upstream order-service:8082 200 (180ms) — slow response
+2024-03-15 14:40:05 INFO  [api-gateway] GET /api/users/4444 -> upstream user-service:8081 200 (23ms)
+2024-03-15 14:45:00 WARN  [api-gateway] GET /api/orders/10720 -> upstream order-service:8082 200 (650ms) — slow response
+2024-03-15 14:45:05 WARN  [api-gateway] POST /api/orders -> upstream order-service:8082 200 (1100ms) — slow response
+2024-03-15 14:45:10 WARN  [api-gateway] GET /api/orders?user_id=5555 -> upstream order-service:8082 200 (1800ms) — slow response
+2024-03-15 14:48:00 ERROR [api-gateway] GET /api/orders/10780 -> upstream order-service:8082 504 (5000ms) — gateway timeout
+2024-03-15 14:48:05 ERROR [api-gateway] POST /api/orders -> upstream order-service:8082 500 (2500ms) — internal server error
+2024-03-15 14:48:05 ERROR [api-gateway] Upstream error body: {"error":"java.lang.OutOfMemoryError","message":"GC overhead limit exceeded"}
+2024-03-15 14:48:10 ERROR [api-gateway] GET /api/orders?user_id=6666 -> upstream order-service:8082 504 (5000ms) — gateway timeout
+2024-03-15 14:50:00 ERROR [api-gateway] GET /api/orders/10801 -> upstream order-service:8082 502 — connection refused
+2024-03-15 14:50:00 ERROR [api-gateway] upstream connect error: connection refused to order-service:8082
+2024-03-15 14:50:01 ERROR [api-gateway] POST /api/orders -> upstream order-service:8082 502 — connection refused
+2024-03-15 14:50:02 ERROR [api-gateway] GET /api/orders?user_id=7777 -> upstream order-service:8082 502 — connection refused
+2024-03-15 14:50:05 WARN  [api-gateway] order-service health check FAILED — marking upstream as down (2nd time)
+2024-03-15 14:50:05 ERROR [api-gateway] GET /api/orders/10805 -> 502 Bad Gateway (order-service unavailable)
+2024-03-15 14:50:10 ERROR [api-gateway] POST /api/orders -> 502 Bad Gateway (order-service unavailable)
+2024-03-15 14:50:15 ERROR [api-gateway] 38 requests to order-service returned 502 in last 15 seconds
+2024-03-15 14:50:15 INFO  [api-gateway] GET /api/users/7777 -> upstream user-service:8081 200 (20ms)
+2024-03-15 14:50:30 ERROR [api-gateway] GET /api/orders/10810 -> 502 Bad Gateway (order-service unavailable)
+2024-03-15 14:50:30 WARN  [api-gateway] ALERT: order-service has crashed 2 times in 20 minutes — possible crash loop
+2024-03-15 14:51:00 WARN  [api-gateway] order-service health check: connection refused — still restarting
+2024-03-15 14:51:10 INFO  [api-gateway] order-service health check: 200 OK — upstream recovered (2nd recovery)
+2024-03-15 14:51:10 WARN  [api-gateway] order-service recovered but crash loop pattern detected — alerting on-call team

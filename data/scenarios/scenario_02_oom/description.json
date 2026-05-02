@@ -1,0 +1,8 @@
+{
+  "id": "scenario_02_oom",
+  "title": "订单服务内存泄漏 — OOM 反复重启",
+  "description": "监控告警显示 order-service 在过去 2 小时内反复重启，api-gateway 间歇性返回 502 错误，用户下单功能受到严重影响。",
+  "root_cause": "order-service 使用了无界内存缓存（HashMap），没有设置最大容量和 TTL 淘汰策略，同时 JVM 堆内存仅配置了 256MB。随着订单查询不断写入缓存，堆内存持续增长直至触发 OOM Kill，容器被杀后自动重启，但缓存重新积累后再次 OOM，形成反复崩溃循环。",
+  "affected_services": ["api-gateway", "order-service"],
+  "difficulty": "medium"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "scenario_01_db_pool",
+  "title": "API 响应超时 — 数据库连接池耗尽",
+  "description": "用户反馈 API 响应时间从 200ms 飙升到 5s 以上，大量请求超时。",
+  "root_cause": "数据库连接池耗尽。user-service 的数据库连接池配置为 max_connections=10，但并发请求量远超此值，导致请求排队等待连接，最终超时。",
+  "affected_services": ["api-gateway", "user-service", "postgres"],
+  "difficulty": "easy"
+}

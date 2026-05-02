@@ -1,0 +1,45 @@
+# order-service configuration
+
+server:
+  port: 8082
+  max_threads: 100
+  request_timeout: 10000ms
+
+jvm:
+  heap:
+    min: 128m
+    max: 256m
+  gc: G1GC
+  options: "-XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+HeapDumpOnOutOfMemoryError"
+
+database:
+  url: jdbc:postgresql://postgres:5432/orderdb
+  driver: org.postgresql.Driver
+  username: app_user
+  password: ${DB_PASSWORD}
+  pool:
+    max_connections: 30
+    min_idle: 5
+    connection_timeout: 5000ms
+    idle_timeout: 600000ms
+    max_lifetime: 1800000ms
+
+cache:
+  # WARNING: no max_size or ttl configured — cache will grow unbounded
+  type: in-memory
+  implementation: java.util.concurrent.ConcurrentHashMap
+  # max_size: not set
+  # ttl: not set
+  # eviction_policy: none
+
+redis:
+  host: redis
+  port: 6379
+  timeout: 3000ms
+  pool:
+    max_active: 20
+    max_idle: 10
+
+logging:
+  level: INFO
+  file: /var/log/order-service/order-service.log

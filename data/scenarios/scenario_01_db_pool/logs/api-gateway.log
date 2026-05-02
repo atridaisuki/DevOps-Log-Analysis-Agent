@@ -1,0 +1,27 @@
+2024-03-15 10:00:01 INFO  [api-gateway] Request received: GET /api/users/123 from 192.168.1.50
+2024-03-15 10:00:01 INFO  [api-gateway] Forwarding to user-service:8081
+2024-03-15 10:00:01 INFO  [api-gateway] Request received: POST /api/users/login from 192.168.1.51
+2024-03-15 10:00:01 INFO  [api-gateway] Forwarding to user-service:8081
+2024-03-15 10:00:02 INFO  [api-gateway] Response: GET /api/users/123 -> 200 (180ms)
+2024-03-15 10:00:02 INFO  [api-gateway] Response: POST /api/users/login -> 200 (210ms)
+2024-03-15 10:05:00 INFO  [api-gateway] Request received: GET /api/users/456 from 192.168.1.52
+2024-03-15 10:05:00 INFO  [api-gateway] Forwarding to user-service:8081
+2024-03-15 10:05:03 WARN  [api-gateway] Slow response: GET /api/users/456 -> 200 (3012ms)
+2024-03-15 10:05:15 INFO  [api-gateway] Request received: POST /api/users/login from 192.168.1.53
+2024-03-15 10:05:15 INFO  [api-gateway] Forwarding to user-service:8081
+2024-03-15 10:05:20 WARN  [api-gateway] Slow response: POST /api/users/login -> 200 (5100ms)
+2024-03-15 10:06:00 INFO  [api-gateway] Request received: GET /api/users/789 from 192.168.1.54
+2024-03-15 10:06:05 ERROR [api-gateway] Upstream timeout: user-service:8081 did not respond within 5000ms
+2024-03-15 10:06:05 ERROR [api-gateway] Response: GET /api/users/789 -> 504 (5002ms)
+2024-03-15 10:06:10 INFO  [api-gateway] Request received: GET /api/orders/100 from 192.168.1.55
+2024-03-15 10:06:10 INFO  [api-gateway] Forwarding to order-service:8082
+2024-03-15 10:06:10 INFO  [api-gateway] Response: GET /api/orders/100 -> 200 (95ms)
+2024-03-15 10:06:30 ERROR [api-gateway] Upstream timeout: user-service:8081 did not respond within 5000ms
+2024-03-15 10:06:30 ERROR [api-gateway] Response: POST /api/users/login -> 504 (5001ms)
+2024-03-15 10:07:00 ERROR [api-gateway] Upstream timeout: user-service:8081 did not respond within 5000ms
+2024-03-15 10:07:15 ERROR [api-gateway] Upstream timeout: user-service:8081 did not respond within 5000ms
+2024-03-15 10:07:30 ERROR [api-gateway] Upstream timeout: user-service:8081 did not respond within 5000ms
+2024-03-15 10:07:30 WARN  [api-gateway] Circuit breaker OPEN for user-service (5 failures in 60s)
+2024-03-15 10:07:45 ERROR [api-gateway] Response: GET /api/users/321 -> 503 Service Unavailable (circuit breaker open)
+2024-03-15 10:08:00 INFO  [api-gateway] Request received: GET /api/orders/200 from 192.168.1.60
+2024-03-15 10:08:00 INFO  [api-gateway] Response: GET /api/orders/200 -> 200 (88ms)

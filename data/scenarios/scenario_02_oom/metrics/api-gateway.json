@@ -1,0 +1,108 @@
+{
+  "cpu": {
+    "unit": "percent",
+    "data": [
+      {"time": "14:00", "value": 8},
+      {"time": "14:05", "value": 9},
+      {"time": "14:10", "value": 10},
+      {"time": "14:15", "value": 11},
+      {"time": "14:20", "value": 12},
+      {"time": "14:25", "value": 14},
+      {"time": "14:28", "value": 15},
+      {"time": "14:30", "value": 18},
+      {"time": "14:31", "value": 22},
+      {"time": "14:32", "value": 12},
+      {"time": "14:35", "value": 9},
+      {"time": "14:40", "value": 10},
+      {"time": "14:45", "value": 13},
+      {"time": "14:48", "value": 16},
+      {"time": "14:50", "value": 20},
+      {"time": "14:51", "value": 24}
+    ]
+  },
+  "memory": {
+    "unit": "MB",
+    "data": [
+      {"time": "14:00", "value": 120},
+      {"time": "14:05", "value": 120},
+      {"time": "14:10", "value": 121},
+      {"time": "14:15", "value": 121},
+      {"time": "14:20", "value": 122},
+      {"time": "14:25", "value": 122},
+      {"time": "14:28", "value": 123},
+      {"time": "14:30", "value": 125},
+      {"time": "14:31", "value": 128},
+      {"time": "14:32", "value": 122},
+      {"time": "14:35", "value": 120},
+      {"time": "14:40", "value": 121},
+      {"time": "14:45", "value": 123},
+      {"time": "14:48", "value": 126},
+      {"time": "14:50", "value": 129},
+      {"time": "14:51", "value": 132}
+    ]
+  },
+  "latency_p99": {
+    "unit": "ms",
+    "data": [
+      {"time": "14:00", "value": 85},
+      {"time": "14:05", "value": 90},
+      {"time": "14:10", "value": 95},
+      {"time": "14:15", "value": 110},
+      {"time": "14:20", "value": 180},
+      {"time": "14:25", "value": 450},
+      {"time": "14:28", "value": 1200},
+      {"time": "14:30", "value": 5000},
+      {"time": "14:31", "value": 5000},
+      {"time": "14:32", "value": 200},
+      {"time": "14:35", "value": 95},
+      {"time": "14:40", "value": 150},
+      {"time": "14:45", "value": 600},
+      {"time": "14:48", "value": 1800},
+      {"time": "14:50", "value": 5000},
+      {"time": "14:51", "value": 5000}
+    ]
+  },
+  "error_rate": {
+    "unit": "percent",
+    "data": [
+      {"time": "14:00", "value": 0.0},
+      {"time": "14:05", "value": 0.0},
+      {"time": "14:10", "value": 0.1},
+      {"time": "14:15", "value": 0.2},
+      {"time": "14:20", "value": 0.8},
+      {"time": "14:25", "value": 2.5},
+      {"time": "14:28", "value": 8.0},
+      {"time": "14:30", "value": 45.0},
+      {"time": "14:31", "value": 62.0},
+      {"time": "14:32", "value": 3.0},
+      {"time": "14:35", "value": 0.1},
+      {"time": "14:40", "value": 0.5},
+      {"time": "14:45", "value": 5.0},
+      {"time": "14:48", "value": 12.0},
+      {"time": "14:50", "value": 48.0},
+      {"time": "14:51", "value": 65.0}
+    ]
+  },
+  "upstream_502_count": {
+    "unit": "count",
+    "description": "502 Bad Gateway responses from order-service",
+    "data": [
+      {"time": "14:00", "value": 0},
+      {"time": "14:05", "value": 0},
+      {"time": "14:10", "value": 0},
+      {"time": "14:15", "value": 1},
+      {"time": "14:20", "value": 3},
+      {"time": "14:25", "value": 8},
+      {"time": "14:28", "value": 25},
+      {"time": "14:30", "value": 142},
+      {"time": "14:31", "value": 198},
+      {"time": "14:32", "value": 12},
+      {"time": "14:35", "value": 0},
+      {"time": "14:40", "value": 2},
+      {"time": "14:45", "value": 15},
+      {"time": "14:48", "value": 38},
+      {"time": "14:50", "value": 156},
+      {"time": "14:51", "value": 210}
+    ]
+  }
+}

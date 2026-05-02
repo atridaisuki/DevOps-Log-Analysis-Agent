@@ -1,0 +1,112 @@
+{
+  "cpu": {
+    "unit": "percent",
+    "data": [
+      {"time": "14:00", "value": 15},
+      {"time": "14:05", "value": 18},
+      {"time": "14:10", "value": 22},
+      {"time": "14:15", "value": 25},
+      {"time": "14:20", "value": 35},
+      {"time": "14:25", "value": 48},
+      {"time": "14:28", "value": 72},
+      {"time": "14:30", "value": 95},
+      {"time": "14:31", "value": 0},
+      {"time": "14:32", "value": 20},
+      {"time": "14:35", "value": 22},
+      {"time": "14:40", "value": 30},
+      {"time": "14:45", "value": 45},
+      {"time": "14:48", "value": 68},
+      {"time": "14:50", "value": 92},
+      {"time": "14:51", "value": 0}
+    ]
+  },
+  "memory": {
+    "unit": "MB",
+    "heap_max": 256,
+    "data": [
+      {"time": "14:00", "value": 180},
+      {"time": "14:05", "value": 195},
+      {"time": "14:10", "value": 208},
+      {"time": "14:15", "value": 218},
+      {"time": "14:20", "value": 230},
+      {"time": "14:25", "value": 242},
+      {"time": "14:28", "value": 250},
+      {"time": "14:30", "value": 255},
+      {"time": "14:31", "value": 0},
+      {"time": "14:32", "value": 145},
+      {"time": "14:35", "value": 168},
+      {"time": "14:40", "value": 205},
+      {"time": "14:45", "value": 238},
+      {"time": "14:48", "value": 249},
+      {"time": "14:50", "value": 255},
+      {"time": "14:51", "value": 0}
+    ]
+  },
+  "gc_pause_time": {
+    "unit": "ms",
+    "data": [
+      {"time": "14:00", "value": 12},
+      {"time": "14:05", "value": 15},
+      {"time": "14:10", "value": 25},
+      {"time": "14:15", "value": 45},
+      {"time": "14:20", "value": 120},
+      {"time": "14:25", "value": 350},
+      {"time": "14:28", "value": 800},
+      {"time": "14:30", "value": 1500},
+      {"time": "14:32", "value": 10},
+      {"time": "14:35", "value": 18},
+      {"time": "14:40", "value": 80},
+      {"time": "14:45", "value": 400},
+      {"time": "14:48", "value": 900},
+      {"time": "14:50", "value": 1600}
+    ]
+  },
+  "error_rate": {
+    "unit": "percent",
+    "data": [
+      {"time": "14:00", "value": 0.1},
+      {"time": "14:05", "value": 0.2},
+      {"time": "14:10", "value": 0.5},
+      {"time": "14:15", "value": 1.2},
+      {"time": "14:20", "value": 3.5},
+      {"time": "14:25", "value": 8.0},
+      {"time": "14:28", "value": 22.0},
+      {"time": "14:30", "value": 100.0},
+      {"time": "14:31", "value": 100.0},
+      {"time": "14:32", "value": 5.0},
+      {"time": "14:35", "value": 0.3},
+      {"time": "14:40", "value": 1.5},
+      {"time": "14:45", "value": 12.0},
+      {"time": "14:48", "value": 28.0},
+      {"time": "14:50", "value": 100.0},
+      {"time": "14:51", "value": 100.0}
+    ]
+  },
+  "restarts": {
+    "unit": "count",
+    "data": [
+      {"time": "14:00", "value": 0},
+      {"time": "14:31", "value": 1},
+      {"time": "14:51", "value": 2}
+    ]
+  },
+  "cache_entries": {
+    "unit": "count",
+    "data": [
+      {"time": "14:00", "value": 42000},
+      {"time": "14:05", "value": 48500},
+      {"time": "14:10", "value": 55200},
+      {"time": "14:15", "value": 61800},
+      {"time": "14:20", "value": 69100},
+      {"time": "14:25", "value": 76500},
+      {"time": "14:28", "value": 81200},
+      {"time": "14:30", "value": 84300},
+      {"time": "14:32", "value": 0},
+      {"time": "14:35", "value": 8500},
+      {"time": "14:40", "value": 35200},
+      {"time": "14:45", "value": 62800},
+      {"time": "14:48", "value": 78900},
+      {"time": "14:50", "value": 83600}
+    ]
+  }
+}

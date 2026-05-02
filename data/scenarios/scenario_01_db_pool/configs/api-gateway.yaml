@@ -1,0 +1,20 @@
+# api-gateway configuration
+
+server:
+  port: 8080
+  worker_connections: 1024
+
+upstream:
+  user-service:
+    url: http://user-service:8081
+    timeout: 5000ms
+    circuit_breaker:
+      failure_threshold: 5
+      recovery_timeout: 30s
+  order-service:
+    url: http://order-service:8082
+    timeout: 5000ms
+
+logging:
+  level: INFO
+  file: /var/log/api-gateway/api-gateway.log

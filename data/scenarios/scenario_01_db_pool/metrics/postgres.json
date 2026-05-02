@@ -1,0 +1,42 @@
+{
+  "cpu": {
+    "unit": "percent",
+    "data": [
+      {"time": "10:00", "value": 15},
+      {"time": "10:01", "value": 16},
+      {"time": "10:02", "value": 15},
+      {"time": "10:03", "value": 18},
+      {"time": "10:04", "value": 20},
+      {"time": "10:05", "value": 22},
+      {"time": "10:06", "value": 25},
+      {"time": "10:07", "value": 28}
+    ]
+  },
+  "memory": {
+    "unit": "MB",
+    "data": [
+      {"time": "10:00", "value": 120},
+      {"time": "10:01", "value": 120},
+      {"time": "10:02", "value": 121},
+      {"time": "10:03", "value": 122},
+      {"time": "10:04", "value": 125},
+      {"time": "10:05", "value": 128},
+      {"time": "10:06", "value": 130},
+      {"time": "10:07", "value": 132}
+    ]
+  },
+  "connections": {
+    "unit": "count",
+    "data": [
+      {"time": "10:00", "value": 8},
+      {"time": "10:01", "value": 10},
+      {"time": "10:02", "value": 12},
+      {"time": "10:03", "value": 15},
+      {"time": "10:04", "value": 18},
+      {"time": "10:05", "value": 20},
+      {"time": "10:06", "value": 22},
+      {"time": "10:07", "value": 25}
+    ],
+    "max_connections": 100
+  }
+}

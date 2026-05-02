@@ -1,0 +1,80 @@
+2024-03-15 14:00:01 INFO  [api-gateway] Request received: GET /api/users/123 from 192.168.1.50
+2024-03-15 14:00:01 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:00:01 INFO  [api-gateway] Auth passed (method=token), forwarding to user-service:8081
+2024-03-15 14:00:01 INFO  [api-gateway] Response: GET /api/users/123 -> 200 (62ms)
+2024-03-15 14:00:22 INFO  [api-gateway] Request received: GET /api/users/456 from 192.168.1.51
+2024-03-15 14:00:22 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:00:22 INFO  [api-gateway] Auth passed (method=token), forwarding to user-service:8081
+2024-03-15 14:00:22 INFO  [api-gateway] Response: GET /api/users/456 -> 200 (58ms)
+2024-03-15 14:00:35 INFO  [api-gateway] Request received: GET /api/users/789 from 192.168.1.52
+2024-03-15 14:00:35 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:00:37 ERROR [api-gateway] Auth service returned 500 for request GET /api/users/789
+2024-03-15 14:00:37 ERROR [api-gateway] Response: GET /api/users/789 -> 500 (2015ms)
+2024-03-15 14:00:48 INFO  [api-gateway] Request received: GET /api/users/101 from 192.168.1.53
+2024-03-15 14:00:48 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:00:48 INFO  [api-gateway] Auth passed (method=token), forwarding to user-service:8081
+2024-03-15 14:00:48 INFO  [api-gateway] Response: GET /api/users/101 -> 200 (55ms)
+2024-03-15 14:01:02 INFO  [api-gateway] Request received: GET /api/users/202 from 192.168.1.54
+2024-03-15 14:01:02 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:01:04 ERROR [api-gateway] Auth service returned 500 for request GET /api/users/202
+2024-03-15 14:01:04 ERROR [api-gateway] Response: GET /api/users/202 -> 500 (2008ms)
+2024-03-15 14:01:15 INFO  [api-gateway] Request received: GET /api/users/303 from 192.168.1.55
+2024-03-15 14:01:15 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:01:15 INFO  [api-gateway] Auth passed (method=token), forwarding to user-service:8081
+2024-03-15 14:01:15 INFO  [api-gateway] Response: GET /api/users/303 -> 200 (61ms)
+2024-03-15 14:01:30 INFO  [api-gateway] Request received: POST /api/users/profile from 192.168.1.56
+2024-03-15 14:01:30 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:01:30 INFO  [api-gateway] Auth passed (method=token), forwarding to user-service:8081
+2024-03-15 14:01:30 INFO  [api-gateway] Response: POST /api/users/profile -> 200 (78ms)
+2024-03-15 14:01:45 INFO  [api-gateway] Request received: GET /api/users/404 from 192.168.1.57
+2024-03-15 14:01:45 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:01:47 ERROR [api-gateway] Auth service returned 500 for request GET /api/users/404
+2024-03-15 14:01:47 ERROR [api-gateway] Response: GET /api/users/404 -> 500 (2011ms)
+2024-03-15 14:02:00 INFO  [api-gateway] Request received: POST /api/auth/login from 192.168.1.58
+2024-03-15 14:02:00 INFO  [api-gateway] Forwarding to auth-service:8083 (no auth required for login)
+2024-03-15 14:02:00 INFO  [api-gateway] Response: POST /api/auth/login -> 200 (52ms)
+2024-03-15 14:02:10 INFO  [api-gateway] Request received: GET /api/users/505 from 192.168.1.59
+2024-03-15 14:02:10 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:02:12 ERROR [api-gateway] Auth service returned 500 for request GET /api/users/505
+2024-03-15 14:02:12 ERROR [api-gateway] Response: GET /api/users/505 -> 500 (2006ms)
+2024-03-15 14:02:25 INFO  [api-gateway] Request received: GET /api/users/606 from 192.168.1.60
+2024-03-15 14:02:25 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:02:25 INFO  [api-gateway] Auth passed (method=token), forwarding to user-service:8081
+2024-03-15 14:02:25 INFO  [api-gateway] Response: GET /api/users/606 -> 200 (59ms)
+2024-03-15 14:02:40 INFO  [api-gateway] Request received: GET /api/users/707 from 192.168.1.61
+2024-03-15 14:02:40 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:02:42 ERROR [api-gateway] Auth service returned 500 for request GET /api/users/707
+2024-03-15 14:02:42 ERROR [api-gateway] Response: GET /api/users/707 -> 500 (2009ms)
+2024-03-15 14:02:55 INFO  [api-gateway] Request received: GET /api/users/808 from 192.168.1.62
+2024-03-15 14:02:55 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:02:55 INFO  [api-gateway] Auth passed (method=token), forwarding to user-service:8081
+2024-03-15 14:02:55 INFO  [api-gateway] Response: GET /api/users/808 -> 200 (63ms)
+2024-03-15 14:03:12 INFO  [api-gateway] Request received: GET /api/users/909 from 192.168.1.63
+2024-03-15 14:03:12 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:03:12 INFO  [api-gateway] Auth passed (method=token), forwarding to user-service:8081
+2024-03-15 14:03:12 INFO  [api-gateway] Response: GET /api/users/909 -> 200 (57ms)
+2024-03-15 14:03:28 INFO  [api-gateway] Request received: PUT /api/users/profile from 192.168.1.64
+2024-03-15 14:03:28 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:03:30 ERROR [api-gateway] Auth service returned 500 for request PUT /api/users/profile
+2024-03-15 14:03:30 ERROR [api-gateway] Response: PUT /api/users/profile -> 500 (2012ms)
+2024-03-15 14:03:42 INFO  [api-gateway] Request received: GET /api/users/111 from 192.168.1.65
+2024-03-15 14:03:42 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:03:42 INFO  [api-gateway] Auth passed (method=token), forwarding to user-service:8081
+2024-03-15 14:03:42 INFO  [api-gateway] Response: GET /api/users/111 -> 200 (60ms)
+2024-03-15 14:04:00 INFO  [api-gateway] Request received: DELETE /api/users/222 from 192.168.1.66
+2024-03-15 14:04:00 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:04:02 ERROR [api-gateway] Auth service returned 500 for request DELETE /api/users/222
+2024-03-15 14:04:02 ERROR [api-gateway] Response: DELETE /api/users/222 -> 500 (2005ms)
+2024-03-15 14:04:15 INFO  [api-gateway] Request received: POST /api/auth/login from 192.168.1.67
+2024-03-15 14:04:15 INFO  [api-gateway] Forwarding to auth-service:8083 (no auth required for login)
+2024-03-15 14:04:15 INFO  [api-gateway] Response: POST /api/auth/login -> 200 (48ms)
+2024-03-15 14:04:30 INFO  [api-gateway] Request received: GET /api/users/333 from 192.168.1.68
+2024-03-15 14:04:30 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:04:30 INFO  [api-gateway] Auth passed (method=token), forwarding to user-service:8081
+2024-03-15 14:04:30 INFO  [api-gateway] Response: GET /api/users/333 -> 200 (55ms)
+2024-03-15 14:04:45 INFO  [api-gateway] Request received: GET /api/users/444 from 192.168.1.69
+2024-03-15 14:04:45 INFO  [api-gateway] Auth check: forwarding to auth-service:8083
+2024-03-15 14:04:47 ERROR [api-gateway] Auth service returned 500 for request GET /api/users/444
+2024-03-15 14:04:47 ERROR [api-gateway] Response: GET /api/users/444 -> 500 (2010ms)
+2024-03-15 14:05:00 WARN  [api-gateway] Upstream health summary: auth-service error_rate=37.5%, user-service error_rate=0%
+2024-03-15 14:05:00 WARN  [api-gateway] Note: auth-service failures appear intermittent — some requests succeed, some fail
