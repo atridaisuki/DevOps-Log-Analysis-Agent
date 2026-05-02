@@ -1,0 +1,115 @@
+{
+  "summary": {
+    "total_cases": 10,
+    "completed": 10,
+    "errors": 0,
+    "pass_rate": 1.0,
+    "avg_root_cause_score": 0.75,
+    "avg_service_score": 1.0,
+    "avg_iterations": 5.6,
+    "avg_tool_calls": 8.9,
+    "avg_duration_ms": 77090.6
+  },
+  "results": [
+    {
+      "id": "eval_01_db_pool_basic",
+      "status": "completed",
+      "root_cause_score": 0.6,
+      "service_score": 1.0,
+      "iterations": 6,
+      "tool_calls": 12,
+      "duration_ms": 86043.75,
+      "report_preview": "## Incident Report\n\n### Root Cause\n\n`user-service` 的 HikariCP 数据库连接池上限仅为 10（线程池为 50，比例 1:5），当流量从 30 req/s 飙升至 150 req/s 时连接池瞬间耗尽，请求排队等待连接导致级联阻塞，P99 延迟从 180ms 飙升至 5000ms，错误率达 52%。\n\n### Evidence\n\n- 配置文件 `user-service.yaml` 中 `database.pool.max_connections = 10`，而 `server.max_threads = 50`，连接池严重不足\n- 10"
+    },
+    {
+      "id": "eval_02_oom_basic",
+      "status": "completed",
+      "root_cause_score": 0.71,
+      "service_score": 1.0,
+      "iterations": 5,
+      "tool_calls": 6,
+      "duration_ms": 73927.9,
+      "report_preview": "## Incident Report: order-service Repeated Restarts\n\n### 1. Root Cause\n\n`OrderCacheManager` uses an unbounded `ConcurrentHashMap` (no `max_size`, no `TTL`, no eviction policy), causing heap memory to fill to 256MB ceiling and trigger `OutOfMemoryError: Java heap space` in a restart loop.\n\n### 2. Evi"
+    },
+    {
+      "id": "eval_03_config_basic",
+      "status": "completed",
+      "root_cause_score": 1.0,
+      "service_score": 1.0,
+      "iterations": 6,
+      "tool_calls": 10,
+      "duration_ms": 70872.39,
+      "report_preview": "## Incident Report: auth-service 40% Error Rate\n\n### 1. Root Cause\n\n`configs/auth-service.yaml` 第14行将 Redis 主机名配置为 `redis-prod`，但实际服务名为 `redis`，导致 DNS 解析失败，所有 session 认证请求返回 500。\n\n### 2. Evidence\n\n- 配置文件明确写了 `redis.host: redis-prod`，而系统拓扑中 Redis 服务注册名为 `redis`\n- 日志中所有 Redis 连接失败均报 `java.net.UnknownH"
+    },
+    {
+      "id": "eval_04_cascade_basic",
+      "status": "completed",
+      "root_cause_score": 0.67,
+      "service_score": 1.0,
+      "iterations": 5,
+      "tool_calls": 7,
+      "duration_ms": 71354.02,
+      "report_preview": "## Incident Report: SSL Certificate Expiry Cascade Failure\n\n### 1. Root Cause\n\nThe auth-service client TLS certificate (`/etc/ssl/certs/auth-service/client.pem`) expired on 2024-03-15T00:00:00Z and was not renewed, preventing SSL handshakes with the Google OAuth Provider and causing a cascade failur"
+    },
+    {
+      "id": "eval_05_disk_basic",
+      "status": "completed",
+      "root_cause_score": 0.71,
+      "service_score": 1.0,
+      "iterations": 5,
+      "tool_calls": 7,
+      "duration_ms": 77787.46,
+      "report_preview": "## Incident Report\n\n### 1. Root Cause\n\nPostgreSQL 数据目录所在磁盘（200GB）被 WAL 文件（16.9GB）、未轮转的日志（8.2GB）和临时文件（3.1GB）耗尽至 100%，导致所有数据库写入操作失败并向上游服务返回 500。\n\n### 2. Evidence\n\n- 磁盘使用率从 09:00 的 85% 持续攀升至 10:10 的 100%（200GB/200GB），此后未恢复\n- WAL 目录积累 267 个段文件共 16.9GB，日志记录 `archive_mode=off, no WAL cleanup scheduled`\n- "
+    },
+    {
+      "id": "eval_01_db_pool_vague",
+      "status": "completed",
+      "root_cause_score": 0.75,
+      "service_score": 1.0,
+      "iterations": 7,
+      "tool_calls": 13,
+      "duration_ms": 82824.05,
+      "report_preview": "## Incident Report: user-service 数据库连接池耗尽导致 API 响应超时\n\n### 1. Root Cause\n\nuser-service 的 HikariCP 数据库连接池最大连接数为 10，而服务线程池为 50 个线程（1:5 失衡），导致流量增加时连接池迅速耗尽，请求大量排队超时，最终触发 api-gateway 熔断。\n\n### 2. Evidence\n\n- 配置文件 `user-service.yaml` 显示 `pool.max_connections=10`，`server.max_threads=50`，比例严重失衡\n- `db_connecti"
+    },
+    {
+      "id": "eval_02_oom_vague",
+      "status": "completed",
+      "root_cause_score": 0.8,
+      "service_score": 1.0,
+      "iterations": 5,
+      "tool_calls": 6,
+      "duration_ms": 70076.33,
+      "report_preview": "## Root Cause\n\n`OrderCacheManager` 使用无界 `ConcurrentHashMap` 作为本地缓存，未配置 max_size、TTL 或淘汰策略，导致缓存条目无限增长，耗尽 256MB JVM 堆内存，触发 OOM 崩溃-重启死循环。\n\n## Evidence\n\n- 配置文件 `configs/order-service.yaml` 明确标注 `max_size: not set, ttl: not set, eviction_policy: none`，配置本身就有 WARNING 注释\n- 启动日志记录：`Initializing OrderCacheMa"
+    },
+    {
+      "id": "eval_03_config_targeted",
+      "status": "completed",
+      "root_cause_score": 0.8,
+      "service_score": 1.0,
+      "iterations": 7,
+      "tool_calls": 12,
+      "duration_ms": 91994.37,
+      "report_preview": "## Root Cause\n\nThe `auth-service.yaml` configures Redis host as `redis-prod`, but the actual service hostname is `redis`, causing a DNS resolution failure (`UnknownHostException`) that breaks all session-based authentication while leaving JWT token authentication unaffected.\n\n## Evidence\n\n- `configs"
+    },
+    {
+      "id": "eval_05_disk_targeted",
+      "status": "completed",
+      "root_cause_score": 0.86,
+      "service_score": 1.0,
+      "iterations": 5,
+      "tool_calls": 7,
+      "duration_ms": 76380.19,
+      "report_preview": "## Root Cause\n\nPostgreSQL 数据目录 `/var/lib/postgresql/14/main` 磁盘使用率在约 1 小时内从 85% 增长到 100%（200GB/200GB），由 WAL 文件膨胀和日志轮转禁用共同导致，所有写操作被阻塞。\n\n## Evidence\n\n- 磁盘使用率从 09:00 的 85% 线性增长到 10:10 的 100%，此后持续满载\n- WAL 大小从 12.1GB 增长到 16.9GB，`wal_keep_size` 配置为 16GB 强制保留大量 WAL 文件\n- `wal_compression: off`，WAL 未压缩，加速磁盘消"
+    },
+    {
+      "id": "eval_04_cascade_targeted",
+      "status": "completed",
+      "root_cause_score": 0.6,
+      "service_score": 1.0,
+      "iterations": 5,
+      "tool_calls": 9,
+      "duration_ms": 69645.27,
+      "report_preview": "## 1. Root Cause\n\nThe client TLS certificate (`/etc/ssl/certs/auth-service/client.pem`) on auth-service expired at 2024-03-15T00:00:00Z, breaking SSL handshakes with the external OAuth provider (accounts.google.com) and triggering a cascade failure across all dependent services.\n\n## 2. Evidence\n\n- `"
+    }
+  ]
+}

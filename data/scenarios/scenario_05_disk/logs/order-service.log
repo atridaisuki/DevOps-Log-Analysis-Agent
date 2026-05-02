@@ -1,0 +1,70 @@
+2024-03-15 09:00:02 INFO  [order-service] Handling GET /orders/88421
+2024-03-15 09:00:02 DEBUG [order-service] Query: SELECT * FROM orders WHERE id = 88421
+2024-03-15 09:00:02 INFO  [order-service] Response: 200 OK (18ms)
+2024-03-15 09:05:10 INFO  [order-service] Handling POST /orders
+2024-03-15 09:05:10 DEBUG [order-service] Inserting order: user_id=2051, product_id=P-3892, quantity=2
+2024-03-15 09:05:10 INFO  [order-service] Response: 201 Created (35ms)
+2024-03-15 09:15:00 INFO  [order-service] Handling GET /orders?user_id=1042&status=pending
+2024-03-15 09:15:00 INFO  [order-service] Response: 200 OK (22ms)
+2024-03-15 09:30:05 INFO  [order-service] Handling POST /orders
+2024-03-15 09:30:05 DEBUG [order-service] Inserting order: user_id=3500, product_id=P-7781, quantity=1
+2024-03-15 09:30:06 INFO  [order-service] Response: 201 Created (68ms)
+2024-03-15 09:45:00 INFO  [order-service] Handling GET /orders/88350
+2024-03-15 09:45:00 INFO  [order-service] Response: 200 OK (15ms)
+2024-03-15 09:50:20 INFO  [order-service] Handling POST /orders
+2024-03-15 09:50:20 DEBUG [order-service] Inserting order: user_id=4010, product_id=P-1120, quantity=2
+2024-03-15 09:50:21 WARN  [order-service] Slow DB write: INSERT took 850ms (threshold: 200ms)
+2024-03-15 09:50:21 INFO  [order-service] Response: 201 Created (870ms)
+2024-03-15 10:00:05 INFO  [order-service] Handling GET /orders?user_id=2051&status=pending
+2024-03-15 10:00:05 DEBUG [order-service] Query: SELECT * FROM orders WHERE user_id = 2051 AND status = 'pending'
+2024-03-15 10:00:05 INFO  [order-service] Response: 200 OK (20ms)
+2024-03-15 10:01:00 INFO  [order-service] Handling POST /orders
+2024-03-15 10:01:00 DEBUG [order-service] Inserting order: user_id=3021, product_id=P-1120, quantity=1
+2024-03-15 10:01:05 ERROR [order-service] Database write failed: org.postgresql.util.PSQLException: ERROR: could not extend file "base/16384/18201": No space left on device
+2024-03-15 10:01:05 ERROR [order-service]     at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675)
+2024-03-15 10:01:05 ERROR [order-service]     at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2365)
+2024-03-15 10:01:05 ERROR [order-service]     at com.example.orderservice.repository.OrderRepository.createOrder(OrderRepository.java:78)
+2024-03-15 10:01:05 ERROR [order-service] Response: 500 Internal Server Error — failed to create order (5012ms)
+2024-03-15 10:02:30 INFO  [order-service] Handling GET /orders/88421
+2024-03-15 10:02:30 DEBUG [order-service] Query: SELECT * FROM orders WHERE id = 88421
+2024-03-15 10:02:30 INFO  [order-service] Response: 200 OK (16ms)
+2024-03-15 10:03:00 INFO  [order-service] Handling GET /orders?user_id=4102&limit=10
+2024-03-15 10:03:00 INFO  [order-service] Response: 200 OK (19ms)
+2024-03-15 10:04:00 INFO  [order-service] Handling POST /orders
+2024-03-15 10:04:00 DEBUG [order-service] Inserting order: user_id=4102, product_id=P-5567, quantity=3
+2024-03-15 10:04:05 ERROR [order-service] Database write failed: org.postgresql.util.PSQLException: ERROR: could not extend file "base/16384/18201": No space left on device
+2024-03-15 10:04:05 ERROR [order-service]     at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675)
+2024-03-15 10:04:05 ERROR [order-service]     at com.example.orderservice.repository.OrderRepository.createOrder(OrderRepository.java:78)
+2024-03-15 10:04:05 ERROR [order-service] Response: 500 Internal Server Error — failed to create order (5008ms)
+2024-03-15 10:05:00 INFO  [order-service] Handling GET /orders/summary?status=pending
+2024-03-15 10:05:00 DEBUG [order-service] Query: SELECT COUNT(*) FROM orders WHERE status = 'pending'
+2024-03-15 10:05:00 INFO  [order-service] Response: 200 OK (25ms)
+2024-03-15 10:05:30 INFO  [order-service] Handling PUT /orders/88350/confirm
+2024-03-15 10:05:30 DEBUG [order-service] Updating order status: id=88350, status=confirmed
+2024-03-15 10:05:35 ERROR [order-service] Database write failed: org.postgresql.util.PSQLException: ERROR: could not write to relation "orders": No space left on device
+2024-03-15 10:05:35 ERROR [order-service]     at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675)
+2024-03-15 10:05:35 ERROR [order-service]     at com.example.orderservice.repository.OrderRepository.updateOrderStatus(OrderRepository.java:112)
+2024-03-15 10:05:35 ERROR [order-service] Response: 500 Internal Server Error — failed to update order (5015ms)
+2024-03-15 10:07:00 INFO  [order-service] Handling GET /orders?user_id=1587&limit=20
+2024-03-15 10:07:00 INFO  [order-service] Response: 200 OK (21ms)
+2024-03-15 10:08:00 INFO  [order-service] Handling POST /orders
+2024-03-15 10:08:00 DEBUG [order-service] Inserting order: user_id=5200, product_id=P-9901, quantity=1
+2024-03-15 10:08:05 ERROR [order-service] Database write failed: org.postgresql.util.PSQLException: ERROR: could not extend file "base/16384/18201": No space left on device
+2024-03-15 10:08:05 ERROR [order-service] Response: 500 Internal Server Error — failed to create order (5010ms)
+2024-03-15 10:10:00 INFO  [order-service] Handling GET /orders/88350
+2024-03-15 10:10:00 INFO  [order-service] Response: 200 OK (14ms)
+2024-03-15 10:12:00 INFO  [order-service] Handling POST /orders
+2024-03-15 10:12:00 DEBUG [order-service] Inserting order: user_id=1100, product_id=P-3340, quantity=2
+2024-03-15 10:12:05 ERROR [order-service] Database write failed: org.postgresql.util.PSQLException: ERROR: could not extend file "base/16384/18201": No space left on device
+2024-03-15 10:12:05 ERROR [order-service] Response: 500 Internal Server Error — failed to create order (5005ms)
+2024-03-15 10:15:00 INFO  [order-service] Handling GET /orders?status=confirmed&date=2024-03-15
+2024-03-15 10:15:00 INFO  [order-service] Response: 200 OK (30ms)
+2024-03-15 10:15:30 INFO  [order-service] Handling POST /orders
+2024-03-15 10:15:30 DEBUG [order-service] Inserting order: user_id=1587, product_id=P-2240, quantity=1
+2024-03-15 10:15:35 ERROR [order-service] Database write failed: org.postgresql.util.PSQLException: ERROR: could not extend file "base/16384/18201": No space left on device
+2024-03-15 10:15:35 ERROR [order-service] Response: 500 Internal Server Error — failed to create order (5011ms)
+2024-03-15 10:18:00 INFO  [order-service] Handling GET /orders/88421
+2024-03-15 10:18:00 INFO  [order-service] Response: 200 OK (13ms)
+2024-03-15 10:20:00 WARN  [order-service] Health check: database write test FAILED — all write operations returning "No space left on device"
+2024-03-15 10:20:00 WARN  [order-service] Health check: database read test PASSED — SELECT queries responding normally
+2024-03-15 10:20:00 ERROR [order-service] Service status changed to DEGRADED: write operations unavailable

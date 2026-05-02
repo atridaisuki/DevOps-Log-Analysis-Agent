@@ -1,0 +1,46 @@
+{
+  "services": {
+    "api-gateway": {
+      "port": 8080,
+      "depends_on": ["auth-service", "user-service", "order-service"],
+      "status": "degraded",
+      "description": "Nginx-based API gateway, routes requests to backend services and enforces authentication"
+    },
+    "auth-service": {
+      "port": 8083,
+      "depends_on": ["external-oauth-provider"],
+      "status": "down",
+      "description": "Handles OAuth2 authentication, token issuance and validation via external OAuth provider"
+    },
+    "user-service": {
+      "port": 8081,
+      "depends_on": ["postgres", "auth-service"],
+      "status": "degraded",
+      "description": "Handles user profile operations, depends on auth-service for token validation"
+    },
+    "order-service": {
+      "port": 8082,
+      "depends_on": ["postgres", "redis", "auth-service"],
+      "status": "degraded",
+      "description": "Handles order creation and management, depends on auth-service for token validation"
+    },
+    "postgres": {
+      "port": 5432,
+      "depends_on": [],
+      "status": "healthy",
+      "description": "PostgreSQL database, shared by user-service and order-service"
+    },
+    "redis": {
+      "port": 6379,
+      "depends_on": [],
+      "status": "healthy",
+      "description": "Redis cache for session tokens and order data"
+    },
+    "external-oauth-provider": {
+      "port": 443,
+      "depends_on": [],
+      "status": "healthy",
+      "description": "External OAuth2 provider (Google), auth-service connects via HTTPS"
+    }
+  }
+}

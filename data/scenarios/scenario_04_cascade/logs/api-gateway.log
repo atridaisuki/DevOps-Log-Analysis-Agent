@@ -1,0 +1,65 @@
+2024-03-15 14:00:01 INFO  [api-gateway] Starting api-gateway v3.1.0 on port 8080
+2024-03-15 14:00:01 INFO  [api-gateway] Registered upstream: auth-service (10.0.1.10:8083) weight=1
+2024-03-15 14:00:01 INFO  [api-gateway] Registered upstream: user-service (10.0.1.21:8081) weight=1
+2024-03-15 14:00:01 INFO  [api-gateway] Registered upstream: order-service (10.0.1.22:8082) weight=1
+2024-03-15 14:00:02 INFO  [api-gateway] Circuit breaker initialized for auth-service (threshold=3, window=10s, recovery=60s)
+2024-03-15 14:00:02 INFO  [api-gateway] Circuit breaker initialized for user-service (threshold=5, window=10s, recovery=30s)
+2024-03-15 14:00:02 INFO  [api-gateway] Circuit breaker initialized for order-service (threshold=5, window=10s, recovery=30s)
+2024-03-15 14:00:02 INFO  [api-gateway] Health check scheduler started (interval=10s)
+2024-03-15 14:00:02 INFO  [api-gateway] api-gateway started successfully, ready to accept connections
+2024-03-15 14:00:10 INFO  [api-gateway] GET /api/users/123 -> user-service (200, 165ms)
+2024-03-15 14:00:18 INFO  [api-gateway] POST /api/orders -> order-service (201, 210ms)
+2024-03-15 14:00:25 INFO  [api-gateway] POST /api/auth/login -> auth-service (200, 95ms)
+2024-03-15 14:00:40 INFO  [api-gateway] GET /api/users/456 -> user-service (200, 148ms)
+2024-03-15 14:01:00 INFO  [api-gateway] Health check: auth-service=UP, user-service=UP, order-service=UP
+2024-03-15 14:01:05 INFO  [api-gateway] GET /api/orders/789 -> order-service (200, 180ms)
+2024-03-15 14:05:15 INFO  [api-gateway] POST /api/auth/login -> auth-service (503, 48ms)
+2024-03-15 14:05:15 WARN  [api-gateway] Upstream auth-service returned 503 for POST /api/auth/login
+2024-03-15 14:05:15 WARN  [api-gateway] Circuit breaker auth-service: failure 1/3 in current window
+2024-03-15 14:05:32 INFO  [api-gateway] POST /api/auth/login -> auth-service (503, 42ms)
+2024-03-15 14:05:32 WARN  [api-gateway] Upstream auth-service returned 503 for POST /api/auth/login
+2024-03-15 14:05:32 WARN  [api-gateway] Circuit breaker auth-service: failure 2/3 in current window
+2024-03-15 14:05:48 INFO  [api-gateway] POST /api/auth/login -> auth-service (503, 39ms)
+2024-03-15 14:05:48 WARN  [api-gateway] Upstream auth-service returned 503 for POST /api/auth/login
+2024-03-15 14:05:48 ERROR [api-gateway] Circuit breaker auth-service: failure 3/3 — threshold reached, opening circuit
+2024-03-15 14:05:48 ERROR [api-gateway] Circuit breaker OPEN for auth-service — all requests will be rejected for 60s
+2024-03-15 14:05:50 ERROR [api-gateway] POST /api/auth/login -> REJECTED (circuit breaker open for auth-service)
+2024-03-15 14:05:50 ERROR [api-gateway] Response: 503 Service Unavailable (1ms) - circuit breaker open
+2024-03-15 14:05:55 INFO  [api-gateway] GET /api/public/health -> 200 OK (2ms)
+2024-03-15 14:06:00 WARN  [api-gateway] Health check: auth-service=DOWN (503), user-service=UP, order-service=UP
+2024-03-15 14:06:02 ERROR [api-gateway] POST /api/auth/login -> REJECTED (circuit breaker open for auth-service)
+2024-03-15 14:06:02 ERROR [api-gateway] Response: 503 Service Unavailable (1ms)
+2024-03-15 14:06:10 INFO  [api-gateway] GET /api/users/123 -> user-service (200, 155ms) [token validated from user-service cache]
+2024-03-15 14:06:15 ERROR [api-gateway] POST /api/auth/login -> REJECTED (circuit breaker open for auth-service)
+2024-03-15 14:06:15 ERROR [api-gateway] Response: 503 Service Unavailable (1ms)
+2024-03-15 14:06:20 INFO  [api-gateway] GET /api/public/products -> 200 OK (45ms) [no auth required]
+2024-03-15 14:06:30 ERROR [api-gateway] POST /api/orders -> order-service (401, 3012ms) [token validation failed at order-service]
+2024-03-15 14:06:30 WARN  [api-gateway] Upstream order-service returning auth errors — likely cascading from auth-service outage
+2024-03-15 14:06:48 INFO  [api-gateway] Circuit breaker auth-service: attempting recovery (HALF-OPEN state)
+2024-03-15 14:06:48 INFO  [api-gateway] Sending probe request to auth-service health endpoint
+2024-03-15 14:06:48 ERROR [api-gateway] auth-service health probe failed: 503 (status=DOWN, oauth_provider=disconnected)
+2024-03-15 14:06:48 ERROR [api-gateway] Circuit breaker auth-service: recovery failed, re-opening circuit for 60s
+2024-03-15 14:07:00 WARN  [api-gateway] Health check: auth-service=DOWN, user-service=DEGRADED, order-service=DEGRADED
+2024-03-15 14:07:00 WARN  [api-gateway] 23 requests rejected in last 60s due to auth-service circuit breaker
+2024-03-15 14:07:10 ERROR [api-gateway] GET /api/users/456 -> user-service (401, 8ms) [token expired, auth-service unavailable for re-auth]
+2024-03-15 14:07:10 ERROR [api-gateway] Response: 503 Service Unavailable — forwarding upstream 401 as 503
+2024-03-15 14:07:15 INFO  [api-gateway] GET /api/public/health -> 200 OK (2ms)
+2024-03-15 14:07:20 ERROR [api-gateway] POST /api/auth/login -> REJECTED (circuit breaker open for auth-service)
+2024-03-15 14:07:25 ERROR [api-gateway] GET /api/orders/101 -> order-service (401, 6ms) [token validation failed]
+2024-03-15 14:07:25 ERROR [api-gateway] Response: 503 Service Unavailable
+2024-03-15 14:07:48 INFO  [api-gateway] Circuit breaker auth-service: attempting recovery (HALF-OPEN state)
+2024-03-15 14:07:48 ERROR [api-gateway] auth-service health probe failed: 503 (status=DOWN)
+2024-03-15 14:07:48 ERROR [api-gateway] Circuit breaker auth-service: recovery failed, re-opening circuit for 60s
+2024-03-15 14:08:00 ERROR [api-gateway] Health check: auth-service=DOWN, user-service=DEGRADED, order-service=DEGRADED
+2024-03-15 14:08:00 ERROR [api-gateway] Service degradation summary: 85% of requests failing (only public endpoints operational)
+2024-03-15 14:08:00 ERROR [api-gateway] Affected endpoints: /api/auth/*, /api/users/* (auth required), /api/orders/*
+2024-03-15 14:08:30 ERROR [api-gateway] POST /api/auth/login -> REJECTED (circuit breaker open)
+2024-03-15 14:08:35 ERROR [api-gateway] GET /api/users/789 -> user-service (401, 5ms)
+2024-03-15 14:08:35 ERROR [api-gateway] Response: 503 Service Unavailable
+2024-03-15 14:08:40 INFO  [api-gateway] GET /api/public/products -> 200 OK (42ms) [no auth required]
+2024-03-15 14:09:00 ERROR [api-gateway] Health check: auth-service=DOWN, user-service=DEGRADED, order-service=DEGRADED
+2024-03-15 14:09:00 ERROR [api-gateway] 67 requests rejected in last 180s, error rate: 87%
+2024-03-15 14:09:00 ERROR [api-gateway] ALERT: Cascading failure detected — auth-service outage affecting all authenticated endpoints
+2024-03-15 14:10:00 ERROR [api-gateway] Health check: auth-service=DOWN, user-service=DEGRADED, order-service=DEGRADED
+2024-03-15 14:10:00 ERROR [api-gateway] Error rate: 91% — only /api/public/* endpoints responding normally
+2024-03-15 14:10:00 ERROR [api-gateway] ALERT: Full site degradation — immediate investigation required for auth-service

@@ -1,0 +1,99 @@
+{
+  "cpu": {
+    "unit": "percent",
+    "data": [
+      {"time": "14:00", "value": 20},
+      {"time": "14:01", "value": 22},
+      {"time": "14:02", "value": 21},
+      {"time": "14:03", "value": 23},
+      {"time": "14:04", "value": 22},
+      {"time": "14:05", "value": 18},
+      {"time": "14:06", "value": 15},
+      {"time": "14:07", "value": 12},
+      {"time": "14:08", "value": 10},
+      {"time": "14:09", "value": 8},
+      {"time": "14:10", "value": 7}
+    ]
+  },
+  "memory": {
+    "unit": "MB",
+    "data": [
+      {"time": "14:00", "value": 320},
+      {"time": "14:01", "value": 325},
+      {"time": "14:02", "value": 322},
+      {"time": "14:03", "value": 328},
+      {"time": "14:04", "value": 324},
+      {"time": "14:05", "value": 318},
+      {"time": "14:06", "value": 310},
+      {"time": "14:07", "value": 305},
+      {"time": "14:08", "value": 298},
+      {"time": "14:09", "value": 292},
+      {"time": "14:10", "value": 288}
+    ]
+  },
+  "latency_p99": {
+    "unit": "ms",
+    "data": [
+      {"time": "14:00", "value": 180},
+      {"time": "14:01", "value": 175},
+      {"time": "14:02", "value": 185},
+      {"time": "14:03", "value": 178},
+      {"time": "14:04", "value": 182},
+      {"time": "14:05", "value": 520},
+      {"time": "14:06", "value": 2},
+      {"time": "14:07", "value": 3},
+      {"time": "14:08", "value": 2},
+      {"time": "14:09", "value": 2},
+      {"time": "14:10", "value": 1}
+    ],
+    "note": "Latency becomes bimodal: circuit-breaker-rejected requests return in ~1ms, while requests that reach degraded upstreams take 3000ms+"
+  },
+  "error_rate": {
+    "unit": "percent",
+    "data": [
+      {"time": "14:00", "value": 0.1},
+      {"time": "14:01", "value": 0.1},
+      {"time": "14:02", "value": 0.0},
+      {"time": "14:03", "value": 0.1},
+      {"time": "14:04", "value": 0.1},
+      {"time": "14:05", "value": 35.0},
+      {"time": "14:06", "value": 58.0},
+      {"time": "14:07", "value": 72.0},
+      {"time": "14:08", "value": 85.0},
+      {"time": "14:09", "value": 87.0},
+      {"time": "14:10", "value": 91.0}
+    ]
+  },
+  "requests_per_second": {
+    "unit": "count",
+    "data": [
+      {"time": "14:00", "value": 45},
+      {"time": "14:01", "value": 48},
+      {"time": "14:02", "value": 44},
+      {"time": "14:03", "value": 50},
+      {"time": "14:04", "value": 47},
+      {"time": "14:05", "value": 52},
+      {"time": "14:06", "value": 55},
+      {"time": "14:07", "value": 48},
+      {"time": "14:08", "value": 42},
+      {"time": "14:09", "value": 38},
+      {"time": "14:10", "value": 35}
+    ]
+  },
+  "status_503_count": {
+    "unit": "count",
+    "data": [
+      {"time": "14:00", "value": 0},
+      {"time": "14:01", "value": 0},
+      {"time": "14:02", "value": 0},
+      {"time": "14:03", "value": 0},
+      {"time": "14:04", "value": 0},
+      {"time": "14:05", "value": 18},
+      {"time": "14:06", "value": 32},
+      {"time": "14:07", "value": 35},
+      {"time": "14:08", "value": 36},
+      {"time": "14:09", "value": 33},
+      {"time": "14:10", "value": 32}
+    ]
+  }
+}

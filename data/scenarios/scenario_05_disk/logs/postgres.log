@@ -1,0 +1,64 @@
+2024-03-15 09:00:05 LOG  [postgres] checkpoint starting: time
+2024-03-15 09:00:18 LOG  [postgres] checkpoint complete: wrote 1245 buffers (7.6%); 0 WAL file(s) added, 0 removed, 12 recycled; write=12.8s, sync=0.3s, total=13.2s
+2024-03-15 09:05:10 LOG  [postgres] statement: SELECT * FROM orders WHERE user_id = 1042 ORDER BY created_at DESC LIMIT 20
+2024-03-15 09:10:22 WARNING [postgres] WAL segment size approaching wal_keep_size limit: current 12.1GB / 16GB configured
+2024-03-15 09:15:03 LOG  [postgres] statement: INSERT INTO orders (user_id, product_id, quantity, total_price) VALUES (2051, 'P-3892', 2, 159.80)
+2024-03-15 09:15:03 LOG  [postgres] duration: 12.453 ms
+2024-03-15 09:20:15 WARNING [postgres] disk usage on /var/lib/postgresql/14/main: 89% (178GB / 200GB)
+2024-03-15 09:20:15 WARNING [postgres] WAL directory size: 13.5GB, pg_log directory size: 8.2GB, temp files: 3.1GB
+2024-03-15 09:25:00 LOG  [postgres] statement: SELECT u.id, u.name, u.email FROM users u WHERE u.id = 587
+2024-03-15 09:25:00 LOG  [postgres] duration: 3.210 ms
+2024-03-15 09:30:01 LOG  [postgres] checkpoint starting: time
+2024-03-15 09:30:22 WARNING [postgres] checkpoint write took 21.3s, expected < 15s; disk may be under pressure
+2024-03-15 09:30:22 LOG  [postgres] checkpoint complete: wrote 2103 buffers (12.8%); 0 WAL file(s) added, 0 removed, 18 recycled; write=20.5s, sync=0.8s, total=21.3s
+2024-03-15 09:35:10 WARNING [postgres] disk usage on /var/lib/postgresql/14/main: 93% (186GB / 200GB)
+2024-03-15 09:35:10 WARNING [postgres] WAL segment accumulation: 58 segments not recycled, total WAL size 14.9GB
+2024-03-15 09:40:05 LOG  [postgres] statement: INSERT INTO user_profiles (user_id, avatar_url, bio) VALUES (1203, '/avatars/1203.jpg', 'Hello world')
+2024-03-15 09:40:05 LOG  [postgres] duration: 45.812 ms
+2024-03-15 09:40:06 WARNING [postgres] slow write detected: fsync on WAL segment 0000000100000042000000A7 took 320ms
+2024-03-15 09:45:00 WARNING [postgres] disk usage on /var/lib/postgresql/14/main: 95% (190GB / 200GB)
+2024-03-15 09:45:00 WARNING [postgres] temporary files in pgsql_tmp: 142 files, total 3.8GB — no cleanup policy configured
+2024-03-15 09:50:02 WARNING [postgres] disk usage on /var/lib/postgresql/14/main: 97% (194GB / 200GB)
+2024-03-15 09:50:02 ERROR  [postgres] could not write to WAL segment: slow I/O, fsync took 1.2s
+2024-03-15 09:50:15 LOG  [postgres] statement: SELECT * FROM orders WHERE id = 88421
+2024-03-15 09:50:15 LOG  [postgres] duration: 4.102 ms
+2024-03-15 09:55:00 WARNING [postgres] disk usage critical: 98% (196GB / 200GB)
+2024-03-15 09:55:00 WARNING [postgres] pg_wal directory: 16.7GB across 267 segments; archive_mode=off, no WAL cleanup scheduled
+2024-03-15 10:00:01 LOG  [postgres] checkpoint starting: time
+2024-03-15 10:00:38 ERROR  [postgres] checkpoint failed: could not write to file "pg_wal/xlogtemp.88421": No space left on device
+2024-03-15 10:00:38 PANIC [postgres] WAL writer process failed: No space left on device
+2024-03-15 10:00:38 ERROR  [postgres] disk usage on /var/lib/postgresql/14/main: 100% (200GB / 200GB)
+2024-03-15 10:00:40 LOG  [postgres] statement: SELECT * FROM users WHERE email = 'alice@example.com'
+2024-03-15 10:00:40 LOG  [postgres] duration: 3.850 ms
+2024-03-15 10:01:05 ERROR  [postgres] statement: INSERT INTO orders (user_id, product_id, quantity, total_price) VALUES (3021, 'P-1120', 1, 89.90)
+2024-03-15 10:01:05 ERROR  [postgres] could not extend file "base/16384/18201": No space left on device
+2024-03-15 10:01:05 ERROR  [postgres] HINT: Check free disk space on the partition holding /var/lib/postgresql/14/main
+2024-03-15 10:01:30 LOG  [postgres] statement: SELECT o.id, o.total_price, o.status FROM orders o WHERE o.user_id = 2051 AND o.status = 'pending'
+2024-03-15 10:01:30 LOG  [postgres] duration: 5.220 ms
+2024-03-15 10:02:00 ERROR  [postgres] statement: UPDATE users SET last_login = '2024-03-15 10:02:00' WHERE id = 587
+2024-03-15 10:02:00 ERROR  [postgres] could not write to relation "users": No space left on device
+2024-03-15 10:02:15 ERROR  [postgres] statement: INSERT INTO audit_log (action, user_id, timestamp) VALUES ('LOGIN', 587, '2024-03-15 10:02:15')
+2024-03-15 10:02:15 ERROR  [postgres] could not extend file "base/16384/18245": No space left on device
+2024-03-15 10:03:00 LOG  [postgres] statement: SELECT p.name, p.price, p.stock FROM products p WHERE p.id = 'P-1120'
+2024-03-15 10:03:00 LOG  [postgres] duration: 2.910 ms
+2024-03-15 10:04:00 ERROR  [postgres] statement: INSERT INTO orders (user_id, product_id, quantity, total_price) VALUES (4102, 'P-5567', 3, 267.00)
+2024-03-15 10:04:00 ERROR  [postgres] could not extend file "base/16384/18201": No space left on device
+2024-03-15 10:05:00 LOG  [postgres] statement: SELECT COUNT(*) FROM orders WHERE status = 'pending'
+2024-03-15 10:05:00 LOG  [postgres] duration: 8.430 ms
+2024-03-15 10:05:30 ERROR  [postgres] statement: UPDATE orders SET status = 'confirmed' WHERE id = 88350
+2024-03-15 10:05:30 ERROR  [postgres] could not write to relation "orders": No space left on device
+2024-03-15 10:06:00 ERROR  [postgres] automatic VACUUM on table "orders": could not extend file — No space left on device
+2024-03-15 10:07:00 LOG  [postgres] statement: SELECT u.id, u.name FROM users u WHERE u.created_at > '2024-03-01'
+2024-03-15 10:07:00 LOG  [postgres] duration: 12.150 ms
+2024-03-15 10:08:00 ERROR  [postgres] statement: INSERT INTO user_profiles (user_id, avatar_url, bio) VALUES (4501, '/avatars/4501.jpg', 'New user')
+2024-03-15 10:08:00 ERROR  [postgres] could not extend file "base/16384/18290": No space left on device
+2024-03-15 10:10:00 LOG  [postgres] checkpoint starting: time
+2024-03-15 10:10:01 ERROR  [postgres] checkpoint failed: could not write to file "pg_wal/xlogtemp.90012": No space left on device
+2024-03-15 10:10:01 ERROR  [postgres] WARNING: checkpoints are failing; database may become unrecoverable if this persists
+2024-03-15 10:15:00 LOG  [postgres] statement: SELECT * FROM products WHERE category = 'electronics' ORDER BY price ASC LIMIT 50
+2024-03-15 10:15:00 LOG  [postgres] duration: 15.320 ms
+2024-03-15 10:15:30 ERROR  [postgres] statement: INSERT INTO orders (user_id, product_id, quantity, total_price) VALUES (1587, 'P-2240', 1, 45.00)
+2024-03-15 10:15:30 ERROR  [postgres] could not extend file "base/16384/18201": No space left on device
+2024-03-15 10:20:00 ERROR  [postgres] checkpoint starting: time
+2024-03-15 10:20:01 ERROR  [postgres] checkpoint failed: No space left on device
+2024-03-15 10:20:01 ERROR  [postgres] all write operations are blocked; immediate disk space recovery required

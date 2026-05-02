@@ -1,0 +1,64 @@
+2024-03-15 14:00:01 INFO  [user-service] Starting user-service v2.1.3 on port 8081
+2024-03-15 14:00:01 INFO  [user-service] Connected to PostgreSQL at postgres:5432/userdb
+2024-03-15 14:00:02 INFO  [user-service] Auth token validation configured: upstream=auth-service:8083, cache_ttl=1800s
+2024-03-15 14:00:02 INFO  [user-service] Token cache initialized (max_size=5000, ttl=1800s)
+2024-03-15 14:00:02 INFO  [user-service] user-service started successfully, ready to accept connections
+2024-03-15 14:00:10 INFO  [user-service] Handling GET /users/123 (token: valid, user: user_8821)
+2024-03-15 14:00:10 DEBUG [user-service] Token validation: cache_hit=false, calling auth-service POST /auth/validate
+2024-03-15 14:00:10 DEBUG [user-service] auth-service responded 200 OK (15ms) — token valid, caching for 1800s
+2024-03-15 14:00:10 INFO  [user-service] Response: 200 OK (155ms)
+2024-03-15 14:00:40 INFO  [user-service] Handling GET /users/456 (token: valid, user: user_3345)
+2024-03-15 14:00:40 DEBUG [user-service] Token validation: cache_hit=true (remaining_ttl=1750s)
+2024-03-15 14:00:40 INFO  [user-service] Response: 200 OK (138ms)
+2024-03-15 14:01:00 INFO  [user-service] Health check: status=UP, db=connected, auth-service=reachable, token_cache_size=48
+2024-03-15 14:05:20 INFO  [user-service] Handling GET /users/901 (token: valid, user: user_6612)
+2024-03-15 14:05:20 DEBUG [user-service] Token validation: cache_hit=false, calling auth-service POST /auth/validate
+2024-03-15 14:05:20 WARN  [user-service] auth-service returned 503 for token validation (attempt 1/3)
+2024-03-15 14:05:21 WARN  [user-service] Retrying auth-service token validation (attempt 2/3)
+2024-03-15 14:05:21 WARN  [user-service] auth-service returned 503 for token validation (attempt 2/3)
+2024-03-15 14:05:22 WARN  [user-service] Retrying auth-service token validation (attempt 3/3)
+2024-03-15 14:05:22 ERROR [user-service] auth-service returned 503 for token validation (attempt 3/3) — all retries exhausted
+2024-03-15 14:05:22 ERROR [user-service] com.example.userservice.exception.AuthServiceUnavailableException: Failed to validate token after 3 attempts
+2024-03-15 14:05:22 ERROR [user-service]     at com.example.userservice.auth.TokenValidator.validate(TokenValidator.java:89)
+2024-03-15 14:05:22 ERROR [user-service]     at com.example.userservice.filter.AuthFilter.doFilter(AuthFilter.java:42)
+2024-03-15 14:05:22 ERROR [user-service]     at com.example.userservice.controller.UserController.getUser(UserController.java:55)
+2024-03-15 14:05:22 WARN  [user-service] Falling back to cached token for user_6612
+2024-03-15 14:05:22 WARN  [user-service] Token found in cache (remaining_ttl=1420s) — allowing request with cached validation
+2024-03-15 14:05:22 INFO  [user-service] Response: 200 OK (2165ms) [degraded: cached token]
+2024-03-15 14:06:00 WARN  [user-service] Health check: status=DEGRADED, db=connected, auth-service=unreachable (503), token_cache_size=1205
+2024-03-15 14:06:00 WARN  [user-service] Operating in degraded mode — using cached tokens for validation
+2024-03-15 14:06:10 INFO  [user-service] Handling GET /users/123 (token: valid, user: user_8821)
+2024-03-15 14:06:10 DEBUG [user-service] Token validation: cache_hit=true (remaining_ttl=1440s)
+2024-03-15 14:06:10 INFO  [user-service] Response: 200 OK (145ms) [cached token]
+2024-03-15 14:06:45 INFO  [user-service] Handling PUT /users/456/profile (token: valid, user: user_3345)
+2024-03-15 14:06:45 DEBUG [user-service] Token validation: cache_hit=true (remaining_ttl=1395s)
+2024-03-15 14:06:45 INFO  [user-service] Response: 200 OK (210ms) [cached token]
+2024-03-15 14:07:00 WARN  [user-service] Health check: status=DEGRADED, auth-service=unreachable, token_cache_size=1098
+2024-03-15 14:07:00 WARN  [user-service] Token cache depletion rate: ~1.8 tokens/s — estimated full depletion in ~610s
+2024-03-15 14:07:10 INFO  [user-service] Handling GET /users/456 (token: expired, user: user_3345)
+2024-03-15 14:07:10 DEBUG [user-service] Token validation: cache_hit=false (token expired from cache, ttl exceeded)
+2024-03-15 14:07:10 DEBUG [user-service] Attempting auth-service re-validation for expired token
+2024-03-15 14:07:13 ERROR [user-service] auth-service unavailable (503) — cannot re-validate expired token
+2024-03-15 14:07:13 ERROR [user-service] com.example.userservice.exception.AuthServiceUnavailableException: Token expired and auth-service unreachable
+2024-03-15 14:07:13 ERROR [user-service]     at com.example.userservice.auth.TokenValidator.validate(TokenValidator.java:95)
+2024-03-15 14:07:13 ERROR [user-service] Response: 401 Unauthorized (3008ms) - token expired, cannot re-authenticate
+2024-03-15 14:07:30 INFO  [user-service] Handling GET /users/789 (token: unknown, user: user_7201)
+2024-03-15 14:07:30 DEBUG [user-service] Token validation: cache_hit=false (token not in cache)
+2024-03-15 14:07:33 ERROR [user-service] auth-service unavailable (503) — cannot validate unknown token
+2024-03-15 14:07:33 ERROR [user-service] Response: 401 Unauthorized (3005ms)
+2024-03-15 14:08:00 WARN  [user-service] Health check: status=DEGRADED, auth-service=unreachable, token_cache_size=943
+2024-03-15 14:08:00 ERROR [user-service] Increasing failure rate: 35% of requests failing (tokens expiring from cache)
+2024-03-15 14:08:15 ERROR [user-service] Handling GET /users/123 (token: expired, user: user_8821)
+2024-03-15 14:08:15 ERROR [user-service] Token for user_8821 expired from cache — auth-service unreachable
+2024-03-15 14:08:15 ERROR [user-service] Response: 401 Unauthorized (3002ms)
+2024-03-15 14:08:30 ERROR [user-service] Handling PUT /users/456/profile (token: expired, user: user_3345)
+2024-03-15 14:08:30 ERROR [user-service] Token for user_3345 expired from cache — auth-service unreachable
+2024-03-15 14:08:30 ERROR [user-service] Response: 401 Unauthorized (3004ms)
+2024-03-15 14:09:00 ERROR [user-service] Health check: status=DEGRADED, auth-service=unreachable, token_cache_size=712
+2024-03-15 14:09:00 ERROR [user-service] Failure rate: 62% — majority of cached tokens have expired
+2024-03-15 14:09:00 ERROR [user-service] All new user requests failing — only requests with recently cached tokens succeed
+2024-03-15 14:09:30 ERROR [user-service] Handling GET /users/901 (token: expired)
+2024-03-15 14:09:30 ERROR [user-service] Response: 401 Unauthorized (3001ms)
+2024-03-15 14:10:00 ERROR [user-service] Health check: status=DEGRADED, auth-service=unreachable, token_cache_size=498
+2024-03-15 14:10:00 ERROR [user-service] Failure rate: 78% — service effectively unavailable for most users
+2024-03-15 14:10:00 ERROR [user-service] ALERT: auth-service dependency failure causing cascading user-service degradation

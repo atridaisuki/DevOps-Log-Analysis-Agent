@@ -1,0 +1,105 @@
+{
+  "disk_usage": {
+    "unit": "percent",
+    "data": [
+      {"time": "09:00", "value": 85},
+      {"time": "09:10", "value": 87},
+      {"time": "09:20", "value": 89},
+      {"time": "09:30", "value": 91},
+      {"time": "09:40", "value": 93},
+      {"time": "09:50", "value": 95},
+      {"time": "10:00", "value": 97},
+      {"time": "10:05", "value": 98},
+      {"time": "10:08", "value": 99},
+      {"time": "10:10", "value": 100},
+      {"time": "10:15", "value": 100},
+      {"time": "10:20", "value": 100}
+    ]
+  },
+  "wal_size": {
+    "unit": "GB",
+    "data": [
+      {"time": "09:00", "value": 12.1},
+      {"time": "09:10", "value": 12.8},
+      {"time": "09:20", "value": 13.5},
+      {"time": "09:30", "value": 14.2},
+      {"time": "09:40", "value": 14.9},
+      {"time": "09:50", "value": 15.6},
+      {"time": "10:00", "value": 16.3},
+      {"time": "10:05", "value": 16.7},
+      {"time": "10:08", "value": 16.9},
+      {"time": "10:10", "value": 16.9},
+      {"time": "10:15", "value": 16.9},
+      {"time": "10:20", "value": 16.9}
+    ]
+  },
+  "connections": {
+    "unit": "count",
+    "data": [
+      {"time": "09:00", "value": 45},
+      {"time": "09:10", "value": 47},
+      {"time": "09:20", "value": 44},
+      {"time": "09:30", "value": 46},
+      {"time": "09:40", "value": 48},
+      {"time": "09:50", "value": 45},
+      {"time": "10:00", "value": 47},
+      {"time": "10:05", "value": 46},
+      {"time": "10:08", "value": 48},
+      {"time": "10:10", "value": 50},
+      {"time": "10:15", "value": 52},
+      {"time": "10:20", "value": 53}
+    ],
+    "max_connections": 200
+  },
+  "read_iops": {
+    "unit": "ops/s",
+    "data": [
+      {"time": "09:00", "value": 320},
+      {"time": "09:10", "value": 335},
+      {"time": "09:20", "value": 310},
+      {"time": "09:30", "value": 328},
+      {"time": "09:40", "value": 340},
+      {"time": "09:50", "value": 315},
+      {"time": "10:00", "value": 330},
+      {"time": "10:05", "value": 325},
+      {"time": "10:08", "value": 318},
+      {"time": "10:10", "value": 322},
+      {"time": "10:15", "value": 330},
+      {"time": "10:20", "value": 328}
+    ]
+  },
+  "write_iops": {
+    "unit": "ops/s",
+    "data": [
+      {"time": "09:00", "value": 180},
+      {"time": "09:10", "value": 175},
+      {"time": "09:20", "value": 190},
+      {"time": "09:30", "value": 185},
+      {"time": "09:40", "value": 170},
+      {"time": "09:50", "value": 165},
+      {"time": "10:00", "value": 82},
+      {"time": "10:05", "value": 25},
+      {"time": "10:08", "value": 5},
+      {"time": "10:10", "value": 0},
+      {"time": "10:15", "value": 0},
+      {"time": "10:20", "value": 0}
+    ]
+  },
+  "cpu": {
+    "unit": "percent",
+    "data": [
+      {"time": "09:00", "value": 22},
+      {"time": "09:10", "value": 24},
+      {"time": "09:20", "value": 23},
+      {"time": "09:30", "value": 25},
+      {"time": "09:40", "value": 24},
+      {"time": "09:50", "value": 26},
+      {"time": "10:00", "value": 28},
+      {"time": "10:05", "value": 30},
+      {"time": "10:08", "value": 32},
+      {"time": "10:10", "value": 35},
+      {"time": "10:15", "value": 33},
+      {"time": "10:20", "value": 31}
+    ]
+  }
+}

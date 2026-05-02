@@ -1,0 +1,8 @@
+{
+  "id": "scenario_04_cascade",
+  "title": "全站不可用 — 认证服务宕机导致级联故障",
+  "description": "所有需要认证的 API 端点返回 503，用户完全无法登录或访问受保护资源。",
+  "root_cause": "auth-service 因证书过期导致 HTTPS 连接失败，无法连接到外部 OAuth provider。所有依赖 auth-service 的服务因此无法验证用户身份，触发熔断器，最终导致全站不可用。",
+  "affected_services": ["auth-service", "api-gateway", "user-service", "order-service"],
+  "difficulty": "medium"
+}

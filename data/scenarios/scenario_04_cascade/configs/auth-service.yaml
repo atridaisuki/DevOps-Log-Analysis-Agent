@@ -1,0 +1,45 @@
+# auth-service configuration
+
+server:
+  port: 8083
+  max_threads: 30
+  request_timeout: 5000ms
+
+oauth:
+  provider_url: https://accounts.google.com
+  token_endpoint: https://accounts.google.com/o/oauth2/token
+  authorization_endpoint: https://accounts.google.com/o/oauth2/auth
+  userinfo_endpoint: https://accounts.google.com/oauth2/v3/userinfo
+  client_id: ${OAUTH_CLIENT_ID}
+  client_secret: ${OAUTH_CLIENT_SECRET}
+  scopes: ["openid", "profile", "email"]
+
+tls:
+  enabled: true
+  cert_path: /etc/ssl/certs/auth-service/client.pem
+  key_path: /etc/ssl/certs/auth-service/client-key.pem
+  ca_path: /etc/ssl/certs/auth-service/ca.pem
+  verify_hostname: true
+  # Certificate expires: 2024-03-15T00:00:00Z (NOT YET RENEWED)
+
+connection:
+  connect_timeout: 3000ms
+  read_timeout: 5000ms
+  max_retries: 2
+  retry_backoff: 500ms
+
+token_cache:
+  enabled: true
+  max_size: 5000
+  ttl: 1800s
+  eviction_policy: LRU
+
+health_check:
+  endpoint: /health
+  interval: 10s
+  timeout: 3000ms
+  failure_threshold: 3
+
+logging:
+  level: INFO
+  file: /var/log/auth-service/auth-service.log

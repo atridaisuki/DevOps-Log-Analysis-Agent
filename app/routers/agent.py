@@ -150,6 +150,7 @@ async def analyze_stream(req: AnalyzeRequest):
 
         start = time.perf_counter()
 
+        #只要invoke改stream就是sse了
         for event in _graph.stream(input_state, config, stream_mode="updates"):
             for node_name, updates in event.items():
                 payload = {"node": node_name}

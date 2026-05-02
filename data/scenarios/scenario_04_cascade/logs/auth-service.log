@@ -1,0 +1,75 @@
+2024-03-15 14:00:01 INFO  [auth-service] Starting auth-service v2.4.1 on port 8083
+2024-03-15 14:00:02 INFO  [auth-service] Initializing OAuth2 client for provider: https://accounts.google.com
+2024-03-15 14:00:02 INFO  [auth-service] Loading TLS certificate from /etc/ssl/certs/auth-service/client.pem
+2024-03-15 14:00:02 INFO  [auth-service] TLS certificate loaded successfully (subject: CN=auth-service.example.com)
+2024-03-15 14:00:03 INFO  [auth-service] Connected to OAuth provider: https://accounts.google.com/.well-known/openid-configuration
+2024-03-15 14:00:03 INFO  [auth-service] Health check endpoint registered at /health
+2024-03-15 14:00:03 INFO  [auth-service] auth-service started successfully, ready to accept connections
+2024-03-15 14:00:15 INFO  [auth-service] Handling POST /auth/token (client_ip: 10.0.1.50)
+2024-03-15 14:00:15 INFO  [auth-service] OAuth2 token exchange successful for user: user_8821
+2024-03-15 14:00:15 INFO  [auth-service] Response: 200 OK (85ms)
+2024-03-15 14:00:22 INFO  [auth-service] Handling POST /auth/validate (client_ip: 10.0.1.21)
+2024-03-15 14:00:22 INFO  [auth-service] Token validated for user: user_3345 (expires_in: 3600s)
+2024-03-15 14:00:22 INFO  [auth-service] Response: 200 OK (12ms)
+2024-03-15 14:00:45 INFO  [auth-service] Handling POST /auth/token (client_ip: 10.0.1.50)
+2024-03-15 14:00:45 INFO  [auth-service] OAuth2 token exchange successful for user: user_1102
+2024-03-15 14:00:45 INFO  [auth-service] Response: 200 OK (92ms)
+2024-03-15 14:01:00 INFO  [auth-service] Health check: status=UP, oauth_provider=connected, uptime=59s
+2024-03-15 14:05:12 INFO  [auth-service] Handling POST /auth/token (client_ip: 10.0.1.50)
+2024-03-15 14:05:12 INFO  [auth-service] Initiating OAuth2 token exchange with provider: https://accounts.google.com/o/oauth2/token
+2024-03-15 14:05:12 ERROR [auth-service] SSL handshake failed connecting to https://accounts.google.com/o/oauth2/token
+2024-03-15 14:05:12 ERROR [auth-service] javax.net.ssl.SSLHandshakeException: PKIX path validation failed: java.security.cert.CertPathValidatorException: validity check failed
+2024-03-15 14:05:12 ERROR [auth-service]     at sun.security.ssl.Alert.createSSLException(Alert.java:131)
+2024-03-15 14:05:12 ERROR [auth-service]     at sun.security.ssl.TransportContext.fatal(TransportContext.java:371)
+2024-03-15 14:05:12 ERROR [auth-service]     at sun.security.ssl.TransportContext.fatal(TransportContext.java:314)
+2024-03-15 14:05:12 ERROR [auth-service]     at sun.security.ssl.CertificateMessage$T13CertificateConsumer.checkServerCerts(CertificateMessage.java:1357)
+2024-03-15 14:05:12 ERROR [auth-service]     at com.example.authservice.oauth.OAuthClient.exchangeToken(OAuthClient.java:112)
+2024-03-15 14:05:12 ERROR [auth-service]     at com.example.authservice.controller.AuthController.issueToken(AuthController.java:67)
+2024-03-15 14:05:12 ERROR [auth-service] Caused by: java.security.cert.CertificateExpiredException: NotAfter: Fri Mar 15 00:00:00 UTC 2024
+2024-03-15 14:05:12 ERROR [auth-service]     at sun.security.x509.CertificateValidity.valid(CertificateValidity.java:277)
+2024-03-15 14:05:12 ERROR [auth-service]     at sun.security.x509.X509CertImpl.checkValidity(X509CertImpl.java:675)
+2024-03-15 14:05:12 ERROR [auth-service] Client certificate /etc/ssl/certs/auth-service/client.pem expired on 2024-03-15T00:00:00Z
+2024-03-15 14:05:12 ERROR [auth-service] Response: 503 Service Unavailable (45ms) - OAuth provider connection failed
+2024-03-15 14:05:18 INFO  [auth-service] Handling POST /auth/validate (client_ip: 10.0.1.21)
+2024-03-15 14:05:18 INFO  [auth-service] Token validated from local cache for user: user_3345 (cache_hit=true)
+2024-03-15 14:05:18 INFO  [auth-service] Response: 200 OK (5ms)
+2024-03-15 14:05:30 INFO  [auth-service] Handling POST /auth/token (client_ip: 10.0.1.52)
+2024-03-15 14:05:30 ERROR [auth-service] SSL handshake failed connecting to https://accounts.google.com/o/oauth2/token
+2024-03-15 14:05:30 ERROR [auth-service] javax.net.ssl.SSLHandshakeException: PKIX path validation failed: java.security.cert.CertPathValidatorException: validity check failed
+2024-03-15 14:05:30 ERROR [auth-service]     at sun.security.ssl.Alert.createSSLException(Alert.java:131)
+2024-03-15 14:05:30 ERROR [auth-service]     at com.example.authservice.oauth.OAuthClient.exchangeToken(OAuthClient.java:112)
+2024-03-15 14:05:30 ERROR [auth-service] Caused by: java.security.cert.CertificateExpiredException: NotAfter: Fri Mar 15 00:00:00 UTC 2024
+2024-03-15 14:05:30 ERROR [auth-service] Response: 503 Service Unavailable (38ms) - OAuth provider connection failed
+2024-03-15 14:05:45 INFO  [auth-service] Handling POST /auth/token (client_ip: 10.0.1.50)
+2024-03-15 14:05:45 ERROR [auth-service] SSL handshake failed connecting to https://accounts.google.com/o/oauth2/token
+2024-03-15 14:05:45 ERROR [auth-service] javax.net.ssl.SSLHandshakeException: PKIX path validation failed: java.security.cert.CertPathValidatorException: validity check failed
+2024-03-15 14:05:45 ERROR [auth-service]     at com.example.authservice.oauth.OAuthClient.exchangeToken(OAuthClient.java:112)
+2024-03-15 14:05:45 ERROR [auth-service] Caused by: java.security.cert.CertificateExpiredException: NotAfter: Fri Mar 15 00:00:00 UTC 2024
+2024-03-15 14:05:45 ERROR [auth-service] Response: 503 Service Unavailable (35ms) - OAuth provider connection failed
+2024-03-15 14:06:00 WARN  [auth-service] Health check: status=DEGRADED, oauth_provider=disconnected, reason=SSL certificate expired
+2024-03-15 14:06:00 WARN  [auth-service] Token issuance unavailable — all new login attempts will fail
+2024-03-15 14:06:00 WARN  [auth-service] Token validation falling back to local cache (cache_size: 1247 tokens, avg_ttl: 1800s)
+2024-03-15 14:06:15 INFO  [auth-service] Handling POST /auth/validate (client_ip: 10.0.1.22)
+2024-03-15 14:06:15 INFO  [auth-service] Token validated from local cache for user: user_5501 (cache_hit=true)
+2024-03-15 14:06:15 INFO  [auth-service] Response: 200 OK (4ms)
+2024-03-15 14:06:30 ERROR [auth-service] Handling POST /auth/token (client_ip: 10.0.1.53)
+2024-03-15 14:06:30 ERROR [auth-service] SSL handshake failed connecting to https://accounts.google.com/o/oauth2/token
+2024-03-15 14:06:30 ERROR [auth-service] Caused by: java.security.cert.CertificateExpiredException: NotAfter: Fri Mar 15 00:00:00 UTC 2024
+2024-03-15 14:06:30 ERROR [auth-service] Response: 503 Service Unavailable (32ms)
+2024-03-15 14:07:00 WARN  [auth-service] Health check: status=DOWN, oauth_provider=disconnected, cached_tokens_remaining=1183, cache_expiry_rate=2.1/s
+2024-03-15 14:07:00 ERROR [auth-service] 12 consecutive OAuth connection failures in last 120s
+2024-03-15 14:08:00 WARN  [auth-service] Health check: status=DOWN, oauth_provider=disconnected, cached_tokens_remaining=1057
+2024-03-15 14:08:00 ERROR [auth-service] Token cache depleting — 190 tokens expired since incident start
+2024-03-15 14:08:15 INFO  [auth-service] Handling POST /auth/validate (client_ip: 10.0.1.21)
+2024-03-15 14:08:15 WARN  [auth-service] Token validation failed: token for user_3345 expired from cache (ttl exceeded)
+2024-03-15 14:08:15 ERROR [auth-service] Cannot re-validate token — OAuth provider unreachable
+2024-03-15 14:08:15 ERROR [auth-service] Response: 401 Unauthorized (8ms) - token expired, re-authentication required
+2024-03-15 14:09:00 WARN  [auth-service] Health check: status=DOWN, oauth_provider=disconnected, cached_tokens_remaining=892
+2024-03-15 14:09:00 ERROR [auth-service] 28 consecutive OAuth connection failures
+2024-03-15 14:09:00 ERROR [auth-service] All token issuance requests failing (100% error rate)
+2024-03-15 14:09:30 ERROR [auth-service] Handling POST /auth/validate (client_ip: 10.0.1.22)
+2024-03-15 14:09:30 WARN  [auth-service] Token validation failed: token for user_5501 not found in cache (evicted)
+2024-03-15 14:09:30 ERROR [auth-service] Response: 401 Unauthorized (6ms)
+2024-03-15 14:10:00 ERROR [auth-service] Health check: status=DOWN, oauth_provider=disconnected, cached_tokens_remaining=734
+2024-03-15 14:10:00 ERROR [auth-service] Service effectively unavailable — no new tokens can be issued, cached tokens depleting rapidly
+2024-03-15 14:10:00 ERROR [auth-service] ALERT: Certificate /etc/ssl/certs/auth-service/client.pem expired. Immediate renewal required.

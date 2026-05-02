@@ -1,0 +1,92 @@
+[
+  {
+    "id": "eval_01_db_pool_basic",
+    "scenario": "scenario_01_db_pool",
+    "goal": "API 响应时间从 200ms 飙升到 5s 以上，大量请求超时，请定位根因。",
+    "expected_root_cause_keywords": ["连接池", "connection pool", "max_connections", "耗尽", "exhausted"],
+    "expected_affected_services": ["user-service", "postgres"],
+    "max_iterations": 8,
+    "difficulty": "easy"
+  },
+  {
+    "id": "eval_02_oom_basic",
+    "scenario": "scenario_02_oom",
+    "goal": "order-service 在过去 2 小时内反复重启，用户下单功能受影响，请分析原因。",
+    "expected_root_cause_keywords": ["OOM", "内存", "memory", "heap", "缓存", "cache", "HashMap"],
+    "expected_affected_services": ["order-service"],
+    "max_iterations": 8,
+    "difficulty": "medium"
+  },
+  {
+    "id": "eval_03_config_basic",
+    "scenario": "scenario_03_config",
+    "goal": "auth-service 错误率约 40%，部分请求返回 500，但不是全部失败，请排查。",
+    "expected_root_cause_keywords": ["redis", "配置", "config", "host", "redis-prod", "连接"],
+    "expected_affected_services": ["auth-service"],
+    "max_iterations": 8,
+    "difficulty": "medium"
+  },
+  {
+    "id": "eval_04_cascade_basic",
+    "scenario": "scenario_04_cascade",
+    "goal": "所有需要认证的 API 返回 503，用户完全无法登录，请定位根因。",
+    "expected_root_cause_keywords": ["证书", "certificate", "过期", "expired", "auth-service", "OAuth"],
+    "expected_affected_services": ["auth-service"],
+    "max_iterations": 10,
+    "difficulty": "medium"
+  },
+  {
+    "id": "eval_05_disk_basic",
+    "scenario": "scenario_05_disk",
+    "goal": "所有写入操作失败返回 500，读取正常，请分析原因。",
+    "expected_root_cause_keywords": ["磁盘", "disk", "空间", "space", "WAL", "满", "full"],
+    "expected_affected_services": ["postgres"],
+    "max_iterations": 8,
+    "difficulty": "easy"
+  },
+  {
+    "id": "eval_01_db_pool_vague",
+    "scenario": "scenario_01_db_pool",
+    "goal": "线上 API 很慢，用户投诉了，帮我看看怎么回事。",
+    "expected_root_cause_keywords": ["连接池", "connection pool", "max_connections", "耗尽"],
+    "expected_affected_services": ["user-service", "postgres"],
+    "max_iterations": 10,
+    "difficulty": "easy"
+  },
+  {
+    "id": "eval_02_oom_vague",
+    "scenario": "scenario_02_oom",
+    "goal": "order-service 一直挂，重启也没用，什么情况？",
+    "expected_root_cause_keywords": ["OOM", "内存", "memory", "heap", "缓存"],
+    "expected_affected_services": ["order-service"],
+    "max_iterations": 10,
+    "difficulty": "medium"
+  },
+  {
+    "id": "eval_03_config_targeted",
+    "scenario": "scenario_03_config",
+    "goal": "为什么 session 认证全挂了但 token 认证没事？",
+    "expected_root_cause_keywords": ["redis", "配置", "config", "host", "session"],
+    "expected_affected_services": ["auth-service"],
+    "max_iterations": 8,
+    "difficulty": "medium"
+  },
+  {
+    "id": "eval_05_disk_targeted",
+    "scenario": "scenario_05_disk",
+    "goal": "INSERT 和 UPDATE 全部报错，SELECT 正常，数据库怎么了？",
+    "expected_root_cause_keywords": ["磁盘", "disk", "空间", "WAL", "满", "full", "no space"],
+    "expected_affected_services": ["postgres"],
+    "max_iterations": 8,
+    "difficulty": "easy"
+  },
+  {
+    "id": "eval_04_cascade_targeted",
+    "scenario": "scenario_04_cascade",
+    "goal": "熔断器全部打开了，从哪个服务开始出问题的？",
+    "expected_root_cause_keywords": ["auth-service", "证书", "certificate", "expired", "级联"],
+    "expected_affected_services": ["auth-service"],
+    "max_iterations": 10,
+    "difficulty": "hard"
+  }
+]

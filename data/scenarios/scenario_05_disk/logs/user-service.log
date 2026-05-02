@@ -1,0 +1,73 @@
+2024-03-15 09:00:01 INFO  [user-service] Handling GET /users/587
+2024-03-15 09:00:01 DEBUG [user-service] Query: SELECT * FROM users WHERE id = 587
+2024-03-15 09:00:01 INFO  [user-service] Response: 200 OK (12ms)
+2024-03-15 09:10:00 INFO  [user-service] Handling POST /users/login
+2024-03-15 09:10:00 DEBUG [user-service] Authenticating user: email=alice@example.com
+2024-03-15 09:10:00 DEBUG [user-service] Query: SELECT * FROM users WHERE email = 'alice@example.com'
+2024-03-15 09:10:00 INFO  [user-service] Response: 200 OK (18ms)
+2024-03-15 09:20:05 INFO  [user-service] Handling PUT /users/587/profile
+2024-03-15 09:20:05 DEBUG [user-service] Updating profile: user_id=587, fields=[avatar_url, bio]
+2024-03-15 09:20:05 INFO  [user-service] Response: 200 OK (32ms)
+2024-03-15 09:30:00 INFO  [user-service] Handling GET /users/1203
+2024-03-15 09:30:00 INFO  [user-service] Response: 200 OK (10ms)
+2024-03-15 09:40:00 INFO  [user-service] Handling POST /users/register
+2024-03-15 09:40:00 DEBUG [user-service] Registering new user: email=bob@example.com
+2024-03-15 09:40:01 INFO  [user-service] Response: 201 Created (55ms)
+2024-03-15 09:50:00 INFO  [user-service] Handling GET /users/2051
+2024-03-15 09:50:00 INFO  [user-service] Response: 200 OK (11ms)
+2024-03-15 09:55:00 INFO  [user-service] Handling PUT /users/2051/profile
+2024-03-15 09:55:00 DEBUG [user-service] Updating profile: user_id=2051, fields=[bio]
+2024-03-15 09:55:01 WARN  [user-service] Slow DB write: UPDATE took 680ms (threshold: 200ms)
+2024-03-15 09:55:01 INFO  [user-service] Response: 200 OK (695ms)
+2024-03-15 10:00:00 INFO  [user-service] Handling GET /users/587
+2024-03-15 10:00:00 DEBUG [user-service] Query: SELECT * FROM users WHERE id = 587
+2024-03-15 10:00:00 INFO  [user-service] Response: 200 OK (14ms)
+2024-03-15 10:01:00 INFO  [user-service] Handling GET /users?department=engineering&limit=50
+2024-03-15 10:01:00 INFO  [user-service] Response: 200 OK (28ms)
+2024-03-15 10:02:00 INFO  [user-service] Handling PUT /users/587/profile
+2024-03-15 10:02:00 DEBUG [user-service] Updating profile: user_id=587, fields=[last_login]
+2024-03-15 10:02:05 ERROR [user-service] Database write failed: org.postgresql.util.PSQLException: ERROR: could not write to relation "users": No space left on device
+2024-03-15 10:02:05 ERROR [user-service]     at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675)
+2024-03-15 10:02:05 ERROR [user-service]     at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2365)
+2024-03-15 10:02:05 ERROR [user-service]     at com.example.userservice.repository.UserRepository.updateProfile(UserRepository.java:92)
+2024-03-15 10:02:05 ERROR [user-service] Response: 500 Internal Server Error — failed to update user profile (5020ms)
+2024-03-15 10:03:00 INFO  [user-service] Handling GET /users/4102
+2024-03-15 10:03:00 DEBUG [user-service] Query: SELECT * FROM users WHERE id = 4102
+2024-03-15 10:03:00 INFO  [user-service] Response: 200 OK (11ms)
+2024-03-15 10:04:00 INFO  [user-service] Handling POST /users/register
+2024-03-15 10:04:00 DEBUG [user-service] Registering new user: email=charlie@example.com
+2024-03-15 10:04:05 ERROR [user-service] Database write failed: org.postgresql.util.PSQLException: ERROR: could not extend file "base/16384/18290": No space left on device
+2024-03-15 10:04:05 ERROR [user-service]     at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675)
+2024-03-15 10:04:05 ERROR [user-service]     at com.example.userservice.repository.UserRepository.createUser(UserRepository.java:45)
+2024-03-15 10:04:05 ERROR [user-service] Response: 500 Internal Server Error — failed to register user (5015ms)
+2024-03-15 10:05:00 INFO  [user-service] Handling GET /users/1203
+2024-03-15 10:05:00 INFO  [user-service] Response: 200 OK (13ms)
+2024-03-15 10:06:00 INFO  [user-service] Handling POST /users/login
+2024-03-15 10:06:00 DEBUG [user-service] Authenticating user: email=alice@example.com
+2024-03-15 10:06:00 DEBUG [user-service] Query: SELECT * FROM users WHERE email = 'alice@example.com'
+2024-03-15 10:06:00 INFO  [user-service] Response: 200 OK (15ms)
+2024-03-15 10:07:00 INFO  [user-service] Handling PUT /users/1203/profile
+2024-03-15 10:07:00 DEBUG [user-service] Updating profile: user_id=1203, fields=[avatar_url]
+2024-03-15 10:07:05 ERROR [user-service] Database write failed: org.postgresql.util.PSQLException: ERROR: could not write to relation "user_profiles": No space left on device
+2024-03-15 10:07:05 ERROR [user-service]     at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675)
+2024-03-15 10:07:05 ERROR [user-service]     at com.example.userservice.repository.UserRepository.updateProfile(UserRepository.java:92)
+2024-03-15 10:07:05 ERROR [user-service] Response: 500 Internal Server Error — failed to update user profile (5008ms)
+2024-03-15 10:08:00 INFO  [user-service] Handling GET /users?created_after=2024-03-01
+2024-03-15 10:08:00 INFO  [user-service] Response: 200 OK (35ms)
+2024-03-15 10:10:00 INFO  [user-service] Handling POST /users/register
+2024-03-15 10:10:00 DEBUG [user-service] Registering new user: email=dave@example.com
+2024-03-15 10:10:05 ERROR [user-service] Database write failed: org.postgresql.util.PSQLException: ERROR: could not extend file "base/16384/18290": No space left on device
+2024-03-15 10:10:05 ERROR [user-service] Response: 500 Internal Server Error — failed to register user (5012ms)
+2024-03-15 10:12:00 INFO  [user-service] Handling GET /users/587
+2024-03-15 10:12:00 INFO  [user-service] Response: 200 OK (10ms)
+2024-03-15 10:15:00 INFO  [user-service] Handling POST /users/login
+2024-03-15 10:15:00 DEBUG [user-service] Authenticating user: email=bob@example.com
+2024-03-15 10:15:00 DEBUG [user-service] Query: SELECT * FROM users WHERE email = 'bob@example.com'
+2024-03-15 10:15:00 INFO  [user-service] Response: 200 OK (16ms)
+2024-03-15 10:18:00 INFO  [user-service] Handling PUT /users/4501/profile
+2024-03-15 10:18:00 DEBUG [user-service] Updating profile: user_id=4501, fields=[bio, avatar_url]
+2024-03-15 10:18:05 ERROR [user-service] Database write failed: org.postgresql.util.PSQLException: ERROR: could not write to relation "user_profiles": No space left on device
+2024-03-15 10:18:05 ERROR [user-service] Response: 500 Internal Server Error — failed to update user profile (5010ms)
+2024-03-15 10:20:00 WARN  [user-service] Health check: database write test FAILED — UPDATE returning "No space left on device"
+2024-03-15 10:20:00 WARN  [user-service] Health check: database read test PASSED — SELECT queries responding normally
+2024-03-15 10:20:00 ERROR [user-service] Service status changed to DEGRADED: write operations unavailable

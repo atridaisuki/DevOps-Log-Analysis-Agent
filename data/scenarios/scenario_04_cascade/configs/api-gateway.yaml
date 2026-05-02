@@ -1,0 +1,62 @@
+# api-gateway configuration
+
+server:
+  port: 8080
+  max_connections: 1000
+  request_timeout: 10000ms
+
+upstreams:
+  auth-service:
+    url: http://10.0.1.10:8083
+    health_check: /health
+    weight: 1
+  user-service:
+    url: http://10.0.1.21:8081
+    health_check: /health
+    weight: 1
+  order-service:
+    url: http://10.0.1.22:8082
+    health_check: /health
+    weight: 1
+
+circuit_breaker:
+  auth-service:
+    failure_threshold: 3
+    window: 10s
+    recovery_timeout: 60s
+    half_open_max_requests: 1
+    monitored_status_codes: [500, 502, 503, 504]
+  user-service:
+    failure_threshold: 5
+    window: 10s
+    recovery_timeout: 30s
+    half_open_max_requests: 2
+    monitored_status_codes: [500, 502, 503, 504]
+  order-service:
+    failure_threshold: 5
+    window: 10s
+    recovery_timeout: 30s
+    half_open_max_requests: 2
+    monitored_status_codes: [500, 502, 503, 504]
+
+health_check:
+  interval: 10s
+  timeout: 5000ms
+
+routes:
+  - path: /api/auth/**
+    upstream: auth-service
+    auth_required: false
+  - path: /api/users/**
+    upstream: user-service
+    auth_required: true
+  - path: /api/orders/**
+    upstream: order-service
+    auth_required: true
+  - path: /api/public/**
+    upstream: user-service
+    auth_required: false
+
+logging:
+  level: INFO
+  file: /var/log/api-gateway/api-gateway.log

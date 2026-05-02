@@ -1,0 +1,83 @@
+{
+  "cpu": {
+    "unit": "percent",
+    "data": [
+      {"time": "14:00", "value": 22},
+      {"time": "14:01", "value": 24},
+      {"time": "14:02", "value": 23},
+      {"time": "14:03", "value": 25},
+      {"time": "14:04", "value": 24},
+      {"time": "14:05", "value": 30},
+      {"time": "14:06", "value": 28},
+      {"time": "14:07", "value": 32},
+      {"time": "14:08", "value": 26},
+      {"time": "14:09", "value": 20},
+      {"time": "14:10", "value": 18}
+    ]
+  },
+  "memory": {
+    "unit": "MB",
+    "data": [
+      {"time": "14:00", "value": 280},
+      {"time": "14:01", "value": 285},
+      {"time": "14:02", "value": 282},
+      {"time": "14:03", "value": 288},
+      {"time": "14:04", "value": 284},
+      {"time": "14:05", "value": 295},
+      {"time": "14:06", "value": 302},
+      {"time": "14:07", "value": 310},
+      {"time": "14:08", "value": 305},
+      {"time": "14:09", "value": 298},
+      {"time": "14:10", "value": 290}
+    ]
+  },
+  "latency_p99": {
+    "unit": "ms",
+    "data": [
+      {"time": "14:00", "value": 160},
+      {"time": "14:01", "value": 155},
+      {"time": "14:02", "value": 165},
+      {"time": "14:03", "value": 158},
+      {"time": "14:04", "value": 162},
+      {"time": "14:05", "value": 2200},
+      {"time": "14:06", "value": 2800},
+      {"time": "14:07", "value": 3050},
+      {"time": "14:08", "value": 3010},
+      {"time": "14:09", "value": 3005},
+      {"time": "14:10", "value": 3002}
+    ]
+  },
+  "error_rate": {
+    "unit": "percent",
+    "data": [
+      {"time": "14:00", "value": 0.1},
+      {"time": "14:01", "value": 0.0},
+      {"time": "14:02", "value": 0.1},
+      {"time": "14:03", "value": 0.0},
+      {"time": "14:04", "value": 0.1},
+      {"time": "14:05", "value": 12.0},
+      {"time": "14:06", "value": 25.0},
+      {"time": "14:07", "value": 42.0},
+      {"time": "14:08", "value": 58.0},
+      {"time": "14:09", "value": 68.0},
+      {"time": "14:10", "value": 78.0}
+    ]
+  },
+  "auth_cache_hit_rate": {
+    "unit": "percent",
+    "data": [
+      {"time": "14:00", "value": 72},
+      {"time": "14:01", "value": 70},
+      {"time": "14:02", "value": 74},
+      {"time": "14:03", "value": 71},
+      {"time": "14:04", "value": 73},
+      {"time": "14:05", "value": 68},
+      {"time": "14:06", "value": 55},
+      {"time": "14:07", "value": 40},
+      {"time": "14:08", "value": 28},
+      {"time": "14:09", "value": 18},
+      {"time": "14:10", "value": 10}
+    ],
+    "note": "Cache hit rate declining as cached tokens expire and cannot be refreshed via auth-service"
+  }
+}

@@ -1,0 +1,40 @@
+# PostgreSQL configuration
+
+server:
+  port: 5432
+  max_connections: 200
+  shared_buffers: 2GB
+  work_mem: 64MB
+
+storage:
+  data_directory: /var/lib/postgresql/14/main
+  tablespace: /var/lib/postgresql/14/main/base
+  temp_directory: /var/lib/postgresql/14/main/pgsql_tmp
+
+wal:
+  wal_level: replica
+  max_wal_size: 20GB
+  min_wal_size: 2GB
+  wal_keep_size: 16GB
+  checkpoint_timeout: 30min
+  checkpoint_completion_target: 0.9
+  archive_mode: "off"
+  archive_command: ""
+  wal_compression: "off"
+
+logging:
+  log_directory: /var/lib/postgresql/14/main/pg_log
+  log_filename: postgresql-%Y-%m-%d.log
+  log_rotation_age: 0
+  log_rotation_size: 0
+  log_truncate_on_rotation: "off"
+  log_min_duration_statement: 500
+  log_statement: ddl
+
+vacuum:
+  autovacuum: "on"
+  autovacuum_max_workers: 3
+  autovacuum_naptime: 60s
+
+# NOTE: no disk space monitoring or WAL cleanup policy configured
+# NOTE: log_rotation_age and log_rotation_size both set to 0 (disabled)
