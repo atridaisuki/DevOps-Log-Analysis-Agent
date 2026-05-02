@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import logging
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any
 
 from langchain_anthropic import ChatAnthropic
@@ -57,6 +59,15 @@ def planner(state: AgentState) -> dict:
 
     response = llm.invoke([sys_msg] + messages)
 
+    # Log planner decision
+    tool_names = [tc["name"] for tc in response.tool_calls] if response.tool_calls else []
+    logger.info(
+        "planner: iteration=%d, action=%s, tools=%s",
+        state["iteration_count"] + 1,
+        "tool_calls" if tool_names else "final_answer",
+        tool_names or "none",
+    )
+
     return {
         "messages": [response],
         "iteration_count": state["iteration_count"] + 1,
@@ -64,19 +75,56 @@ def planner(state: AgentState) -> dict:
 
 
 # ── tool_executor ────────────────────────────────────────────────────
+
+logger = logging.getLogger("agent")
+
+
+def _execute_single_tool(tool_name: str, tool_input: dict, tool_fn) -> tuple[dict, bool, float]:
+    """Execute one tool with retry logic. Returns (result, success, elapsed_ms)."""
+    start = time.perf_counter()
+
+    if tool_fn is None:
+        result = {"success": False, "data": None, "error": f"Unknown tool: {tool_name}"}
+        elapsed_ms = (time.perf_counter() - start) * 1000
+        return result, False, round(elapsed_ms, 2)
+
+    # Retry logic: up to 2 attempts on transient exceptions
+    max_retries = 2
+    for attempt in range(max_retries):
+        try:
+            result = tool_fn.invoke(tool_input)
+            success = result.get("success", True) if isinstance(result, dict) else True
+            # Don't retry logical errors (e.g. file not found)
+            break
+        except Exception as exc:
+            if attempt < max_retries - 1:
+                time.sleep(0.5)
+                continue
+            result = {"success": False, "data": None, "error": str(exc)}
+            success = False
+
+    elapsed_ms = (time.perf_counter() - start) * 1000
+    return result, success, round(elapsed_ms, 2)
+
+
 def tool_executor(state: AgentState) -> dict:
-    """Execute the tool calls requested by the planner."""
+    """Execute the tool calls requested by the planner.
+
+    When multiple tools are requested, independent calls run in parallel
+    using a thread pool. read_file deduplication is checked upfront.
+    """
     last_message: AIMessage = state["messages"][-1]
     tool_calls = last_message.tool_calls
 
-    new_messages: list[ToolMessage] = []
-    new_records: list[ToolCallRecord] = []
     new_files_read: list[str] = list(state.get("files_read", []))
+
+    # Separate dedup-skipped calls from real calls
+    skip_results: dict[str, tuple[dict, ToolCallRecord]] = {}  # tc_id -> (result, record)
+    to_execute: list[tuple[str, dict, str, Any]] = []  # (tc_id, tool_input, tool_name, tool_fn)
 
     for tc in tool_calls:
         tool_name = tc["name"]
         tool_input = tc["args"]
-        tool_fn = _TOOL_MAP.get(tool_name)
 
         # Dedup: skip read_file if already read this exact file
         if tool_name == "read_file":
@@ -87,65 +135,61 @@ def tool_executor(state: AgentState) -> dict:
                     "data": f"[Already read '{file_key}' — see previous results above]",
                     "error": None,
                 }
-                new_messages.append(
-                    ToolMessage(content=str(result), tool_call_id=tc["id"])
-                )
-                new_records.append(
-                    ToolCallRecord(
-                        tool_name=tool_name,
-                        tool_input=tool_input,
-                        tool_output=result,
-                        duration_ms=0.0,
-                        success=True,
-                    )
-                )
+                skip_results[tc["id"]] = (result, ToolCallRecord(
+                    tool_name=tool_name, tool_input=tool_input,
+                    tool_output=result, duration_ms=0.0, success=True,
+                ))
                 continue
             else:
                 new_files_read.append(file_key)
 
-        start = time.perf_counter()
+        tool_fn = _TOOL_MAP.get(tool_name)
+        to_execute.append((tc["id"], tool_input, tool_name, tool_fn))
 
-        # 逻辑错误直接返回，网络超时进程崩溃等瞬时错误重试2次
-        if tool_fn is None:
-            result = {"success": False, "data": None, "error": f"Unknown tool: {tool_name}"}
-            success = False
-        else:
-            # Retry logic: up to 2 attempts on failure
-            max_retries = 2
-            for attempt in range(max_retries):
-                try:
-                    result = tool_fn.invoke(tool_input)
-                    success = result.get("success", True) if isinstance(result, dict) else True
-                    if success:
-                        break
-                    # Tool returned success=False — don't retry, it's a logical error
-                    # (e.g. file not found), not a transient failure
-                    break
-                except Exception as exc:
-                    if attempt < max_retries - 1:
-                        time.sleep(0.5)  # brief pause before retry
-                        continue
-                    result = {"success": False, "data": None, "error": str(exc)}
-                    success = False
+    # Execute tools in parallel when there are multiple calls
+    exec_results: dict[str, tuple[dict, bool, float, str, dict]] = {}
 
-        elapsed_ms = (time.perf_counter() - start) * 1000
+    if len(to_execute) == 1:
+        # Single tool — no need for thread pool overhead
+        tc_id, tool_input, tool_name, tool_fn = to_execute[0]
+        result, success, elapsed = _execute_single_tool(tool_name, tool_input, tool_fn)
+        exec_results[tc_id] = (result, success, elapsed, tool_name, tool_input)
+    elif to_execute:
+        with ThreadPoolExecutor(max_workers=min(len(to_execute), 4)) as pool:
+            futures = {}
+            for tc_id, tool_input, tool_name, tool_fn in to_execute:
+                fut = pool.submit(_execute_single_tool, tool_name, tool_input, tool_fn)
+                futures[fut] = (tc_id, tool_name, tool_input)
 
-        # Record for trace
-        new_records.append(
-            ToolCallRecord(
-                tool_name=tool_name,
-                tool_input=tool_input,
+            for fut in as_completed(futures):
+                tc_id, tool_name, tool_input = futures[fut]
+                result, success, elapsed = fut.result()
+                exec_results[tc_id] = (result, success, elapsed, tool_name, tool_input)
+
+    parallel = len(to_execute) > 1
+    if parallel:
+        logger.info("Executed %d tools in parallel", len(to_execute))
+
+    # Reassemble in original order
+    new_messages: list[ToolMessage] = []
+    new_records: list[ToolCallRecord] = []
+
+    for tc in tool_calls:
+        tc_id = tc["id"]
+
+        if tc_id in skip_results:
+            result, record = skip_results[tc_id]
+            new_messages.append(ToolMessage(content=str(result), tool_call_id=tc_id))
+            new_records.append(record)
+        elif tc_id in exec_results:
+            result, success, elapsed, tool_name, tool_input = exec_results[tc_id]
+            new_records.append(ToolCallRecord(
+                tool_name=tool_name, tool_input=tool_input,
                 tool_output=result if isinstance(result, dict) else {"data": str(result)},
-                duration_ms=round(elapsed_ms, 2),
-                success=success,
-            )
-        )
-
-        # ToolMessage goes back to the LLM
-        content = str(result) if not isinstance(result, str) else result
-        new_messages.append(
-            ToolMessage(content=content, tool_call_id=tc["id"])
-        )
+                duration_ms=elapsed, success=success,
+            ))
+            content = str(result) if not isinstance(result, str) else result
+            new_messages.append(ToolMessage(content=content, tool_call_id=tc_id))
 
     return {
         "messages": new_messages,
@@ -188,16 +232,19 @@ def critic(state: AgentState) -> dict:
 
     # Hard stop: max iterations reached 迭代次数达到上限
     if iteration >= max_iter:
+        logger.info("critic: STOP — max iterations reached (%d/%d)", iteration, max_iter)
         return {"status": "completed"}
 
     # Hard stop: 3 consecutive tool failures 3次失败强制暂停
     recent = state["tool_call_history"][-3:] if state["tool_call_history"] else []
     all_failed = len(recent) >= 3 and all(not r["success"] for r in recent)
     if all_failed:
+        logger.warning("critic: STOP — 3 consecutive tool failures")
         return {"status": "failed"}
 
     # Too early to judge — let the agent gather more data first
     if iteration < 2:
+        logger.info("critic: CONTINUE — too early (iteration %d)", iteration)
         return {"status": "running"}
 
     # LLM-based evaluation: is the evidence sufficient? 判断证据是否充足
@@ -218,10 +265,13 @@ def critic(state: AgentState) -> dict:
         response = llm.invoke([SystemMessage(content=prompt)])
         verdict = response.content.strip()
 
+        logger.info("critic: iteration=%d/%d, verdict=%s", iteration, max_iter, verdict[:80])
+
         if verdict.upper().startswith("SUFFICIENT"):
             return {"status": "completed"}
     except Exception:
         # If critic LLM call fails, default to continuing
+        logger.warning("critic: LLM call failed, defaulting to CONTINUE")
         pass
 
     return {"status": "running"}

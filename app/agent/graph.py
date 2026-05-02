@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
+import sqlite3
+from pathlib import Path
+
 from langchain_core.messages import AIMessage
-from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, StateGraph
 
 from app.agent.nodes import critic, planner, reporter, tool_executor
 from app.agent.state import AgentState
+from app.config import settings
 
 
 def _should_use_tools(state: AgentState) -> str:
@@ -67,7 +70,21 @@ def build_graph() -> StateGraph:
     # reporter → END
     graph.add_edge("reporter", END)
 
+    # Choose checkpointer based on config
+    if settings.database_url:
+        from psycopg import Connection
+        from langgraph.checkpoint.postgres import PostgresSaver
+        conn = Connection.connect(settings.database_url)
+        checkpointer = PostgresSaver(conn)
+        checkpointer.setup()  # create tables if not exist
+    else:
+        from langgraph.checkpoint.sqlite import SqliteSaver
+        db_path = Path("data/checkpoints.db")
+        db_path.parent.mkdir(parents=True, exist_ok=True)
+        conn = sqlite3.connect(str(db_path), check_same_thread=False)
+        checkpointer = SqliteSaver(conn)
+
     return graph.compile(
-        checkpointer=MemorySaver(),
+        checkpointer=checkpointer,
         interrupt_before=["reporter"],  # Human-in-the-loop: pause before final report
     )

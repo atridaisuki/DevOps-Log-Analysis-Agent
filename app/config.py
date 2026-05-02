@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     agent_tool_timeout: int = 30
     scenarios_dir: str = "data/scenarios"
     reports_dir: str = "data/reports"
+    database_url: str = ""  # postgresql://user:pass@host:5432/db — empty = use SQLite
 
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
 
