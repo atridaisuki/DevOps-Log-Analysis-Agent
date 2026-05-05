@@ -67,8 +67,12 @@ def build_graph() -> StateGraph:
         {"planner": "planner", "reporter": "reporter"},
     )
 
-    # reporter → END
-    graph.add_edge("reporter", END)
+    # Conditional: reporter → planner (user unsatisfied) or END (done)
+    graph.add_conditional_edges(
+        "reporter",
+        lambda state: "planner" if state["status"] == "running" else END,
+        {"planner": "planner", END: END},
+    )
 
     # Choose checkpointer based on config
     if settings.database_url:
@@ -86,5 +90,5 @@ def build_graph() -> StateGraph:
 
     return graph.compile(
         checkpointer=checkpointer,
-        interrupt_before=["reporter"],  # Human-in-the-loop: pause before final report
+        interrupt_after=["reporter"],  # Human-in-the-loop: pause after report so user can review
     )

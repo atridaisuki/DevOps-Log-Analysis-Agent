@@ -75,21 +75,27 @@ async def analyze(req: AnalyzeRequest):
     result = _graph.invoke(input_state, config)
 
     # Handle human-in-the-loop interrupt:
-    # The graph pauses before "reporter". If auto_approve is True,
-    # we resume immediately. Otherwise, return a "paused" response
-    # so the client can review findings before requesting the report.
+    # The graph pauses AFTER "reporter" so the user can review the report.
+    # If auto_approve is True, we resume immediately to finish.
+    # Otherwise, return the report in a "paused" response for user review.
     state_snapshot = _graph.get_state(config)
-    if state_snapshot.next and "reporter" in state_snapshot.next:
+    if state_snapshot.next:
         if req.auto_approve:
-            # Auto-resume: continue past the interrupt
+            # Auto-resume: continue past the interrupt to END
             result = _graph.invoke(None, config)
         else:
-            # Return paused state — client must call POST /agent/resume
+            # Extract the report that reporter already generated
+            report_content = ""
+            for msg in reversed(state_snapshot.values.get("messages", [])):
+                if hasattr(msg, "content") and msg.content and not hasattr(msg, "tool_call_id"):
+                    report_content = msg.content
+                    break
+
             total_ms = (time.perf_counter() - start) * 1000
             return AnalyzeResponse(
                 session_id=session_id,
-                status="paused_before_report",
-                root_cause="",
+                status="paused_after_report",
+                root_cause=report_content,
                 findings=state_snapshot.values.get("findings", []),
                 suggestions=[],
                 tool_trace=[
@@ -207,14 +213,17 @@ def _sse_event(event_type: str, data: dict) -> str:
 
 class ResumeRequest(BaseModel):
     session_id: str = Field(..., description="Session ID of the paused analysis")
+    feedback: str | None = Field(None, description="User feedback to continue investigation. Leave empty to accept the report.")
 
 
 @router.post("/resume", response_model=AnalyzeResponse)
 async def resume(req: ResumeRequest):
     """Resume a paused analysis (after human-in-the-loop review).
 
-    Call this after receiving a 'paused_before_report' status to let
-    the agent generate the final report.
+    Call this after receiving a 'paused_after_report' status.
+    - If feedback is provided: inject it as a new message, reset status to
+      'running', and let the agent continue investigating from planner.
+    - If feedback is empty/None: accept the report and finish the graph.
     """
     config = {"configurable": {"thread_id": req.session_id}}
 
@@ -223,7 +232,20 @@ async def resume(req: ResumeRequest):
         raise HTTPException(400, "No paused session found for this session_id")
 
     start = time.perf_counter()
-    result = _graph.invoke(None, config)
+
+    if req.feedback:
+        # User unsatisfied — inject feedback and continue investigation
+        result = _graph.invoke(
+            {
+                "messages": [HumanMessage(content=req.feedback)],
+                "status": "running",
+                "iteration_count": 0,
+            },
+            config,
+        )
+    else:
+        # User satisfied — finish the graph
+        result = _graph.invoke(None, config)
     total_ms = (time.perf_counter() - start) * 1000
 
     final_report = ""
