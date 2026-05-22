@@ -13,6 +13,7 @@ from langchain_core.messages import AIMessage, HumanMessage, SystemMessage, Tool
 from app.agent.memory import maybe_compress_messages
 from app.agent.prompts import SYSTEM_PROMPT
 from app.agent.state import AgentState, ToolCallRecord
+from app.agent.token_tracking import extract_token_usage
 from app.config import settings
 from app.tools import ALL_TOOLS
 
@@ -45,7 +46,7 @@ def planner(state: AgentState) -> dict:
         messages = [HumanMessage(content=state["user_goal"])]
 
     # Compress older messages if context is getting too long
-    messages = maybe_compress_messages(messages)
+    messages, compress_usage = maybe_compress_messages(messages)
 
     # Tell the LLM which files have already been read
     files_read = state.get("files_read", [])
@@ -59,6 +60,13 @@ def planner(state: AgentState) -> dict:
 
     response = llm.invoke([sys_msg] + messages)
 
+    # Track token usage
+    usage_record = extract_token_usage(response, "planner", settings.anthropic_model)
+    new_usage = state.get("token_usage", [])
+    if compress_usage:
+        new_usage = new_usage + [compress_usage]
+    new_usage = new_usage + [usage_record]
+
     # Log planner decision
     tool_names = [tc["name"] for tc in response.tool_calls] if response.tool_calls else []
     logger.info(
@@ -71,6 +79,7 @@ def planner(state: AgentState) -> dict:
     return {
         "messages": [response],
         "iteration_count": state["iteration_count"] + 1,
+        "token_usage": new_usage,
     }
 
 
@@ -262,17 +271,32 @@ def critic(state: AgentState) -> dict:
 
     try:
         llm = _get_llm()
-        response = llm.invoke([SystemMessage(content=prompt)])
-        verdict = response.content.strip()
+        response = llm.invoke([
+            SystemMessage(content="You are a critical evaluator of an incident investigation. Respond with SUFFICIENT or CONTINUE."),
+            HumanMessage(content=prompt),
+        ])
+        # response.content may be a string or a list of content blocks
+        raw_content = response.content
+        if isinstance(raw_content, list):
+            verdict = "".join(
+                block.get("text", "") if isinstance(block, dict) else str(block)
+                for block in raw_content
+            ).strip()
+        else:
+            verdict = raw_content.strip()
+
+        # Track token usage
+        usage_record = extract_token_usage(response, "critic", settings.anthropic_model)
 
         logger.info("critic: iteration=%d/%d, verdict=%s", iteration, max_iter, verdict[:80])
 
         if verdict.upper().startswith("SUFFICIENT"):
-            return {"status": "completed"}
-    except Exception:
+            return {"status": "completed", "token_usage": state.get("token_usage", []) + [usage_record]}
+
+        return {"status": "running", "token_usage": state.get("token_usage", []) + [usage_record]}
+    except Exception as e:
         # If critic LLM call fails, default to continuing
-        logger.warning("critic: LLM call failed, defaulting to CONTINUE")
-        pass
+        logger.warning("critic: LLM call failed (%s), defaulting to CONTINUE", str(e)[:200])
 
     return {"status": "running"}
 
@@ -281,6 +305,9 @@ def critic(state: AgentState) -> dict:
 def reporter(state: AgentState) -> dict:
     """Generate a final structured report from the conversation."""
     llm = _get_llm()
+
+    # Compress messages to avoid token overflow
+    messages, compress_usage = maybe_compress_messages(list(state["messages"]))
 
     summary_prompt = HumanMessage(
         content=(
@@ -297,9 +324,17 @@ def reporter(state: AgentState) -> dict:
         content="You are a DevOps incident analyst. Summarize the investigation."
     )
 
-    response = llm.invoke([sys_msg] + list(state["messages"]) + [summary_prompt])
+    response = llm.invoke([sys_msg] + messages + [summary_prompt])
+
+    # Track token usage
+    usage_record = extract_token_usage(response, "reporter", settings.anthropic_model)
+    new_usage = state.get("token_usage", [])
+    if compress_usage:
+        new_usage = new_usage + [compress_usage]
+    new_usage = new_usage + [usage_record]
 
     return {
         "messages": [response],
         "status": "completed",
+        "token_usage": new_usage,
     }

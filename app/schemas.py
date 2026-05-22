@@ -19,6 +19,14 @@ class ToolTrace(BaseModel):
     success: bool
 
 
+class TokenUsageSummary(BaseModel):
+    total_input: int = 0
+    total_output: int = 0
+    total_cache_read: int = 0
+    total_cost_usd: float = 0.0
+    by_node: dict = Field(default_factory=dict)
+
+
 class AnalyzeResponse(BaseModel):
     session_id: str
     status: str
@@ -28,3 +36,4 @@ class AnalyzeResponse(BaseModel):
     tool_trace: list[ToolTrace]
     iterations: int
     total_duration_ms: float
+    token_usage: TokenUsageSummary | None = None

@@ -15,13 +15,26 @@ from pydantic import BaseModel, Field
 
 from app.agent.graph import build_graph
 from app.agent.state import AgentState
+from app.agent.token_tracking import summarize_usage
 from app.config import settings
-from app.schemas import AnalyzeRequest, AnalyzeResponse, ToolTrace
+from app.schemas import AnalyzeRequest, AnalyzeResponse, TokenUsageSummary, ToolTrace
 
 router = APIRouter()
 
 # Compile graph once at module level (includes MemorySaver checkpointer)
 _graph = build_graph()
+
+
+def _extract_text(content) -> str:
+    """Extract plain text from message content (handles both str and list of content blocks)."""
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        return "".join(
+            block.get("text", "") if isinstance(block, dict) else str(block)
+            for block in content
+        )
+    return str(content)
 
 
 def _build_input_state(
@@ -57,6 +70,7 @@ def _build_input_state(
             "iteration_count": 0,
             "max_iterations": req.max_iterations,
             "status": "running",
+            "token_usage": [],
         }
 
     return input_state, session_id, config
@@ -88,7 +102,7 @@ async def analyze(req: AnalyzeRequest):
             report_content = ""
             for msg in reversed(state_snapshot.values.get("messages", [])):
                 if hasattr(msg, "content") and msg.content and not hasattr(msg, "tool_call_id"):
-                    report_content = msg.content
+                    report_content = _extract_text(msg.content)
                     break
 
             total_ms = (time.perf_counter() - start) * 1000
@@ -112,7 +126,7 @@ async def analyze(req: AnalyzeRequest):
     final_report = ""
     for msg in reversed(result["messages"]):
         if hasattr(msg, "content") and msg.content and not hasattr(msg, "tool_call_id"):
-            final_report = msg.content
+            final_report = _extract_text(msg.content)
             break
 
     tool_trace = [
@@ -126,6 +140,8 @@ async def analyze(req: AnalyzeRequest):
         for r in result.get("tool_call_history", [])
     ]
 
+    usage_summary = summarize_usage(result.get("token_usage", []))
+
     return AnalyzeResponse(
         session_id=session_id,
         status=result.get("status", "completed"),
@@ -135,6 +151,7 @@ async def analyze(req: AnalyzeRequest):
         tool_trace=tool_trace,
         iterations=result.get("iteration_count", 0),
         total_duration_ms=round(total_ms, 2),
+        token_usage=TokenUsageSummary(**usage_summary),
     )
 
 
@@ -172,7 +189,7 @@ async def analyze_stream(req: AnalyzeRequest):
                             payload["tools"] = tools
                         else:
                             payload["action"] = "final_answer"
-                            payload["preview"] = (ai_msg.content or "")[:200]
+                            payload["preview"] = _extract_text(ai_msg.content)[:200]
                     payload["iteration"] = updates.get("iteration_count")
 
                 elif node_name == "tool_executor":
@@ -192,12 +209,16 @@ async def analyze_stream(req: AnalyzeRequest):
                 elif node_name == "reporter":
                     msgs = updates.get("messages", [])
                     if msgs:
-                        payload["report_preview"] = (msgs[0].content or "")[:300]
+                        payload["report_preview"] = _extract_text(msgs[0].content)[:300]
 
                 yield _sse_event("node", payload)
 
         total_ms = (time.perf_counter() - start) * 1000
-        yield _sse_event("done", {"total_duration_ms": round(total_ms, 2)})
+
+        # Get final state for token usage
+        final_state = _graph.get_state(config)
+        usage_summary = summarize_usage(final_state.values.get("token_usage", []))
+        yield _sse_event("done", {"total_duration_ms": round(total_ms, 2), "token_usage": usage_summary})
 
     return StreamingResponse(
         event_generator(),
@@ -234,12 +255,14 @@ async def resume(req: ResumeRequest):
     start = time.perf_counter()
 
     if req.feedback:
-        # User unsatisfied — inject feedback and continue investigation
+        # User unsatisfied — inject feedback and continue with extra budget
+        current_iter = state_snapshot.values.get("iteration_count", 0)
+        current_max = state_snapshot.values.get("max_iterations", 8)
         result = _graph.invoke(
             {
                 "messages": [HumanMessage(content=req.feedback)],
                 "status": "running",
-                "iteration_count": 0,
+                "max_iterations": current_max + 3,
             },
             config,
         )
@@ -251,7 +274,7 @@ async def resume(req: ResumeRequest):
     final_report = ""
     for msg in reversed(result["messages"]):
         if hasattr(msg, "content") and msg.content and not hasattr(msg, "tool_call_id"):
-            final_report = msg.content
+            final_report = _extract_text(msg.content)
             break
 
     tool_trace = [

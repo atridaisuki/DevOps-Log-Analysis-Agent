@@ -1,0 +1,452 @@
+2024-03-15 09:00:32 INFO  [redis] Connection accepted from 10.0.1.64:40905
+2024-03-15 09:00:40 INFO  [redis] DB 0: 20367 keys, expires=1372
+2024-03-15 09:00:53 INFO  [redis] RDB: 2 changes in 185 seconds. Saving...
+2024-03-15 09:01:23 INFO  [redis] RDB: 4 changes in 293 seconds. Saving...
+2024-03-15 09:01:27 INFO  [redis] Connection accepted from 192.168.2.210:43190
+2024-03-15 09:01:38 INFO  [redis] DB 0: 6191 keys, expires=2397
+2024-03-15 09:01:51 INFO  [redis] RDB: 4 changes in 143 seconds. Saving...
+2024-03-15 09:02:35 INFO  [redis] Connection accepted from 192.168.2.58:48803
+2024-03-15 09:02:35 INFO  [redis] DB 0: 18060 keys, expires=497
+2024-03-15 09:02:36 INFO  [redis] RDB: 4 changes in 285 seconds. Saving...
+2024-03-15 09:02:42 INFO  [redis] RDB: 2 changes in 177 seconds. Saving...
+2024-03-15 09:03:08 INFO  [redis] Connection accepted from 192.168.2.173:59649
+2024-03-15 09:03:36 INFO  [redis] Connection accepted from 10.0.2.199:50176
+2024-03-15 09:03:38 INFO  [redis] RDB: 3 changes in 93 seconds. Saving...
+2024-03-15 09:04:16 INFO  [redis] RDB: 2 changes in 248 seconds. Saving...
+2024-03-15 09:04:27 INFO  [redis] Background saving terminated with success
+2024-03-15 09:05:19 INFO  [redis] DB 0: 13589 keys, expires=1957
+2024-03-15 09:06:00 INFO  [redis] Background saving terminated with success
+2024-03-15 09:06:01 INFO  [redis] RDB: 1 changes in 85 seconds. Saving...
+2024-03-15 09:06:56 INFO  [redis] DB 0: 45543 keys, expires=2009
+2024-03-15 09:07:06 INFO  [redis] DB 0: 22788 keys, expires=3207
+2024-03-15 09:07:09 INFO  [redis] DB 0: 29813 keys, expires=3742
+2024-03-15 09:07:18 INFO  [redis] Connection accepted from 192.168.2.83:44332
+2024-03-15 09:07:19 INFO  [redis] Background saving terminated with success
+2024-03-15 09:07:40 INFO  [redis] DB 0: 10504 keys, expires=831
+2024-03-15 09:07:52 INFO  [redis] Background saving terminated with success
+2024-03-15 09:07:53 INFO  [redis] Background saving terminated with success
+2024-03-15 09:07:57 INFO  [redis] RDB: 1 changes in 228 seconds. Saving...
+2024-03-15 09:08:08 INFO  [redis] Background saving terminated with success
+2024-03-15 09:08:30 INFO  [redis] Background saving terminated with success
+2024-03-15 09:08:35 INFO  [redis] Background saving terminated with success
+2024-03-15 09:08:37 INFO  [redis] Background saving terminated with success
+2024-03-15 09:08:44 INFO  [redis] Background saving terminated with success
+2024-03-15 09:08:45 INFO  [redis] Background saving terminated with success
+2024-03-15 09:08:51 INFO  [redis] Connection accepted from 10.0.2.244:45471
+2024-03-15 09:09:22 INFO  [redis] Background saving terminated with success
+2024-03-15 09:09:25 INFO  [redis] DB 0: 40640 keys, expires=4364
+2024-03-15 09:09:30 INFO  [redis] RDB: 4 changes in 156 seconds. Saving...
+2024-03-15 09:09:52 INFO  [redis] DB 0: 31106 keys, expires=2781
+2024-03-15 09:09:56 INFO  [redis] Background saving terminated with success
+2024-03-15 09:09:58 INFO  [redis] DB 0: 11508 keys, expires=3513
+2024-03-15 09:10:02 INFO  [redis] Background saving terminated with success
+2024-03-15 09:10:16 INFO  [redis] Connection accepted from 10.0.1.57:56481
+2024-03-15 09:10:35 INFO  [redis] DB 0: 11105 keys, expires=1202
+2024-03-15 09:10:52 INFO  [redis] DB 0: 13377 keys, expires=2862
+2024-03-15 09:10:53 INFO  [redis] Background saving terminated with success
+2024-03-15 09:10:58 INFO  [redis] Connection accepted from 10.0.2.112:52659
+2024-03-15 09:10:59 INFO  [redis] Background saving terminated with success
+2024-03-15 09:11:12 INFO  [redis] DB 0: 33895 keys, expires=3400
+2024-03-15 09:11:19 INFO  [redis] Connection accepted from 10.0.1.199:44112
+2024-03-15 09:11:39 INFO  [redis] DB 0: 6755 keys, expires=4016
+2024-03-15 09:11:52 INFO  [redis] RDB: 1 changes in 80 seconds. Saving...
+2024-03-15 09:12:05 INFO  [redis] Connection accepted from 10.0.1.64:51837
+2024-03-15 09:12:08 INFO  [redis] Background saving terminated with success
+2024-03-15 09:12:20 INFO  [redis] RDB: 3 changes in 135 seconds. Saving...
+2024-03-15 09:12:21 INFO  [redis] DB 0: 33193 keys, expires=2887
+2024-03-15 09:12:22 INFO  [redis] Background saving terminated with success
+2024-03-15 09:12:52 INFO  [redis] DB 0: 21997 keys, expires=3879
+2024-03-15 09:12:54 INFO  [redis] Connection accepted from 192.168.1.12:55600
+2024-03-15 09:12:54 INFO  [redis] DB 0: 15844 keys, expires=4744
+2024-03-15 09:13:13 INFO  [redis] Connection accepted from 10.0.2.227:44799
+2024-03-15 09:13:16 INFO  [redis] Background saving terminated with success
+2024-03-15 09:13:22 INFO  [redis] Background saving terminated with success
+2024-03-15 09:13:35 INFO  [redis] Connection accepted from 192.168.1.194:47521
+2024-03-15 09:14:17 INFO  [redis] RDB: 3 changes in 267 seconds. Saving...
+2024-03-15 09:14:17 INFO  [redis] DB 0: 37965 keys, expires=144
+2024-03-15 09:14:33 INFO  [redis] RDB: 3 changes in 169 seconds. Saving...
+2024-03-15 09:14:33 INFO  [redis] Background saving terminated with success
+2024-03-15 09:14:56 INFO  [redis] RDB: 4 changes in 238 seconds. Saving...
+2024-03-15 09:15:03 INFO  [redis] DB 0: 41548 keys, expires=4874
+2024-03-15 09:15:04 INFO  [redis] DB 0: 11520 keys, expires=3952
+2024-03-15 09:15:11 INFO  [redis] DB 0: 10172 keys, expires=4535
+2024-03-15 09:15:27 INFO  [redis] DB 0: 7031 keys, expires=1974
+2024-03-15 09:15:29 INFO  [redis] DB 0: 41661 keys, expires=1795
+2024-03-15 09:15:37 INFO  [redis] DB 0: 17133 keys, expires=1353
+2024-03-15 09:15:59 INFO  [redis] RDB: 2 changes in 195 seconds. Saving...
+2024-03-15 09:16:25 INFO  [redis] Background saving terminated with success
+2024-03-15 09:16:45 INFO  [redis] DB 0: 47692 keys, expires=3523
+2024-03-15 09:16:54 INFO  [redis] Background saving terminated with success
+2024-03-15 09:17:12 INFO  [redis] Background saving terminated with success
+2024-03-15 09:17:15 INFO  [redis] Connection accepted from 192.168.2.107:50457
+2024-03-15 09:17:22 INFO  [redis] Background saving terminated with success
+2024-03-15 09:17:28 INFO  [redis] DB 0: 44617 keys, expires=1661
+2024-03-15 09:17:30 INFO  [redis] DB 0: 7756 keys, expires=468
+2024-03-15 09:17:30 INFO  [redis] DB 0: 1339 keys, expires=4111
+2024-03-15 09:17:31 INFO  [redis] RDB: 1 changes in 210 seconds. Saving...
+2024-03-15 09:18:27 INFO  [redis] Connection accepted from 192.168.1.125:56232
+2024-03-15 09:18:34 INFO  [redis] DB 0: 43753 keys, expires=856
+2024-03-15 09:18:40 INFO  [redis] Connection accepted from 192.168.2.234:51275
+2024-03-15 09:18:56 INFO  [redis] RDB: 3 changes in 221 seconds. Saving...
+2024-03-15 09:19:15 INFO  [redis] Connection accepted from 192.168.2.50:51404
+2024-03-15 09:19:50 INFO  [redis] Background saving terminated with success
+2024-03-15 09:20:26 INFO  [redis] Background saving terminated with success
+2024-03-15 09:20:27 INFO  [redis] Connection accepted from 10.0.2.237:41029
+2024-03-15 09:20:31 INFO  [redis] Connection accepted from 192.168.2.92:51161
+2024-03-15 09:20:39 INFO  [redis] RDB: 2 changes in 234 seconds. Saving...
+2024-03-15 09:20:39 WARN  [redis] Slow command detected: KEYS pattern* took 55ms
+2024-03-15 09:20:44 INFO  [redis] DB 0: 15091 keys, expires=4131
+2024-03-15 09:20:56 INFO  [redis] RDB: 2 changes in 129 seconds. Saving...
+2024-03-15 09:21:00 INFO  [redis] Background saving terminated with success
+2024-03-15 09:21:35 INFO  [redis] DB 0: 31810 keys, expires=1826
+2024-03-15 09:21:41 INFO  [redis] RDB: 2 changes in 119 seconds. Saving...
+2024-03-15 09:21:41 WARN  [redis] Memory usage: 63% of maxmemory (107MB/203MB)
+2024-03-15 09:22:14 INFO  [redis] Connection accepted from 10.0.2.15:48414
+2024-03-15 09:22:53 INFO  [redis] DB 0: 18126 keys, expires=4498
+2024-03-15 09:23:10 INFO  [redis] DB 0: 23154 keys, expires=256
+2024-03-15 09:23:14 INFO  [redis] Background saving terminated with success
+2024-03-15 09:23:15 INFO  [redis] RDB: 3 changes in 98 seconds. Saving...
+2024-03-15 09:24:34 INFO  [redis] RDB: 3 changes in 134 seconds. Saving...
+2024-03-15 09:25:12 INFO  [redis] Background saving terminated with success
+2024-03-15 09:25:22 INFO  [redis] Connection accepted from 192.168.2.68:44286
+2024-03-15 09:25:23 INFO  [redis] RDB: 5 changes in 248 seconds. Saving...
+2024-03-15 09:25:45 INFO  [redis] DB 0: 32380 keys, expires=1322
+2024-03-15 09:25:50 INFO  [redis] RDB: 1 changes in 221 seconds. Saving...
+2024-03-15 09:25:59 INFO  [redis] Connection accepted from 10.0.2.195:45930
+2024-03-15 09:26:57 INFO  [redis] Connection accepted from 192.168.1.239:51345
+2024-03-15 09:27:35 INFO  [redis] DB 0: 17993 keys, expires=4966
+2024-03-15 09:28:03 INFO  [redis] Connection accepted from 10.0.1.39:49422
+2024-03-15 09:28:04 INFO  [redis] RDB: 2 changes in 205 seconds. Saving...
+2024-03-15 09:28:20 INFO  [redis] DB 0: 17057 keys, expires=3117
+2024-03-15 09:28:34 INFO  [redis] Connection accepted from 10.0.2.82:57269
+2024-03-15 09:28:53 INFO  [redis] RDB: 4 changes in 148 seconds. Saving...
+2024-03-15 09:28:53 INFO  [redis] Connection accepted from 192.168.2.196:59939
+2024-03-15 09:29:30 INFO  [redis] Connection accepted from 10.0.1.50:46888
+2024-03-15 09:29:32 INFO  [redis] Background saving terminated with success
+2024-03-15 09:29:32 INFO  [redis] DB 0: 23675 keys, expires=2769
+2024-03-15 09:29:48 INFO  [redis] RDB: 1 changes in 77 seconds. Saving...
+2024-03-15 09:30:08 INFO  [redis] Connection accepted from 192.168.2.61:40867
+2024-03-15 09:30:27 INFO  [redis] DB 0: 4107 keys, expires=3354
+2024-03-15 09:30:29 INFO  [redis] Connection accepted from 192.168.2.118:44549
+2024-03-15 09:30:33 INFO  [redis] RDB: 2 changes in 168 seconds. Saving...
+2024-03-15 09:30:45 INFO  [redis] DB 0: 30904 keys, expires=1247
+2024-03-15 09:30:58 INFO  [redis] DB 0: 13449 keys, expires=1368
+2024-03-15 09:31:19 INFO  [redis] Background saving terminated with success
+2024-03-15 09:31:19 INFO  [redis] Connection accepted from 192.168.2.210:55286
+2024-03-15 09:31:35 INFO  [redis] Connection accepted from 192.168.1.137:45289
+2024-03-15 09:31:38 INFO  [redis] Connection accepted from 10.0.1.239:43983
+2024-03-15 09:31:45 INFO  [redis] Background saving terminated with success
+2024-03-15 09:31:47 INFO  [redis] RDB: 2 changes in 229 seconds. Saving...
+2024-03-15 09:31:57 INFO  [redis] RDB: 5 changes in 151 seconds. Saving...
+2024-03-15 09:32:02 INFO  [redis] RDB: 3 changes in 279 seconds. Saving...
+2024-03-15 09:32:17 INFO  [redis] Connection accepted from 192.168.1.115:48282
+2024-03-15 09:32:22 INFO  [redis] DB 0: 8581 keys, expires=2724
+2024-03-15 09:32:24 INFO  [redis] RDB: 3 changes in 92 seconds. Saving...
+2024-03-15 09:32:30 INFO  [redis] Background saving terminated with success
+2024-03-15 09:32:35 INFO  [redis] RDB: 5 changes in 225 seconds. Saving...
+2024-03-15 09:32:40 INFO  [redis] RDB: 1 changes in 255 seconds. Saving...
+2024-03-15 09:33:57 INFO  [redis] Connection accepted from 192.168.1.114:42326
+2024-03-15 09:34:11 INFO  [redis] DB 0: 30060 keys, expires=267
+2024-03-15 09:34:41 INFO  [redis] Background saving terminated with success
+2024-03-15 09:34:56 INFO  [redis] Connection accepted from 192.168.2.202:50923
+2024-03-15 09:35:57 INFO  [redis] Connection accepted from 10.0.1.196:49269
+2024-03-15 09:36:07 INFO  [redis] DB 0: 15021 keys, expires=2564
+2024-03-15 09:36:17 INFO  [redis] DB 0: 28783 keys, expires=1662
+2024-03-15 09:36:22 INFO  [redis] DB 0: 23708 keys, expires=188
+2024-03-15 09:36:22 WARN  [redis] Memory usage: 77% of maxmemory (178MB/243MB)
+2024-03-15 09:36:26 INFO  [redis] RDB: 2 changes in 149 seconds. Saving...
+2024-03-15 09:37:01 INFO  [redis] RDB: 5 changes in 152 seconds. Saving...
+2024-03-15 09:37:11 INFO  [redis] Background saving terminated with success
+2024-03-15 09:37:27 INFO  [redis] RDB: 4 changes in 79 seconds. Saving...
+2024-03-15 09:38:08 INFO  [redis] DB 0: 8829 keys, expires=3409
+2024-03-15 09:38:19 INFO  [redis] DB 0: 25036 keys, expires=372
+2024-03-15 09:38:22 INFO  [redis] Connection accepted from 192.168.1.191:49420
+2024-03-15 09:38:40 INFO  [redis] RDB: 2 changes in 66 seconds. Saving...
+2024-03-15 09:39:04 INFO  [redis] RDB: 1 changes in 176 seconds. Saving...
+2024-03-15 09:39:45 INFO  [redis] DB 0: 37116 keys, expires=1869
+2024-03-15 09:39:54 INFO  [redis] RDB: 2 changes in 98 seconds. Saving...
+2024-03-15 09:39:56 INFO  [redis] Connection accepted from 10.0.1.37:55782
+2024-03-15 09:40:13 INFO  [redis] RDB: 2 changes in 66 seconds. Saving...
+2024-03-15 09:40:36 INFO  [redis] RDB: 5 changes in 212 seconds. Saving...
+2024-03-15 09:40:37 INFO  [redis] Background saving terminated with success
+2024-03-15 09:41:02 INFO  [redis] Background saving terminated with success
+2024-03-15 09:41:29 INFO  [redis] DB 0: 20736 keys, expires=1089
+2024-03-15 09:41:30 INFO  [redis] RDB: 4 changes in 253 seconds. Saving...
+2024-03-15 09:41:31 WARN  [redis] Memory usage: 63% of maxmemory (188MB/220MB)
+2024-03-15 09:41:45 INFO  [redis] RDB: 2 changes in 93 seconds. Saving...
+2024-03-15 09:41:46 INFO  [redis] Background saving terminated with success
+2024-03-15 09:41:57 INFO  [redis] RDB: 1 changes in 115 seconds. Saving...
+2024-03-15 09:41:59 INFO  [redis] DB 0: 39470 keys, expires=2638
+2024-03-15 09:42:12 INFO  [redis] Connection accepted from 10.0.1.111:49361
+2024-03-15 09:42:17 INFO  [redis] Connection accepted from 192.168.2.35:57974
+2024-03-15 09:42:27 INFO  [redis] Background saving terminated with success
+2024-03-15 09:42:42 INFO  [redis] DB 0: 6103 keys, expires=2331
+2024-03-15 09:43:05 INFO  [redis] Background saving terminated with success
+2024-03-15 09:43:14 INFO  [redis] Background saving terminated with success
+2024-03-15 09:43:16 INFO  [redis] RDB: 2 changes in 219 seconds. Saving...
+2024-03-15 09:43:22 INFO  [redis] RDB: 5 changes in 85 seconds. Saving...
+2024-03-15 09:43:30 INFO  [redis] Background saving terminated with success
+2024-03-15 09:43:37 INFO  [redis] Connection accepted from 192.168.1.77:58539
+2024-03-15 09:43:40 INFO  [redis] Background saving terminated with success
+2024-03-15 09:44:41 INFO  [redis] RDB: 2 changes in 209 seconds. Saving...
+2024-03-15 09:44:47 INFO  [redis] DB 0: 39532 keys, expires=4607
+2024-03-15 09:44:47 INFO  [redis] Background saving terminated with success
+2024-03-15 09:44:52 INFO  [redis] Background saving terminated with success
+2024-03-15 09:45:14 INFO  [redis] Connection accepted from 10.0.1.177:51207
+2024-03-15 09:45:33 INFO  [redis] DB 0: 43201 keys, expires=1050
+2024-03-15 09:45:43 INFO  [redis] Background saving terminated with success
+2024-03-15 09:45:43 INFO  [redis] Connection accepted from 10.0.2.244:42816
+2024-03-15 09:45:50 INFO  [redis] Connection accepted from 192.168.1.37:56668
+2024-03-15 09:46:26 INFO  [redis] Connection accepted from 10.0.2.92:56019
+2024-03-15 09:46:29 INFO  [redis] DB 0: 38770 keys, expires=4813
+2024-03-15 09:46:30 INFO  [redis] RDB: 5 changes in 261 seconds. Saving...
+2024-03-15 09:46:39 INFO  [redis] Background saving terminated with success
+2024-03-15 09:46:39 INFO  [redis] Connection accepted from 192.168.1.15:48431
+2024-03-15 09:47:16 INFO  [redis] RDB: 1 changes in 155 seconds. Saving...
+2024-03-15 09:47:42 INFO  [redis] DB 0: 2785 keys, expires=3247
+2024-03-15 09:47:45 INFO  [redis] Connection accepted from 192.168.2.12:48446
+2024-03-15 09:48:16 INFO  [redis] DB 0: 40944 keys, expires=4774
+2024-03-15 09:49:13 INFO  [redis] Background saving terminated with success
+2024-03-15 09:49:35 INFO  [redis] RDB: 5 changes in 177 seconds. Saving...
+2024-03-15 09:49:57 INFO  [redis] Background saving terminated with success
+2024-03-15 09:49:59 INFO  [redis] RDB: 5 changes in 109 seconds. Saving...
+2024-03-15 09:50:03 INFO  [redis] RDB: 5 changes in 83 seconds. Saving...
+2024-03-15 09:50:13 INFO  [redis] Connection accepted from 192.168.2.58:58513
+2024-03-15 09:50:16 INFO  [redis] Background saving terminated with success
+2024-03-15 09:50:43 INFO  [redis] RDB: 5 changes in 249 seconds. Saving...
+2024-03-15 09:50:50 INFO  [redis] RDB: 3 changes in 247 seconds. Saving...
+2024-03-15 09:51:06 INFO  [redis] Connection accepted from 192.168.1.102:57786
+2024-03-15 09:51:13 INFO  [redis] RDB: 5 changes in 200 seconds. Saving...
+2024-03-15 09:52:06 INFO  [redis] DB 0: 26763 keys, expires=331
+2024-03-15 09:52:12 INFO  [redis] RDB: 3 changes in 97 seconds. Saving...
+2024-03-15 09:52:42 INFO  [redis] Background saving terminated with success
+2024-03-15 09:53:13 INFO  [redis] DB 0: 41679 keys, expires=1701
+2024-03-15 09:53:28 INFO  [redis] RDB: 4 changes in 297 seconds. Saving...
+2024-03-15 09:53:29 INFO  [redis] Background saving terminated with success
+2024-03-15 09:54:10 INFO  [redis] RDB: 3 changes in 139 seconds. Saving...
+2024-03-15 09:54:13 INFO  [redis] DB 0: 33714 keys, expires=2423
+2024-03-15 09:54:14 INFO  [redis] DB 0: 47992 keys, expires=4892
+2024-03-15 09:54:43 INFO  [redis] DB 0: 7348 keys, expires=593
+2024-03-15 09:54:46 INFO  [redis] RDB: 3 changes in 72 seconds. Saving...
+2024-03-15 09:54:47 INFO  [redis] Background saving terminated with success
+2024-03-15 09:55:17 INFO  [redis] Connection accepted from 192.168.2.80:48065
+2024-03-15 09:55:56 INFO  [redis] DB 0: 22462 keys, expires=3223
+2024-03-15 09:56:02 INFO  [redis] Background saving terminated with success
+2024-03-15 09:56:09 INFO  [redis] DB 0: 6556 keys, expires=862
+2024-03-15 09:56:28 INFO  [redis] Connection accepted from 10.0.1.104:48288
+2024-03-15 09:56:48 INFO  [redis] Connection accepted from 10.0.1.238:50032
+2024-03-15 09:56:53 INFO  [redis] Connection accepted from 10.0.1.163:45985
+2024-03-15 09:56:54 INFO  [redis] RDB: 2 changes in 212 seconds. Saving...
+2024-03-15 09:56:56 INFO  [redis] Background saving terminated with success
+2024-03-15 09:57:01 INFO  [redis] Connection accepted from 10.0.1.78:44637
+2024-03-15 09:57:01 INFO  [redis] Connection accepted from 192.168.1.231:53201
+2024-03-15 09:57:20 INFO  [redis] RDB: 4 changes in 94 seconds. Saving...
+2024-03-15 09:57:28 INFO  [redis] Background saving terminated with success
+2024-03-15 09:57:39 INFO  [redis] DB 0: 48275 keys, expires=1857
+2024-03-15 09:57:43 INFO  [redis] RDB: 5 changes in 246 seconds. Saving...
+2024-03-15 09:57:51 INFO  [redis] Background saving terminated with success
+2024-03-15 09:58:09 INFO  [redis] DB 0: 11787 keys, expires=3610
+2024-03-15 09:58:40 INFO  [redis] Background saving terminated with success
+2024-03-15 09:59:07 INFO  [redis] DB 0: 2902 keys, expires=4867
+2024-03-15 09:59:18 INFO  [redis] RDB: 1 changes in 169 seconds. Saving...
+2024-03-15 09:59:45 INFO  [redis] DB 0: 17535 keys, expires=2187
+2024-03-15 09:59:51 INFO  [redis] Background saving terminated with success
+2024-03-15 10:00:05 INFO  [redis] Connection accepted from 10.0.2.241:49956
+2024-03-15 10:00:10 INFO  [redis] Background saving terminated with success
+2024-03-15 10:00:44 INFO  [redis] Background saving terminated with success
+2024-03-15 10:00:51 INFO  [redis] DB 0: 25062 keys, expires=3226
+2024-03-15 10:00:52 INFO  [redis] DB 0: 3920 keys, expires=937
+2024-03-15 10:01:14 INFO  [redis] RDB: 2 changes in 227 seconds. Saving...
+2024-03-15 10:01:17 INFO  [redis] Background saving terminated with success
+2024-03-15 10:01:45 INFO  [redis] DB 0: 48309 keys, expires=2032
+2024-03-15 10:02:12 INFO  [redis] RDB: 4 changes in 249 seconds. Saving...
+2024-03-15 10:02:43 INFO  [redis] DB 0: 44315 keys, expires=4036
+2024-03-15 10:02:44 INFO  [redis] RDB: 1 changes in 273 seconds. Saving...
+2024-03-15 10:02:49 INFO  [redis] Connection accepted from 10.0.2.22:50235
+2024-03-15 10:02:50 INFO  [redis] RDB: 4 changes in 248 seconds. Saving...
+2024-03-15 10:02:51 INFO  [redis] RDB: 4 changes in 286 seconds. Saving...
+2024-03-15 10:02:59 INFO  [redis] DB 0: 19767 keys, expires=4040
+2024-03-15 10:03:13 INFO  [redis] DB 0: 14961 keys, expires=1214
+2024-03-15 10:03:13 INFO  [redis] DB 0: 32823 keys, expires=702
+2024-03-15 10:03:30 INFO  [redis] Connection accepted from 192.168.1.200:54234
+2024-03-15 10:03:37 INFO  [redis] DB 0: 10702 keys, expires=906
+2024-03-15 10:03:39 INFO  [redis] RDB: 4 changes in 265 seconds. Saving...
+2024-03-15 10:03:54 INFO  [redis] Connection accepted from 10.0.2.239:51037
+2024-03-15 10:04:03 INFO  [redis] Background saving terminated with success
+2024-03-15 10:04:09 INFO  [redis] Connection accepted from 192.168.2.232:43847
+2024-03-15 10:04:56 INFO  [redis] Connection accepted from 10.0.1.22:58919
+2024-03-15 10:05:09 INFO  [redis] Connection accepted from 10.0.1.100:51220
+2024-03-15 10:05:15 INFO  [redis] DB 0: 39016 keys, expires=2103
+2024-03-15 10:05:27 INFO  [redis] Background saving terminated with success
+2024-03-15 10:06:09 INFO  [redis] RDB: 2 changes in 65 seconds. Saving...
+2024-03-15 10:06:11 INFO  [redis] RDB: 4 changes in 169 seconds. Saving...
+2024-03-15 10:06:29 INFO  [redis] Connection accepted from 192.168.2.199:54521
+2024-03-15 10:07:14 INFO  [redis] Background saving terminated with success
+2024-03-15 10:07:31 INFO  [redis] Connection accepted from 10.0.1.40:43962
+2024-03-15 10:07:33 INFO  [redis] Background saving terminated with success
+2024-03-15 10:07:57 INFO  [redis] DB 0: 40287 keys, expires=3778
+2024-03-15 10:08:08 INFO  [redis] DB 0: 10792 keys, expires=4554
+2024-03-15 10:08:11 INFO  [redis] RDB: 3 changes in 156 seconds. Saving...
+2024-03-15 10:08:11 WARN  [redis] Memory usage: 67% of maxmemory (127MB/244MB)
+2024-03-15 10:08:29 INFO  [redis] Background saving terminated with success
+2024-03-15 10:09:00 INFO  [redis] RDB: 4 changes in 155 seconds. Saving...
+2024-03-15 10:09:20 INFO  [redis] Connection accepted from 10.0.2.136:59784
+2024-03-15 10:10:06 INFO  [redis] Background saving terminated with success
+2024-03-15 10:10:09 INFO  [redis] Connection accepted from 192.168.2.219:58684
+2024-03-15 10:11:51 INFO  [redis] Background saving terminated with success
+2024-03-15 10:12:21 INFO  [redis] Connection accepted from 10.0.2.191:42934
+2024-03-15 10:12:27 INFO  [redis] Connection accepted from 192.168.1.207:53385
+2024-03-15 10:12:39 INFO  [redis] Background saving terminated with success
+2024-03-15 10:13:06 INFO  [redis] RDB: 2 changes in 286 seconds. Saving...
+2024-03-15 10:13:27 INFO  [redis] Connection accepted from 10.0.2.143:43568
+2024-03-15 10:13:38 INFO  [redis] Connection accepted from 10.0.2.69:49086
+2024-03-15 10:13:41 INFO  [redis] DB 0: 48201 keys, expires=457
+2024-03-15 10:13:51 INFO  [redis] Connection accepted from 10.0.1.107:59283
+2024-03-15 10:14:31 INFO  [redis] Background saving terminated with success
+2024-03-15 10:15:02 INFO  [redis] RDB: 1 changes in 68 seconds. Saving...
+2024-03-15 10:15:06 INFO  [redis] RDB: 1 changes in 109 seconds. Saving...
+2024-03-15 10:15:07 INFO  [redis] Connection accepted from 10.0.2.20:46679
+2024-03-15 10:15:15 INFO  [redis] DB 0: 43712 keys, expires=1057
+2024-03-15 10:15:29 INFO  [redis] DB 0: 47865 keys, expires=2567
+2024-03-15 10:16:10 INFO  [redis] Background saving terminated with success
+2024-03-15 10:16:46 INFO  [redis] Background saving terminated with success
+2024-03-15 10:16:58 INFO  [redis] DB 0: 12122 keys, expires=3416
+2024-03-15 10:17:03 INFO  [redis] Background saving terminated with success
+2024-03-15 10:17:27 INFO  [redis] DB 0: 38195 keys, expires=3578
+2024-03-15 10:17:39 INFO  [redis] Background saving terminated with success
+2024-03-15 10:17:41 INFO  [redis] Background saving terminated with success
+2024-03-15 10:17:50 INFO  [redis] DB 0: 11325 keys, expires=4083
+2024-03-15 10:18:04 INFO  [redis] Background saving terminated with success
+2024-03-15 10:18:12 INFO  [redis] Connection accepted from 10.0.2.130:55539
+2024-03-15 10:18:24 INFO  [redis] Background saving terminated with success
+2024-03-15 10:18:47 INFO  [redis] Background saving terminated with success
+2024-03-15 10:19:23 INFO  [redis] RDB: 3 changes in 268 seconds. Saving...
+2024-03-15 10:19:36 INFO  [redis] Background saving terminated with success
+2024-03-15 10:19:38 INFO  [redis] Background saving terminated with success
+2024-03-15 10:20:33 INFO  [redis] Background saving terminated with success
+2024-03-15 10:20:58 INFO  [redis] Connection accepted from 10.0.2.179:57100
+2024-03-15 10:21:07 INFO  [redis] DB 0: 6870 keys, expires=1416
+2024-03-15 10:21:18 INFO  [redis] Background saving terminated with success
+2024-03-15 10:22:06 INFO  [redis] Background saving terminated with success
+2024-03-15 10:22:07 INFO  [redis] RDB: 1 changes in 299 seconds. Saving...
+2024-03-15 10:22:22 INFO  [redis] Background saving terminated with success
+2024-03-15 10:22:33 INFO  [redis] Connection accepted from 10.0.2.123:41004
+2024-03-15 10:23:40 INFO  [redis] Connection accepted from 10.0.1.191:49688
+2024-03-15 10:23:42 INFO  [redis] Connection accepted from 10.0.2.162:42232
+2024-03-15 10:24:21 INFO  [redis] Connection accepted from 192.168.1.190:58154
+2024-03-15 10:24:24 INFO  [redis] Connection accepted from 10.0.1.136:46111
+2024-03-15 10:24:31 INFO  [redis] Connection accepted from 10.0.2.186:52146
+2024-03-15 10:24:59 INFO  [redis] DB 0: 12896 keys, expires=277
+2024-03-15 10:25:07 INFO  [redis] RDB: 2 changes in 238 seconds. Saving...
+2024-03-15 10:25:10 INFO  [redis] Connection accepted from 10.0.1.116:50376
+2024-03-15 10:25:15 INFO  [redis] DB 0: 8512 keys, expires=371
+2024-03-15 10:25:24 INFO  [redis] DB 0: 24387 keys, expires=387
+2024-03-15 10:25:26 INFO  [redis] Connection accepted from 10.0.2.75:40153
+2024-03-15 10:26:16 INFO  [redis] DB 0: 41453 keys, expires=3198
+2024-03-15 10:26:26 INFO  [redis] DB 0: 32663 keys, expires=115
+2024-03-15 10:26:32 INFO  [redis] Background saving terminated with success
+2024-03-15 10:26:51 INFO  [redis] DB 0: 35369 keys, expires=2524
+2024-03-15 10:27:04 INFO  [redis] DB 0: 36706 keys, expires=2465
+2024-03-15 10:27:09 INFO  [redis] Connection accepted from 10.0.1.96:54516
+2024-03-15 10:28:15 INFO  [redis] RDB: 4 changes in 89 seconds. Saving...
+2024-03-15 10:28:32 INFO  [redis] Background saving terminated with success
+2024-03-15 10:28:38 INFO  [redis] Connection accepted from 192.168.1.227:59335
+2024-03-15 10:29:42 INFO  [redis] DB 0: 45168 keys, expires=2081
+2024-03-15 10:30:01 INFO  [redis] RDB: 3 changes in 189 seconds. Saving...
+2024-03-15 10:30:05 INFO  [redis] DB 0: 30000 keys, expires=539
+2024-03-15 10:30:34 INFO  [redis] RDB: 1 changes in 166 seconds. Saving...
+2024-03-15 10:30:44 INFO  [redis] RDB: 3 changes in 136 seconds. Saving...
+2024-03-15 10:30:49 INFO  [redis] RDB: 2 changes in 70 seconds. Saving...
+2024-03-15 10:30:51 INFO  [redis] Background saving terminated with success
+2024-03-15 10:31:19 INFO  [redis] RDB: 3 changes in 95 seconds. Saving...
+2024-03-15 10:31:22 INFO  [redis] RDB: 5 changes in 197 seconds. Saving...
+2024-03-15 10:31:40 INFO  [redis] RDB: 2 changes in 78 seconds. Saving...
+2024-03-15 10:31:50 INFO  [redis] DB 0: 35267 keys, expires=4091
+2024-03-15 10:31:54 INFO  [redis] Connection accepted from 192.168.2.215:52134
+2024-03-15 10:32:04 INFO  [redis] RDB: 3 changes in 114 seconds. Saving...
+2024-03-15 10:32:04 INFO  [redis] Background saving terminated with success
+2024-03-15 10:32:14 INFO  [redis] RDB: 3 changes in 129 seconds. Saving...
+2024-03-15 10:32:14 INFO  [redis] DB 0: 24071 keys, expires=1304
+2024-03-15 10:32:22 INFO  [redis] RDB: 1 changes in 167 seconds. Saving...
+2024-03-15 10:32:23 INFO  [redis] Connection accepted from 192.168.1.55:43538
+2024-03-15 10:32:49 INFO  [redis] Connection accepted from 192.168.1.39:50653
+2024-03-15 10:33:11 INFO  [redis] Connection accepted from 192.168.2.164:43662
+2024-03-15 10:33:13 INFO  [redis] Connection accepted from 192.168.1.249:57366
+2024-03-15 10:34:01 INFO  [redis] Background saving terminated with success
+2024-03-15 10:34:26 INFO  [redis] RDB: 2 changes in 266 seconds. Saving...
+2024-03-15 10:34:29 INFO  [redis] DB 0: 31596 keys, expires=1573
+2024-03-15 10:34:38 INFO  [redis] Connection accepted from 192.168.1.152:59157
+2024-03-15 10:34:52 INFO  [redis] DB 0: 27666 keys, expires=271
+2024-03-15 10:35:25 INFO  [redis] RDB: 4 changes in 136 seconds. Saving...
+2024-03-15 10:35:27 INFO  [redis] Background saving terminated with success
+2024-03-15 10:35:51 INFO  [redis] DB 0: 25389 keys, expires=3420
+2024-03-15 10:35:59 INFO  [redis] RDB: 3 changes in 75 seconds. Saving...
+2024-03-15 10:36:00 INFO  [redis] DB 0: 22878 keys, expires=3882
+2024-03-15 10:36:06 INFO  [redis] DB 0: 31202 keys, expires=2935
+2024-03-15 10:36:09 INFO  [redis] Background saving terminated with success
+2024-03-15 10:36:42 INFO  [redis] DB 0: 4276 keys, expires=4157
+2024-03-15 10:37:12 INFO  [redis] Connection accepted from 192.168.1.82:56213
+2024-03-15 10:37:14 INFO  [redis] DB 0: 20281 keys, expires=113
+2024-03-15 10:38:04 INFO  [redis] Background saving terminated with success
+2024-03-15 10:38:25 INFO  [redis] RDB: 3 changes in 99 seconds. Saving...
+2024-03-15 10:38:47 INFO  [redis] Connection accepted from 192.168.1.189:43363
+2024-03-15 10:39:12 INFO  [redis] DB 0: 6387 keys, expires=4993
+2024-03-15 10:39:38 INFO  [redis] DB 0: 10729 keys, expires=1499
+2024-03-15 10:40:15 INFO  [redis] RDB: 1 changes in 193 seconds. Saving...
+2024-03-15 10:40:26 INFO  [redis] DB 0: 31827 keys, expires=1288
+2024-03-15 10:41:11 INFO  [redis] DB 0: 40055 keys, expires=3316
+2024-03-15 10:42:01 INFO  [redis] DB 0: 47294 keys, expires=3304
+2024-03-15 10:42:33 INFO  [redis] Background saving terminated with success
+2024-03-15 10:42:38 INFO  [redis] DB 0: 24817 keys, expires=2101
+2024-03-15 10:43:10 INFO  [redis] Connection accepted from 192.168.1.221:50918
+2024-03-15 10:43:21 INFO  [redis] DB 0: 49968 keys, expires=339
+2024-03-15 10:43:29 INFO  [redis] Background saving terminated with success
+2024-03-15 10:44:03 INFO  [redis] DB 0: 31103 keys, expires=4333
+2024-03-15 10:44:05 INFO  [redis] Connection accepted from 192.168.1.87:40098
+2024-03-15 10:44:14 INFO  [redis] RDB: 2 changes in 140 seconds. Saving...
+2024-03-15 10:44:18 INFO  [redis] RDB: 5 changes in 260 seconds. Saving...
+2024-03-15 10:44:50 INFO  [redis] Background saving terminated with success
+2024-03-15 10:45:59 INFO  [redis] Background saving terminated with success
+2024-03-15 10:46:19 INFO  [redis] Background saving terminated with success
+2024-03-15 10:46:37 INFO  [redis] DB 0: 27442 keys, expires=1250
+2024-03-15 10:46:52 INFO  [redis] RDB: 1 changes in 247 seconds. Saving...
+2024-03-15 10:47:00 INFO  [redis] DB 0: 26863 keys, expires=1664
+2024-03-15 10:47:11 INFO  [redis] DB 0: 30100 keys, expires=802
+2024-03-15 10:47:27 INFO  [redis] Background saving terminated with success
+2024-03-15 10:48:03 INFO  [redis] DB 0: 38163 keys, expires=2360
+2024-03-15 10:48:05 INFO  [redis] Connection accepted from 10.0.1.233:47754
+2024-03-15 10:48:15 INFO  [redis] Connection accepted from 192.168.2.174:48329
+2024-03-15 10:48:17 INFO  [redis] DB 0: 19286 keys, expires=4683
+2024-03-15 10:48:21 INFO  [redis] RDB: 4 changes in 227 seconds. Saving...
+2024-03-15 10:48:48 INFO  [redis] Background saving terminated with success
+2024-03-15 10:49:06 INFO  [redis] DB 0: 13089 keys, expires=866
+2024-03-15 10:49:08 INFO  [redis] DB 0: 2081 keys, expires=193
+2024-03-15 10:49:24 INFO  [redis] DB 0: 30469 keys, expires=1987
+2024-03-15 10:49:25 INFO  [redis] DB 0: 33236 keys, expires=1200
+2024-03-15 10:49:26 INFO  [redis] RDB: 4 changes in 111 seconds. Saving...
+2024-03-15 10:49:55 INFO  [redis] DB 0: 17640 keys, expires=378
+2024-03-15 10:50:11 INFO  [redis] RDB: 2 changes in 127 seconds. Saving...
+2024-03-15 10:50:22 INFO  [redis] Background saving terminated with success
+2024-03-15 10:51:16 INFO  [redis] Connection accepted from 10.0.1.12:51297
+2024-03-15 10:51:30 INFO  [redis] Connection accepted from 10.0.1.93:59919
+2024-03-15 10:51:46 INFO  [redis] DB 0: 17963 keys, expires=457
+2024-03-15 10:51:54 INFO  [redis] DB 0: 8742 keys, expires=2562
+2024-03-15 10:52:09 INFO  [redis] RDB: 1 changes in 160 seconds. Saving...
+2024-03-15 10:52:52 INFO  [redis] DB 0: 36778 keys, expires=3386
+2024-03-15 10:53:13 INFO  [redis] RDB: 5 changes in 137 seconds. Saving...
+2024-03-15 10:53:36 INFO  [redis] RDB: 5 changes in 159 seconds. Saving...
+2024-03-15 10:54:45 INFO  [redis] Background saving terminated with success
+2024-03-15 10:55:35 INFO  [redis] RDB: 2 changes in 291 seconds. Saving...
+2024-03-15 10:55:39 INFO  [redis] Background saving terminated with success
+2024-03-15 10:56:05 INFO  [redis] Background saving terminated with success
+2024-03-15 10:57:21 INFO  [redis] Connection accepted from 10.0.1.59:44520
+2024-03-15 10:57:37 INFO  [redis] Connection accepted from 192.168.2.250:52484
+2024-03-15 10:57:38 INFO  [redis] RDB: 4 changes in 62 seconds. Saving...
+2024-03-15 10:58:14 INFO  [redis] Background saving terminated with success
+2024-03-15 10:58:18 INFO  [redis] RDB: 2 changes in 231 seconds. Saving...
+2024-03-15 10:58:42 INFO  [redis] DB 0: 34539 keys, expires=2870
+2024-03-15 10:58:43 INFO  [redis] DB 0: 17721 keys, expires=1703
+2024-03-15 10:58:55 INFO  [redis] Connection accepted from 10.0.2.90:56156
+2024-03-15 10:59:29 INFO  [redis] Background saving terminated with success
+2024-03-15 10:59:43 INFO  [redis] Background saving terminated with success
+2024-03-15 10:59:47 INFO  [redis] RDB: 1 changes in 100 seconds. Saving...

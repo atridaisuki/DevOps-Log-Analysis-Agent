@@ -19,6 +19,16 @@ class ToolCallRecord(TypedDict):
     success: bool
 
 
+class TokenUsage(TypedDict):
+    """Record of token consumption for a single LLM call."""
+
+    node: str
+    input_tokens: int
+    output_tokens: int
+    cache_read_tokens: int
+    cost_usd: float
+
+
 class AgentState(TypedDict):
     """Full state flowing through the LangGraph agent graph.
 
@@ -48,3 +58,6 @@ class AgentState(TypedDict):
     iteration_count: int
     max_iterations: int
     status: Literal["running", "completed", "failed"]
+
+    # --- token tracking ---
+    token_usage: list[TokenUsage]
